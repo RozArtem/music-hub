@@ -1,5 +1,7 @@
 
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Album } from "src/album/album.model";
+import { Track } from "src/track/track.model";
 
 
 interface UserCreationAtrr {
@@ -18,17 +20,19 @@ export class User extends Model<User, UserCreationAtrr> {
     id: string;
 
     @Column({type: DataType.STRING, unique: true, allowNull: false})
+    name: string;
+
+
+    @Column({type: DataType.STRING, unique: true, allowNull: false})
     email: string;
 
     @Column({type: DataType.STRING, allowNull: false})
     password: string;
 
-  
-    @Column({type: DataType.BOOLEAN, defaultValue: false})
-    banned: boolean;
+    @HasMany(() => Track)
+    tracks: Track[];
 
- 
-    @Column({type: DataType.STRING, allowNull: true})
-    banReason: string;
+    @HasMany(() => Album)
+    albums: Album[];
 
 }

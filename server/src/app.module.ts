@@ -4,8 +4,14 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from './users/user.model';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-
-
+import { TrackModule } from './track/track.module';
+import { CommentModule } from './comment/comment.module';
+import { AlbumModule } from './album/album.module';
+import { Track } from './track/track.model';
+import { Comment } from './comment/comment.model';
+import { Album } from './album/album.model';
+import { AlbumTrack } from './album/album-track.model';
+import { FileModule } from './file/file.module';
 
 
 
@@ -21,11 +27,15 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User],
+      models: [User, Track, Comment, Album, AlbumTrack],
       autoLoadModels: true
     }),
     UsersModule,
-    AuthModule
+    AuthModule,
+    TrackModule,
+    CommentModule,
+    AlbumModule,
+    FileModule
 
   ]
 

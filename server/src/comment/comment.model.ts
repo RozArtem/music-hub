@@ -6,6 +6,8 @@ interface CommentCreationAtrr {
 
     id: string;
     text: string;
+    trackID: string;
+    
 
 }
 

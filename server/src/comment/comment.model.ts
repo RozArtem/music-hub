@@ -7,6 +7,7 @@ interface CommentCreationAtrr {
     id: string;
     text: string;
     trackID: string;
+
     
 
 }
@@ -17,9 +18,6 @@ export class Comment extends Model<Comment, CommentCreationAtrr> {
 
     @Column({ type: DataType.UUID, unique: true, primaryKey: true })
     id: string;
-
-    @Column({ type: DataType.STRING, unique: true, allowNull: false })
-    name: string;
 
 
     @Column({ type: DataType.STRING })

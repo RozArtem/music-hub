@@ -10,6 +10,8 @@ interface TrackCreationAtrr {
 
     id: string;
     name: string;
+    audio: string;
+    picture: string;
 
 }
 

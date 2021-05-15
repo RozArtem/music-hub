@@ -12,11 +12,14 @@ import { Comment } from './comment/comment.model';
 import { Album } from './album/album.model';
 import { AlbumTrack } from './album/album-track.model';
 import { FileModule } from './file/file.module';
+import * as path from 'path'
+import {ServeStaticModule} from "@nestjs/serve-static";
 
 
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({rootPath: path.resolve(__dirname, 'static')}),
     ConfigModule.forRoot({
       envFilePath: '.env'
     }),

@@ -1,5 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AddToAlbumDTO } from 'src/album/dto/add-album.dto';
+import { IUser } from 'src/auth/user-interface';
+import { User } from 'src/auth/user.decorator';
 import { AlbumService } from './album.service';
 import { CreatAlbumDTO } from './dto/creat-album.dto';
 
@@ -10,10 +12,10 @@ export class AlbumController {
     ) { }
 
     @Post()
-    create(@Body() dto: CreatAlbumDTO) {
+    create(@Body() dto: CreatAlbumDTO, @User() user: IUser) {
 
         console.log(dto)
-        return this.albumService.creat(dto)
+        return this.albumService.creat(dto, user)
     }
     @Get()
     getAll() {

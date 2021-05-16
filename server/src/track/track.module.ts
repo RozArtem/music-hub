@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TrackService } from './track.service';
 import { TrackController } from './track.controller';
 import { Track } from './track.model';
@@ -10,7 +10,7 @@ import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
-    AuthModule,
+   AuthModule,
     CommentModule,
     FileModule,
     SequelizeModule.forFeature([Track])

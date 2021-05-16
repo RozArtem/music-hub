@@ -7,7 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { Comment } from 'src/comment/comment.model';
 import { AddCommentDTO } from '../comment/dto/add-comment.dto';
 import { CommentService } from 'src/comment/comment.service';
-import { userInfo } from 'os';
+import { IUser } from 'src/auth/user-interface';
+
 
 
 
@@ -63,9 +64,9 @@ export class TrackService {
     }
 
    
-    async addComment(dto: AddCommentDTO, trackID): Promise<Comment> {
+    async addComment(dto: AddCommentDTO, trackID, user: IUser): Promise<Comment> {
 
-        const comment =  await this.commentService.create(dto, trackID)
+        const comment =  await this.commentService.create(dto, trackID, user)
 
         return comment
     }

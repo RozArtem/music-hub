@@ -9,6 +9,7 @@ interface AlbumCreationAtrr {
     
     id: string;
     name: string;
+    ownerID: string;
 
 }
 

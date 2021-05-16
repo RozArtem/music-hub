@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { AddToAlbumDTO } from 'src/album/dto/add-album.dto';
 import { TrackService } from 'src/track/track.service';
 import { Track } from 'src/track/track.model';
+import { IUser } from 'src/auth/user-interface';
 
 @Injectable()
 export class AlbumService {
@@ -14,20 +15,27 @@ export class AlbumService {
         private trackService: TrackService
     ) { }
 
-    async creat(dto: CreatAlbumDTO): Promise<Album> {
+    async creat(dto: CreatAlbumDTO, user: IUser): Promise<Album> {
 
-       
+
         const albumID = uuidv4()
-        const album = await this.albumRepositiry.create({ ...dto, id: albumID })
+        const album = await this.albumRepositiry.create({ ...dto, id: albumID , ownerID: user.id})
 
         return album
     }
+    async creatFav(userID: string): Promise<Album> {
+
+        const albumID = uuidv4();
+        const favAlbum = await this.albumRepositiry.create({ name: 'favoirite', id: albumID, ownerID: userID })
+
+        return favAlbum
+    }
     async delete(id: string): Promise<string> {
 
-       
+
         const album = await this.albumRepositiry.findOne({ where: { id } })
         album.destroy()
-        
+
         return album.id
     }
 
@@ -56,9 +64,9 @@ export class AlbumService {
         }
 
         throw new HttpException('Аудио файл или альбом не найден', HttpStatus.NOT_FOUND);
-        
-        
+
+
     }
 
-   
+
 }

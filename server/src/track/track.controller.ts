@@ -37,9 +37,9 @@ export class TrackController {
         return this.trackService.getOne(id)
     }
     @Get()
-    getAll( @Req() request: Request) {
+    getAll( ) {
 
-        console.log(request)
+      
         return this.trackService.getAll()
     }
     @UseGuards(JwtAuthGuard)
@@ -47,7 +47,7 @@ export class TrackController {
     addComment(@Param('id') id:string, @Body() dto: AddCommentDTO,  @User() user: IUser) {
 
       
-        return this.trackService.addComment(dto, id)
+        return this.trackService.addComment(dto, id, user)
     }
    
 

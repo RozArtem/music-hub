@@ -3,19 +3,21 @@ import { InjectModel } from '@nestjs/sequelize';
 import { CreatUserDTO } from './dto/creat-user.dto';
 import { User } from './user.model';
 import { v4 as uuidv4 } from 'uuid';
+import { AlbumService } from 'src/album/album.service';
 
 
 @Injectable()
 export class UsersService {
     constructor(@InjectModel(User) private userRepository: typeof User,
+        private albumService: AlbumService
        ) { }
 
 
     async creatUser(dto: CreatUserDTO): Promise<User> {
-
+        
         const userID = uuidv4()
         const user = await this.userRepository.create({ ...dto, id: userID });
-    
+        const favSongAlbum = await this.albumService.creatFav(userID)
       
         return user;
     }

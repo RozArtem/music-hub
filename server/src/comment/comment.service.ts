@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Comment } from './comment.model';
 import { v4 as uuidv4 } from 'uuid';
 import { AddCommentDTO } from './dto/add-comment.dto';
+import { IUser } from 'src/auth/user-interface';
 
 
 @Injectable()
@@ -12,12 +13,12 @@ export class CommentService {
         private commentRepository: typeof Comment,
     ) { }
 
-    async create(dto: AddCommentDTO, trackID_fromQuery: string): Promise<Comment> {
+    async create(dto: AddCommentDTO, trackID_fromQuery: string, user: IUser): Promise<Comment> {
 
 
         const commentID = uuidv4()
         const comment = await this.commentRepository.create(
-            { ...dto, id: commentID, trackID: trackID_fromQuery }
+            { ...dto, id: commentID, trackID: trackID_fromQuery, ownerID: user.id }
         )
 
         return comment

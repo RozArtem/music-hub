@@ -68,5 +68,21 @@ export class AlbumService {
 
     }
 
+    async addTrakcToFav(id: string): Promise<string> {
+
+        const album = await this.albumRepositiry.findOne({where: {name: 'favoirite'}});
+        const track = await this.trackService.getOne(id);
+
+        if (album && track) {
+            await album.$add('traks', track.id);
+
+            return track.id
+        }
+
+        throw new HttpException('что-то пошло не так', HttpStatus.NOT_FOUND);
+
+
+    }
+
 
 }

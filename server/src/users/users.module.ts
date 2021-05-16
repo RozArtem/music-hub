@@ -8,11 +8,11 @@ import { UsersService } from './users.service';
 
 @Module({
   imports: [
-  AlbumModule,
+    forwardRef(() => AlbumModule),
     SequelizeModule.forFeature([User])],
   controllers: [UsersController],
   providers: [UsersService],
   exports: [UsersService]
- 
+
 })
 export class UsersModule { }

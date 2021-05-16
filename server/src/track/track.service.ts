@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { FileService, FileType } from 'src/file/file.service';
 import { CreatTackDTO } from './dto/creat-track.dto';
@@ -8,6 +8,7 @@ import { Comment } from 'src/comment/comment.model';
 import { AddCommentDTO } from '../comment/dto/add-comment.dto';
 import { CommentService } from 'src/comment/comment.service';
 import { IUser } from 'src/auth/user-interface';
+import { AlbumService } from 'src/album/album.service';
 
 
 
@@ -17,7 +18,9 @@ export class TrackService {
     constructor(
         @InjectModel(Track) private trackRepository: typeof Track,
         private fileService: FileService,
-        private commentService: CommentService
+        private commentService: CommentService,
+        @Inject(forwardRef(() => AlbumService ))
+        private albumService: AlbumService
     ) { }
 
 
@@ -61,6 +64,13 @@ export class TrackService {
         return track.id
 
 
+    }
+
+    async addTrackToFav(id: string) : Promise<string> {
+
+        const trackID = await this.albumService.addTrakcToFav(id)
+
+        return trackID
     }
 
    

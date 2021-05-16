@@ -6,11 +6,13 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { FileModule } from 'src/file/file.module';
 import { CommentModule } from 'src/comment/comment.module';
 import { AuthModule } from 'src/auth/auth.module';
+import { AlbumModule } from 'src/album/album.module';
 
 
 @Module({
   imports: [
-   AuthModule,
+    forwardRef(() => AlbumModule),
+    AuthModule,
     CommentModule,
     FileModule,
     SequelizeModule.forFeature([Track])

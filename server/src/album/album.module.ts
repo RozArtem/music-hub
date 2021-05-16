@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { AlbumService } from './album.service';
 import { AlbumController } from './album.controller';
 import { Album } from './album.model';
@@ -15,4 +15,4 @@ import { TrackModule } from 'src/track/track.module';
   exports: [AlbumService]
 
 })
-export class AlbumModule {}
+export class AlbumModule { }

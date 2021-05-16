@@ -20,7 +20,7 @@ export class Album extends Model<Album, AlbumCreationAtrr> {
     @Column({type: DataType.UUID, unique: true,  primaryKey: true })
     id: string;
 
-    @Column({type: DataType.STRING, unique: true, allowNull: false})
+    @Column({type: DataType.STRING,  allowNull: false})
     name: string;
 
     @ForeignKey(() => User)

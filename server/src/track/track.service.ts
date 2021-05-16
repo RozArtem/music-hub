@@ -66,9 +66,9 @@ export class TrackService {
 
     }
 
-    async addTrackToFav(id: string) : Promise<string> {
+    async addTrackToFav(id: string, user: IUser) : Promise<string> {
 
-        const trackID = await this.albumService.addTrakcToFav(id)
+        const trackID = await this.albumService.addTrakcToFav(id, user)
 
         return trackID
     }

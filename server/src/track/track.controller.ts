@@ -49,6 +49,13 @@ export class TrackController {
       
         return this.trackService.addComment(dto, id, user)
     }
+    @UseGuards(JwtAuthGuard)
+    @Post('/:id/add-fav')
+    addFavorite(@Param('id') id:string, @User() user: IUser ) {
+
+      
+        return this.trackService.addTrackToFav(id, user)
+    }
    
 
 }

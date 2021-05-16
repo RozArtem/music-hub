@@ -68,9 +68,9 @@ export class AlbumService {
 
     }
 
-    async addTrakcToFav(id: string): Promise<string> {
+    async addTrakcToFav(id: string, user: IUser): Promise<string> {
 
-        const album = await this.albumRepositiry.findOne({where: {name: 'favoirite'}});
+        const album = await this.albumRepositiry.findOne({where: {name: 'favoirite', ownerID: user.id}});
         const track = await this.trackService.getOne(id);
 
         if (album && track) {

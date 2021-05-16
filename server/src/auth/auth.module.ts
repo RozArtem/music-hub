@@ -4,8 +4,10 @@ import { UsersModule } from 'src/users/users.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 
+
 @Module({
   imports: [
+
     JwtModule.register({
       secret: process.env.SECRET_KEY || 'SECRET',
       signOptions: {
@@ -14,6 +16,11 @@ import { AuthService } from './auth.service';
     }),
     UsersModule],
   controllers: [AuthController],
-  providers: [AuthService]
+  providers: [AuthService],
+  exports: [
+    AuthService,
+    JwtModule
+]
+
 })
 export class AuthModule {}

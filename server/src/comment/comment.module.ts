@@ -9,6 +9,7 @@ import { CommentService } from './comment.service';
     SequelizeModule.forFeature([Comment])
   ],
   controllers: [CommentController],
-  providers: [CommentService]
+  providers: [CommentService],
+  exports: [CommentService]
 })
 export class CommentModule {}

@@ -5,6 +5,9 @@ import { CreatTackDTO } from './dto/creat-track.dto';
 import { Track } from './track.model';
 import { v4 as uuidv4 } from 'uuid';
 import { Comment } from 'src/comment/comment.model';
+import { AddCommentDTO } from '../comment/dto/add-comment.dto';
+import { CommentService } from 'src/comment/comment.service';
+import { userInfo } from 'os';
 
 
 
@@ -12,16 +15,23 @@ import { Comment } from 'src/comment/comment.model';
 export class TrackService {
     constructor(
         @InjectModel(Track) private trackRepository: typeof Track,
-        private fileService: FileService
+        private fileService: FileService,
+        private commentService: CommentService
     ) { }
 
 
-    async creat(dto: CreatTackDTO, picture, audio): Promise<Track> {
+    async creat(dto: CreatTackDTO, picture, audio, user): Promise<Track> {
 
         const trackID = uuidv4()
         const audioPath = this.fileService.createFile(FileType.AUDIO, audio);
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
-        const track = await this.trackRepository.create({ ...dto, id: trackID, audio: audioPath, picture: picturePath });
+        const track = await this.trackRepository.create(
+            { ...dto, 
+                id: trackID, 
+                audio: audioPath, 
+                picture: picturePath,
+                authorID: user.id }
+            );
 
         return track;
     }
@@ -43,7 +53,7 @@ export class TrackService {
 
     async delete(id: string): Promise<string> {
 
-        const track = await this.trackRepository.findOne({ where: { id } })
+        const track = await this.trackRepository.findOne({ where: { id }, include: {model: Comment} })
 
         track.destroy()
 
@@ -52,11 +62,13 @@ export class TrackService {
 
     }
 
+   
+    async addComment(dto: AddCommentDTO, trackID): Promise<Comment> {
 
-    async addComment(id: string) {
+        const comment =  await this.commentService.create(dto, trackID)
 
+        return comment
     }
-
 
     async serch(query: string): Promise<Track[]> {
 

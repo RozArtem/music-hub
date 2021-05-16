@@ -4,12 +4,16 @@ import { CreatUserDTO } from 'src/users/dto/creat-user.dto';
 import { User } from 'src/users/user.model';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcryptjs';
+import { Request } from 'express';
+import { IUser } from './user-interface';
+
 
 @Injectable()
 export class AuthService {
     constructor(
         private userService: UsersService,
         private jwtService: JwtService
+     
     ) { }
 
 
@@ -60,5 +64,13 @@ export class AuthService {
         return this.generateToken(user)
     }
 
+    async authorization(userFromRequst: IUser): Promise<string> {
+
+      
+        const user = await this.userService.getUserById(userFromRequst.id)
+
+        return this.generateToken(user)
+       
+    }
 
 }

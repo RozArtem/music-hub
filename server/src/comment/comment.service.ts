@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Comment } from './comment.model';
-import { CreatCommentDTO } from './dto/creat-comment.dto';
 import { v4 as uuidv4 } from 'uuid';
+import { AddCommentDTO } from './dto/add-comment.dto';
 
 
 @Injectable()
@@ -12,7 +12,7 @@ export class CommentService {
         private commentRepository: typeof Comment,
     ) { }
 
-    async create(dto: CreatCommentDTO, trackID_fromQuery: string): Promise<Comment> {
+    async create(dto: AddCommentDTO, trackID_fromQuery: string): Promise<Comment> {
 
 
         const commentID = uuidv4()
@@ -20,9 +20,7 @@ export class CommentService {
             { ...dto, id: commentID, trackID: trackID_fromQuery }
         )
 
-
         return comment
-
     }
 
     async delete(id: string): Promise<string> {

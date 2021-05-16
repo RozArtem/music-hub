@@ -5,7 +5,7 @@ import { User } from "src/users/user.model";
 interface CommentCreationAtrr {
 
     id: string;
-    text: string;
+    description: string;
     trackID: string;
 
     
@@ -21,7 +21,7 @@ export class Comment extends Model<Comment, CommentCreationAtrr> {
 
 
     @Column({ type: DataType.STRING })
-    describtion: string;
+    description: string;
 
     @ForeignKey(() => User)
     @Column({ type: DataType.UUID })

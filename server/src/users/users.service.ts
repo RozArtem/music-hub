@@ -32,5 +32,11 @@ export class UsersService {
 
         return user
     }
+    async getUserById(id: string): Promise<User> {
+
+        const user = await this.userRepository.findByPk(id)
+
+        return user
+    }
 
 }

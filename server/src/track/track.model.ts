@@ -12,6 +12,7 @@ interface TrackCreationAtrr {
     name: string;
     audio: string;
     picture: string;
+    authorID: string;
 
 }
 

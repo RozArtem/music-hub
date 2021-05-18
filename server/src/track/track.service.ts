@@ -1,4 +1,4 @@
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { FileService, FileType } from 'src/file/file.service';
 import { CreatTackDTO } from './dto/creat-track.dto';
@@ -8,7 +8,7 @@ import { Comment } from 'src/comment/comment.model';
 import { AddCommentDTO } from '../comment/dto/add-comment.dto';
 import { CommentService } from 'src/comment/comment.service';
 import { IUser } from 'src/auth/user-interface';
-import { AlbumService } from 'src/album/album.service';
+
 
 
 
@@ -19,15 +19,15 @@ export class TrackService {
         @InjectModel(Track) private trackRepository: typeof Track,
         private fileService: FileService,
         private commentService: CommentService,
-     
+
     ) { }
 
 
     async creat(dto: CreatTackDTO, picture, audio, user): Promise<Track> {
 
         const trackID = uuidv4()
-        const audioPath = this.fileService.createFile(FileType.AUDIO, audio);
-        const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
+        const audioPath = this.fileService.createFile(FileType.AUDIO, audio, trackID);
+        const picturePath = this.fileService.createFile(FileType.IMAGE, picture, trackID);
         const track = await this.trackRepository.create(
             {
                 ...dto,
@@ -49,8 +49,9 @@ export class TrackService {
 
         return tracks;
     }
-    async getAllAdded(count = 10, offset = 0, user : IUser): Promise<Track[]> {
-        const tracks = await this.trackRepository.findAll({ where : {authorID: user.id},
+    async getAllAdded(count = 10, offset = 0, user: IUser): Promise<Track[]> {
+        const tracks = await this.trackRepository.findAll({
+            where: { authorID: user.id },
             offset: (Number(offset)),
             limit: (Number(count))
         });
@@ -66,16 +67,15 @@ export class TrackService {
 
     async delete(id: string, user: IUser): Promise<string> {
 
-        const track = await this.trackRepository.findOne({ where: { id , authorID: user.id}, include: { model: Comment } })
-
+        const track = await this.trackRepository.findOne({ where: { id, authorID: user.id }, include: { model: Comment } })
         track.destroy()
+        this.fileService.removeFile(id)
 
         return track.id
 
-
     }
 
-    
+
 
     async addComment(dto: AddCommentDTO, trackID, user: IUser): Promise<Comment> {
 

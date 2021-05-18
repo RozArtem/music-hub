@@ -4,6 +4,7 @@ import { CreatUserDTO } from './dto/creat-user.dto';
 import { User } from './user.model';
 import { v4 as uuidv4 } from 'uuid';
 import { AlbumService } from 'src/album/album.service';
+import { Track } from 'src/track/track.model';
 
 
 @Injectable()
@@ -37,6 +38,12 @@ export class UsersService {
     async getUserById(id: string): Promise<User> {
 
         const user = await this.userRepository.findByPk(id)
+
+        return user
+    }
+    async getUserProfile(id: string): Promise<User> {
+
+        const user = await this.userRepository.findOne({ where: { id }, include: { model: Track } })
 
         return user
     }

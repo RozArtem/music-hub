@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post,  Req,  UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post,  Query,  Req,  UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { AddCommentDTO } from 'src/comment/dto/add-comment.dto';
 import { CreatTackDTO } from './dto/creat-track.dto';
@@ -27,9 +27,10 @@ export class TrackController {
         const { picture, audio } = files
         return this.trackService.creat(dto, picture[0], audio[0], user);
     }
+    @UseGuards(JwtAuthGuard) 
     @Delete('/:id')
-    delete(@Param('id') id: string) {
-        return this.trackService.delete(id)
+    delete(@Param('id') id: string, @User() user : IUser) {
+        return this.trackService.delete(id, user)
     }
     @Get('/:id')
     getOne(@Param('id') id: string) {
@@ -37,10 +38,17 @@ export class TrackController {
         return this.trackService.getOne(id)
     }
     @Get()
-    getAll( ) {
+    getAll( @Query('count') count: number ,  @Query('offset') offset: number ) {
 
       
-        return this.trackService.getAll()
+        return this.trackService.getAll(count, offset )
+    }
+    @UseGuards(JwtAuthGuard) 
+    @Get('/my-added')
+    getAllAdded( @Query('count') count: number ,  @Query('offset') offset: number,  @User() user : IUser) {
+
+      
+        return this.trackService.getAllAdded(count, offset, user)
     }
     @UseGuards(JwtAuthGuard)
     @Post('/:id/add-comment')

@@ -49,6 +49,14 @@ export class TrackService {
 
         return tracks;
     }
+    async getAllAdded(count = 10, offset = 0, user : IUser): Promise<Track[]> {
+        const tracks = await this.trackRepository.findAll({ where : {authorID: user.id},
+            offset: (Number(offset)),
+            limit: (Number(count))
+        });
+
+        return tracks;
+    }
 
     async getOne(id: string): Promise<Track> {
 
@@ -56,9 +64,9 @@ export class TrackService {
         return track;
     }
 
-    async delete(id: string): Promise<string> {
+    async delete(id: string, user: IUser): Promise<string> {
 
-        const track = await this.trackRepository.findOne({ where: { id }, include: { model: Comment } })
+        const track = await this.trackRepository.findOne({ where: { id , authorID: user.id}, include: { model: Comment } })
 
         track.destroy()
 

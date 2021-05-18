@@ -7,6 +7,7 @@ import { AddToAlbumDTO } from 'src/album/dto/add-album.dto';
 import { TrackService } from 'src/track/track.service';
 import { Track } from 'src/track/track.model';
 import { IUser } from 'src/auth/user-interface';
+import { AddToFavDTO } from './dto/add-to_fav.dto';
 
 @Injectable()
 export class AlbumService {
@@ -52,9 +53,9 @@ export class AlbumService {
         return aldum
     }
 
-    async addTrakcToAlbum(dto: AddToAlbumDTO): Promise<AddToAlbumDTO> {
+    async addTrakcToAlbum(dto: AddToAlbumDTO, user: IUser): Promise<AddToAlbumDTO> {
 
-        const album = await this.albumRepositiry.findByPk(dto.albumID);
+        const album = await this.albumRepositiry.findOne({where: {id: dto.albumID, ownerID: user.id}});;
         const track = await this.trackService.getOne(dto.trackId);
 
         if (album && track) {
@@ -68,15 +69,15 @@ export class AlbumService {
 
     }
 
-    async addTrakcToFav(id: string, user: IUser): Promise<string> {
+    async addTrakcToFav(dto: AddToFavDTO, user: IUser): Promise<AddToFavDTO> {
 
         const album = await this.albumRepositiry.findOne({where: {name: 'favoirite', ownerID: user.id}});
-        const track = await this.trackService.getOne(id);
+        
 
-        if (album && track) {
-            await album.$add('traks', track.id);
+        if (album && dto.trackId) {
+            await album.$add('traks', dto.trackId);
 
-            return track.id
+            return dto
         }
 
         throw new HttpException('что-то пошло не так', HttpStatus.NOT_FOUND);

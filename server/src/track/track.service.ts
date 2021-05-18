@@ -19,8 +19,7 @@ export class TrackService {
         @InjectModel(Track) private trackRepository: typeof Track,
         private fileService: FileService,
         private commentService: CommentService,
-        @Inject(forwardRef(() => AlbumService ))
-        private albumService: AlbumService
+     
     ) { }
 
 
@@ -30,12 +29,14 @@ export class TrackService {
         const audioPath = this.fileService.createFile(FileType.AUDIO, audio);
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
         const track = await this.trackRepository.create(
-            { ...dto, 
-                id: trackID, 
-                audio: audioPath, 
+            {
+                ...dto,
+                id: trackID,
+                audio: audioPath,
                 picture: picturePath,
-                authorID: user.id }
-            );
+                authorID: user.id
+            }
+        );
 
         return track;
     }
@@ -57,7 +58,7 @@ export class TrackService {
 
     async delete(id: string): Promise<string> {
 
-        const track = await this.trackRepository.findOne({ where: { id }, include: {model: Comment} })
+        const track = await this.trackRepository.findOne({ where: { id }, include: { model: Comment } })
 
         track.destroy()
 
@@ -66,17 +67,11 @@ export class TrackService {
 
     }
 
-    async addTrackToFav(id: string, user: IUser) : Promise<string> {
+    
 
-        const trackID = await this.albumService.addTrakcToFav(id, user)
-
-        return trackID
-    }
-
-   
     async addComment(dto: AddCommentDTO, trackID, user: IUser): Promise<Comment> {
 
-        const comment =  await this.commentService.create(dto, trackID, user)
+        const comment = await this.commentService.create(dto, trackID, user)
 
         return comment
     }
@@ -88,11 +83,11 @@ export class TrackService {
         const tracks = await this.trackRepository.findAll(
             {
                 where: {
-                  name: `${nameSerch}` 
+                    name: `${nameSerch}`
                 }
             })
 
-            return tracks
+        return tracks
     }
 
 

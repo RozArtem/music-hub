@@ -27,16 +27,19 @@ export class TrackController {
         const { picture, audio } = files
         return this.trackService.creat(dto, picture[0], audio[0], user);
     }
+
     @UseGuards(JwtAuthGuard) 
     @Delete('/:id')
     delete(@Param('id') id: string, @User() user : IUser) {
         return this.trackService.delete(id, user)
     }
+
     @Get('/:id')
     getOne(@Param('id') id: string) {
 
         return this.trackService.getOne(id)
     }
+    
     @Get()
     getAll( @Query('count') count: number ,  @Query('offset') offset: number ) {
 

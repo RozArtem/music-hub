@@ -16,13 +16,13 @@ export class AuthService {
     ) { }
 
 
-    private async generateToken(user: User): Promise<any> {
+    private async generateToken(user: User): Promise<string> {
 
         const paylod = { email: user.email, id: user.id }
+        const token =  await this.jwtService.sign(paylod)
 
-        return {
-            token: this.jwtService.sign(paylod)
-        }
+        return token
+       
     }
 
     private async validateUser(dto: CreatUserDTO): Promise<User> {
@@ -30,24 +30,25 @@ export class AuthService {
         const user = await this.userService.getOneUserByEmail(dto.email);
         const passwordEqual = await bcrypt.compare(dto.password, user.password);
 
-        if (user && passwordEqual) {
-
-            return user;
+        if (!user && !passwordEqual) {
+            
+            throw new UnauthorizedException({message: "Invalid email or password"})
+            
         }
 
-        throw new UnauthorizedException({message: "Invalid email or password"})
+        return user;
 
     }
 
 
-    async login(dto: CreatUserDTO): Promise<User> {
+    async login(dto: CreatUserDTO): Promise<string> {
 
         const user =  await this.validateUser(dto)
 
         return this.generateToken(user)
     }
     
-    async registration(dto: CreatUserDTO): Promise<User> {
+    async registration(dto: CreatUserDTO): Promise<string> {
 
         const candidate = await this.userService.getOneUserByEmail(dto.email);
 

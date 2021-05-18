@@ -4,7 +4,6 @@ import { CreatUserDTO } from 'src/users/dto/creat-user.dto';
 import { User } from 'src/users/user.model';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcryptjs';
-import { Request } from 'express';
 import { IUser } from './user-interface';
 
 

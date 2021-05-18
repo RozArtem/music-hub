@@ -58,10 +58,12 @@ export class AlbumService {
         const album = await this.albumRepositiry.findOne({where: {id: dto.albumID, ownerID: user.id}});;
         const track = await this.trackService.getOne(dto.trackId);
 
+       
         if (album && track) {
-            await album.$add('traks', track.id);
+            await album.$add('traks', track);
 
             return dto
+          
         }
 
         throw new HttpException('Аудио файл или альбом не найден', HttpStatus.NOT_FOUND);
@@ -72,10 +74,11 @@ export class AlbumService {
     async addTrakcToFav(dto: AddToFavDTO, user: IUser): Promise<AddToFavDTO> {
 
         const album = await this.albumRepositiry.findOne({where: {name: 'favoirite', ownerID: user.id}});
+        const track = await this.trackService.getOne(dto.trackId);
         
-
-        if (album && dto.trackId) {
-            await album.$add('traks', dto.trackId);
+        
+        if (album && track) {
+            await album.$add('traks', track);
 
             return dto
         }

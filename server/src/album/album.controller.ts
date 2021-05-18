@@ -39,7 +39,6 @@ export class AlbumController {
     @Post('/add-track')
     addTrakToAlbum(@Body() dto: AddToAlbumDTO , @User() user: IUser ) {
 
-       
       return this.albumService.addTrakcToAlbum(dto, user);
     }
 

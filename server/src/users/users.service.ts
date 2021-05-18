@@ -18,7 +18,7 @@ export class UsersService {
         
         const userID = uuidv4()
         const user = await this.userRepository.create({ ...dto, id: userID });
-        const favSongAlbum = await this.albumService.creatFav(userID)
+        await this.albumService.creatFav(userID)
       
         return user;
     }

@@ -1,0 +1,9 @@
+.play-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  height: 100px;
+  background-color: #25004A;
+  width: 100%;
+}
+/*# sourceMappingURL=play-bar.css.map */

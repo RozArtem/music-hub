@@ -20,6 +20,20 @@
     .functional-bar {
         width: 20%;
         background-color: $backbottoncolor;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 5px;
+
+        button {
+
+            height: 60px;
+            margin-top: 15px;
+            background-color: black;
+            border: none;
+            color: white;
+        }
+    
     }
     .trakcs-container {
         width: 80%;
@@ -28,12 +42,6 @@
         flex-direction: column;
         padding: 25px;
         align-items: center;
-
-
-        .functional-bar {
-
-            display: flex;
-        }
 
         .trakcs-list {
             height: 95%;

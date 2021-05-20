@@ -27,6 +27,25 @@
 .content-container .functional-bar {
   width: 20%;
   background-color: #C4C4C4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 5px;
+}
+
+.content-container .functional-bar button {
+  height: 60px;
+  margin-top: 15px;
+  background-color: black;
+  border: none;
+  color: white;
 }
 
 .content-container .trakcs-container {
@@ -43,12 +62,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.content-container .trakcs-container .functional-bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .content-container .trakcs-container .trakcs-list {

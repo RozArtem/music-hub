@@ -1,0 +1,62 @@
+@import "../utils.scss";
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $backcolor;
+    height: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid black;
+
+    &___logo-container {
+        & img {
+            background-color: white;
+            border-radius: 12px;
+            width: 100px;
+            height: auto;
+        }
+    }
+
+    &___navigation {
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &___nav-container {
+            width: 50%;
+
+            .nav-content {
+                display: flex;
+                justify-content: space-between;
+
+                li {
+                    height: 30px;
+                    width: 130px;
+                    border-radius: 10px;
+                    background-color: $backbottoncolorFunc;
+                    color: black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-transform: uppercase;
+                    margin: 5px;
+
+                    a {
+                        text-align: center;
+                        color: $textcolor;
+                    }
+                }
+            }
+        }
+        &___logout {
+            height: 30px;
+            width: 130px;
+            border-radius: 10px;
+            background-color: $backbottoncolorNav;
+            color: $textcolor;
+        }
+    }
+}

@@ -5,6 +5,7 @@ import { User } from 'src/users/user.model';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcryptjs';
 import { IUser } from './user-interface';
+import { IAuthDTO } from './dto/auth.dto';
 
 
 @Injectable()
@@ -61,15 +62,19 @@ export class AuthService {
         const heshPassword = await bcrypt.hash(dto.password, 5);
         const user = await this.userService.creatUser({ ...dto, password: heshPassword })
 
-        return this.generateToken(user)
+        return `User has been created`
     }
 
-    async authorization(userFromRequst: IUser): Promise<string> {
+    async authorization(userFromRequst: IUser): Promise<IAuthDTO> {
 
       
         const user = await this.userService.getUserById(userFromRequst.id)
+        const token = await this.generateToken(user)
 
-        return this.generateToken(user)
+        return {
+            user,
+            token
+        }
        
     }
 

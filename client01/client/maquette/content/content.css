@@ -1,0 +1,119 @@
+.content {
+  height: 90vh;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 30px;
+  background-color: #8d8d8d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.content-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 98%;
+  height: 650px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.content-container .functional-bar {
+  width: 20%;
+  background-color: #010020;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 5px;
+}
+
+.content-container .functional-bar button {
+  height: 60px;
+  margin-top: 15px;
+  background-color: #C4C4C4;
+  border: none;
+  color: white;
+}
+
+.content-container .trakcs-container {
+  width: 80%;
+  background-color: #4b059260;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content-container .trakcs-container .trakcs-list {
+  height: 95%;
+  background-color: #010020;
+  width: 95%;
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 10px;
+}
+
+.content-container .trakcs-container .trakcs-list .track-item {
+  width: 95%;
+  background-color: #478bb3;
+  margin: 5px;
+  min-height: 70px;
+}
+
+.content-container .trakcs-container .serch-bar {
+  width: 95%;
+  height: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.content-container .trakcs-container .serch-bar input {
+  height: 90%;
+  width: 80%;
+}
+
+.content-container .trakcs-container .serch-bar button {
+  height: 90%;
+  width: 20%;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    background-color: black;
+  }
+}
+/*# sourceMappingURL=content.css.map */

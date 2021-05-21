@@ -42,7 +42,6 @@ interface logoutUserAction {
     type: UserActionTypes.LOGOUT_USER;
 }
 
-
 export type UserActions =
     loginUserAction |
     loginUserSuccessAction |

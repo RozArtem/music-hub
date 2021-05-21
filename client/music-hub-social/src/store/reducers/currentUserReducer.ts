@@ -12,13 +12,17 @@ export const usersReducer = (state = initialState, action: UserActions): IUserSt
 
     switch (action.type) {
 
+        case UserActionTypes.AUTH_USER:
+
+            return { currentUser: action.paylod, isAuth: true, error: null }
+
         case UserActionTypes.LOGIN_USER:
-            
+
             return { currentUser: null, isAuth: false, error: null }
 
         case UserActionTypes.LOGIN_USER_SUCCESS:
 
-            return { currentUser: action.payload, isAuth: true, error: null }
+            return { ...state, isAuth: true, error: null }
 
         case UserActionTypes.LOGIN_USER_ERROR:
 

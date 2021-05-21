@@ -1,3 +1,4 @@
+import { authDTO } from "../store/actions-creators/dto";
 import { IUser } from "./entity-interfaces";
 
 
@@ -11,6 +12,7 @@ export interface IUserState {
 
 export enum UserActionTypes {
     
+    AUTH_USER = 'AUTH_USER',
     LOGIN_USER = 'LOGIN_USER',
     LOGOUT_USER = 'LOGOUT_USER',
     LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS',
@@ -19,12 +21,18 @@ export enum UserActionTypes {
 
 }
 
+interface authUserAction {
+    type: UserActionTypes.AUTH_USER;
+    paylod: IUser
+}
+
 interface loginUserAction {
     type: UserActionTypes.LOGIN_USER;
 }
 interface loginUserSuccessAction {
+    
     type: UserActionTypes.LOGIN_USER_SUCCESS;
-    payload: IUser;
+  
 }
 interface loginUserErrorAction {
     type: UserActionTypes.LOGIN_USER_ERROR;
@@ -34,9 +42,11 @@ interface logoutUserAction {
     type: UserActionTypes.LOGOUT_USER;
 }
 
+
 export type UserActions =
     loginUserAction |
     loginUserSuccessAction |
     loginUserErrorAction |
-    logoutUserAction 
+    logoutUserAction |
+    authUserAction
    

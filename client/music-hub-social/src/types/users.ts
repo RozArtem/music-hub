@@ -2,9 +2,8 @@ import { IUser } from "./entity-interfaces";
 
 
 export interface IUsersState {
-    users?: IUser[];
-    currentUser?: IUser | null;
-    isAuth: boolean;
+    users: IUser[];
+    currentUser: IUser | null;
     isLoading: boolean;
     error: null | string;
 
@@ -12,8 +11,7 @@ export interface IUsersState {
 
 
 export enum UsersActionTypes {
-    LOGIN_USER = 'SET_USER',
-    LOGOUT_USER = 'LOGOUT_USER',
+  
     FETCH_PROFILES = 'FETCH_PROFILES',
     FETCH_PROFILE = 'FETCH_PROFILE',
     FETCH_CURRENT_PROFILE_SUCCESS = 'FETCH_CURRENT_PROFILE_SUCCESS',
@@ -39,13 +37,13 @@ interface FetchProfileAction {
 }
 interface FetchCurrentProfileSuccessAction {
     type: UsersActionTypes.FETCH_CURRENT_PROFILE_SUCCESS;
-    payload: IUser[]
+    payload: IUser
 }
 interface FetchCurrentProfileErrorAction {
-    type: UsersActionTypes.FETCH_PROFILES_ERROR;
+    type: UsersActionTypes.FETCH_CURRENT_PROFILE_ERROR;
     payload: string;
 }
-export type UsersAction =
+export type UsersActions =
     FetchProfilesAction |
     FetchProfilesSuccessAction |
     FetchProfilesErrorAction |

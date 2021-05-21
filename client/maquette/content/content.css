@@ -4,7 +4,7 @@
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 30px;
-  background-color: #463E47;
+  background-color: #8d8d8d;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,7 +26,7 @@
 
 .content-container .functional-bar {
   width: 20%;
-  background-color: #C4C4C4;
+  background-color: #010020;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,14 +43,14 @@
 .content-container .functional-bar button {
   height: 60px;
   margin-top: 15px;
-  background-color: black;
+  background-color: #C4C4C4;
   border: none;
   color: white;
 }
 
 .content-container .trakcs-container {
   width: 80%;
-  background-color: #A3A1A5;
+  background-color: #4b059260;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,7 +66,7 @@
 
 .content-container .trakcs-container .trakcs-list {
   height: 95%;
-  background-color: #4D2A2A;
+  background-color: #010020;
   width: 95%;
   overflow: auto;
   display: -webkit-box;
@@ -84,7 +84,7 @@
 
 .content-container .trakcs-container .trakcs-list .track-item {
   width: 95%;
-  background-color: #C4C4C4;
+  background-color: #478bb3;
   margin: 5px;
   min-height: 70px;
 }
@@ -109,5 +109,11 @@
   background-color: black;
   color: white;
   border: none;
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    background-color: black;
+  }
 }
 /*# sourceMappingURL=content.css.map */

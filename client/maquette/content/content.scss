@@ -19,7 +19,7 @@
 
     .functional-bar {
         width: 20%;
-        background-color: $backbottoncolor;
+        background-color: $listcolor;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -29,7 +29,7 @@
 
             height: 60px;
             margin-top: 15px;
-            background-color: black;
+            background-color: $backbottoncolorFunc;
             border: none;
             color: white;
         }
@@ -55,7 +55,7 @@
 
             .track-item {
                 width: 95%;
-                background-color: $backbottoncolor;
+                background-color: $item;
                 margin: 5px;
                 min-height: 70px;
             }
@@ -80,3 +80,10 @@
         }
     }
 }
+
+
+@media screen and (max-width: 600px) {
+    .content {
+        background-color: black;
+    }
+  }

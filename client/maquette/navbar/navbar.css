@@ -8,14 +8,15 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #25004A;
+  background-color: #2b2c2c;
   height: 80px;
   padding-left: 15px;
   padding-right: 15px;
+  border-bottom: 1px solid black;
 }
 
 .navbar___logo-container img {
-  background-color: #C4C4C4;
+  background-color: white;
   border-radius: 12px;
   width: 100px;
   height: auto;

@@ -8,10 +8,11 @@
     height: 80px;
     padding-left: 15px;
     padding-right: 15px;
+    border-bottom: 1px solid black;
 
     &___logo-container {
         & img {
-            background-color: $backbottoncolor;
+            background-color: white;
             border-radius: 12px;
             width: 100px;
             height: auto;
@@ -35,7 +36,7 @@
                     height: 30px;
                     width: 130px;
                     border-radius: 10px;
-                    background-color: $backbottoncolor;
+                    background-color: $backbottoncolorFunc;
                     color: black;
                     display: flex;
                     align-items: center;
@@ -54,7 +55,7 @@
             height: 30px;
             width: 130px;
             border-radius: 10px;
-            background-color: $backbottoncolor;
+            background-color: $backbottoncolorNav;
             color: $textcolor;
         }
     }

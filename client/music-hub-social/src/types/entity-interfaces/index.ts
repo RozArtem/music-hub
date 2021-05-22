@@ -12,8 +12,8 @@ export interface ITrack {
     audio: string;
     piture?: string;
     author: string;
-    album: any[];
-    comments: any[];
+    album?: string;
+    comments?: any[];
 }
 
 export interface IComment {

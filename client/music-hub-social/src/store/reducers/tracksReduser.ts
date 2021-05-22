@@ -10,38 +10,51 @@ const InitialState: ITrackState = {
 }
 
 
-export const trackReducer = (state = InitialState, action: TracksActions) : ITrackState  => {
+export const trackReducer = (state = InitialState, action: TracksActions): ITrackState => {
 
-    switch(action.type) {
+    switch (action.type) {
 
         case TracksActionsTypes.GETING_TRACK_LOAD: {
 
-            return {...state, isLoading: true}
+            return { ...state, isLoading: true }
         }
-    
+
         case TracksActionsTypes.ADD_TRACK: {
-            
-            return {...state}
+
+            return { ...state }
         }
 
         case TracksActionsTypes.GET_OWN_TRACKS: {
 
-            return {...state, tracks: action.payload, isLoading: false}
+            return { ...state, tracks: action.payload, isLoading: false }
         }
 
         case TracksActionsTypes.GET_TRACK: {
 
-            return {...state, currentTrack: action.payload, isLoading: false}
+            return { ...state, currentTrack: action.payload, isLoading: false }
         }
         case TracksActionsTypes.SEATCH_TRACK: {
 
-            return{...state, tracks: action.payload, isLoading: false}
+            return { ...state, tracks: action.payload, isLoading: false }
         }
-       
+        case TracksActionsTypes.DELETE_TRACK: {
+
+            const newTraks = [...state.tracks]
+
+                newTraks.filter(elm => elm.id !== action.payload)
+          
+
+            return {
+                ...state, 
+                tracks: [...newTraks ],
+                isLoading: false
+            }
+        
+        }
 
         default:
             return state
     }
 
-   
+
 }

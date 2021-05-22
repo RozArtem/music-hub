@@ -61,5 +61,10 @@ export class TrackController {
         return this.trackService.addComment(dto, id, user)
     }
     
+    @Get('search')
+    search(@Query('name') name: string) {
+
+        return this.trackService.serch(name)
+    }
 
 }

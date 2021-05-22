@@ -3,7 +3,7 @@ import { ITrack } from "./entity-interfaces";
 
 export interface ITrackState {
     tracks: ITrack[];
-    currentTrack: ITrack;
+    currentTrack: ITrack | null ;
     isLoading: boolean;
     error: null | string;
 }
@@ -17,12 +17,17 @@ export enum TracksActionsTypes {
     DELETE_TRACK = 'DELETE_TRACK',
     GET_ALL_TRACKS = 'GET_ALL_TRACKS',
     TRACK_ACTION_ERROS = 'TRACK_ERROS',
-    GET_TRACK_SUCCES = 'TRACK_SUCCES'
+    GETING_TRACK_LOAD = 'GETING_TRACK_LOAD',
+    SEATCH_TRACK = 'SEATCH_TRACK'
 
     
 }
 
 
+interface searchTrack {
+    type: TracksActionsTypes.SEATCH_TRACK;
+    payload: ITrack[]
+}
 interface addTrack {
     type: TracksActionsTypes.ADD_TRACK;
     payload: ITrack
@@ -35,8 +40,8 @@ interface getOneTrack {
     type: TracksActionsTypes.GET_TRACK;
     payload: ITrack;
 }
-interface getTrackSucces {
-    type: TracksActionsTypes.GET_TRACK_SUCCES;
+interface getingTrackLoad {
+    type: TracksActionsTypes.GETING_TRACK_LOAD;
 }
 interface getAllTraks {
     type: TracksActionsTypes.GET_ALL_TRACKS;
@@ -50,11 +55,12 @@ interface trackErrorAction {
     type: TracksActionsTypes.TRACK_ACTION_ERROS;
     payload: string;
 }
-export type UsersActions =
+export type TracksActions =
     addTrack |
     getOwnTracks |
-    getTrackSucces |
+    getingTrackLoad |
     getAllTraks |
     deletTrack |
     trackErrorAction |
-    getOneTrack
+    getOneTrack |
+    searchTrack

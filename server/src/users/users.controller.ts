@@ -1,13 +1,13 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CreatUserDTO } from './dto/creat-user.dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
 
-    constructor( private userService: UsersService) {}
+    constructor(private userService: UsersService) { }
 
-  
+
     @Post()
     creat(@Body() userdto: CreatUserDTO) {
 
@@ -16,11 +16,13 @@ export class UsersController {
     @Get('/:id')
     getUserProfile(@Param('id') id: string) {
 
-        this.userService.getUserProfile(id)
+        return this.userService.getUserProfile(id)
     }
     @Get()
-    getUsers() {
+    getUsers(
+        @Query('count') count: number,
+        @Query('offset') offset: number) {
 
-        return this.userService.getUsers();
+        return this.userService.getUsers(count, offset)
     }
 }

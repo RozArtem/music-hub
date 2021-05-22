@@ -2,7 +2,7 @@ import { API_URL } from '../../config';
 import axios from 'axios';
 import { authDTO, registrationDTO } from './dto';
 import { UserActions, UserActionTypes } from '../../types/currentUser';
-import { Dispatch } from 'react';
+import {Dispatch} from "redux";
 
 
 export const registration = async (user: registrationDTO) => {

@@ -23,9 +23,14 @@ export class UsersService {
         return user;
     }
 
-    async getUsers(): Promise<User[]> {
+    async getUsers( offset = 0, count =10 ): Promise<User[]> {
 
-        const users = await this.userRepository.findAll({include: {all: true}});
+        const users = await this.userRepository.findAll(
+            {
+                offset: (Number(offset)),
+                limit: (Number(count))
+            }
+        );
 
         return users
     }
@@ -44,7 +49,7 @@ export class UsersService {
     async getUserProfile(id: string): Promise<User> {
 
         const user = await this.userRepository.findOne({ where: { id }, include: { model: Track } })
-
+    
         return user
     }
 

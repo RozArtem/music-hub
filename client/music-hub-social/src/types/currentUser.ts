@@ -1,4 +1,4 @@
-import { authDTO } from "../store/actions-creators/dto";
+
 import { IUser } from "./entity-interfaces";
 
 

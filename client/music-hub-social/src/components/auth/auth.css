@@ -1,0 +1,37 @@
+.authorization {
+  height: auto;
+  width: 450px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.authorization___header {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+.authorization___btn {
+  height: 30px;
+  border: none;
+  color: white;
+  margin-top: 15px;
+  text-transform: uppercase;
+  background: #110f32;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(34%, #110f32), color-stop(100%, #092679), to(#00d4ff));
+  background: linear-gradient(360deg, #110f32 34%, #092679 100%, #00d4ff 100%);
+}
+
+.authorization___btn2 {
+  margin-top: 5px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+/*# sourceMappingURL=auth.css.map */

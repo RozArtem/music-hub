@@ -4,6 +4,7 @@ import { ITrackState, TracksActions, TracksActionsTypes } from "../../types/trac
 const InitialState: ITrackState = {
     tracks: [],
     currentTrack: null,
+    coments: [],
     isLoading: false,
     error: null
 
@@ -23,6 +24,10 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
 
             return { ...state }
         }
+        case TracksActionsTypes.ADD_COMMENT_TO_TRACK: {
+
+            return { ...state }
+        }
 
         case TracksActionsTypes.GET_OWN_TRACKS: {
 
@@ -32,6 +37,10 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
         case TracksActionsTypes.GET_TRACK: {
 
             return { ...state, currentTrack: action.payload, isLoading: false }
+        }
+        case TracksActionsTypes.GET_COMMENTS: {
+
+            return { ...state, coments: action.payload }
         }
         case TracksActionsTypes.SEATCH_TRACK: {
 
@@ -47,6 +56,20 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
             return {
                 ...state, 
                 tracks: [...newTraks ],
+                isLoading: false
+            }
+        
+        }
+        case TracksActionsTypes.DELETE_COMMENT_OF_TRACK: {
+
+            const newComment = [...state.coments]
+
+           newComment.filter(elm => elm.id !== action.payload)
+          
+
+            return {
+                ...state, 
+                coments: [...newComment],
                 isLoading: false
             }
         

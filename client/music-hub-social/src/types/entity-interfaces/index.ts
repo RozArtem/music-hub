@@ -13,7 +13,7 @@ export interface ITrack {
     piture?: string;
     author: string;
     album?: string;
-    comments?: any[];
+    comments: IComment[];
 }
 
 export interface IComment {

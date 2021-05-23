@@ -8,7 +8,7 @@ const initialState: IUserState = {
 }
 
 
-export const usersReducer = (state = initialState, action: UserActions): IUserState => {
+export const currentUserReducer = (state = initialState, action: UserActions): IUserState => {
 
     switch (action.type) {
 

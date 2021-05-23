@@ -5,7 +5,7 @@ import { IAlbum } from "./entity-interfaces";
 export interface IAlbumState {
 
     albums: IAlbum[];
-    currentAlbum: IAlbum;
+    currentAlbum: IAlbum | null;
     isLoading: boolean;
     error: null | string;
 }
@@ -70,7 +70,7 @@ interface errroAlbumsActions {
 }
 
 
-export type albumsActions =
+export type AlbumsActions =
 
     addTrakcToFav |
     addTrakcToAlbum |

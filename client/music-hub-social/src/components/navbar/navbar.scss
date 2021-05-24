@@ -4,7 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $backcolor;
+    background-color: $playbarback;
+    opacity: 0.7;
     height: 80px;
     padding-left: 15px;
     padding-right: 15px;
@@ -12,8 +13,9 @@
 
     &___logo-container {
         & img {
-            background-color: white;
-            border-radius: 12px;
+            background-color: whitesmoke;
+
+            border-radius: 10px;
             width: 100px;
             height: auto;
         }
@@ -35,28 +37,48 @@
                 li {
                     height: 30px;
                     width: 130px;
-                    border-radius: 10px;
-                    background-color: $backbottoncolorFunc;
-                    color: black;
+                    border-radius: 5px;
+                    background-color: black;
+                    border: 1px solid whitesmoke;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     text-transform: uppercase;
                     margin: 5px;
 
+                    &:hover {
+                        background-color: whitesmoke;
+                        
+                    }
+
                     a {
                         text-align: center;
-                        color: $textcolor;
+                        color: whitesmoke;
+
+
+                        &:hover {
+                            
+                           color: black;;
+                        }
                     }
                 }
             }
         }
+
         &___logout {
             height: 30px;
             width: 130px;
-            border-radius: 10px;
-            background-color: $backbottoncolorNav;
-            color: $textcolor;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: whitesmoke;
+            cursor: pointer;
+            border: 1px solid whitesmoke;
+
+            &:hover {
+                background-color: whitesmoke;
+                color: black;
+            }
         }
     }
 }

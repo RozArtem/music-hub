@@ -2,6 +2,9 @@ import React from 'react'
 import Input from './input/Input'
 import { NavLink } from "react-router-dom";
 
+
+import './auth.css'
+
 const Authorization: React.FC = () => {
  
     
@@ -10,14 +13,13 @@ const Authorization: React.FC = () => {
 
     
     return (
-        <div>
+        <div className='auth'>
             <div className='authorization'>
-            <div className="authorization__header">Registration</div>
+            <div className="authorization___header">Authorization</div>
             <Input />
             <Input />
-            <Input />
-            <button className="authorization__btn" >Sign Up</button>
-            <div className="authorization__btn2">  have already  account? sign in</div>
+            <button className="authorization___btn" >Sign In</button>
+            <div className="authorization___btn2">  haven't  account yet? sign up</div>
         </div>
     </div>
     )

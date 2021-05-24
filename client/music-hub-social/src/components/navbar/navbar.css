@@ -8,7 +8,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #2b2c2c;
+  background-color: #000000;
+  opacity: 0.7;
   height: 80px;
   padding-left: 15px;
   padding-right: 15px;
@@ -16,8 +17,8 @@
 }
 
 .navbar___logo-container img {
-  background-color: white;
-  border-radius: 12px;
+  background-color: whitesmoke;
+  border-radius: 10px;
   width: 100px;
   height: auto;
 }
@@ -51,9 +52,9 @@
 .navbar___navigation___nav-container .nav-content li {
   height: 30px;
   width: 130px;
-  border-radius: 10px;
-  background-color: #C4C4C4;
-  color: black;
+  border-radius: 5px;
+  background-color: black;
+  border: 1px solid whitesmoke;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -67,16 +68,32 @@
   margin: 5px;
 }
 
+.navbar___navigation___nav-container .nav-content li:hover {
+  background-color: whitesmoke;
+}
+
 .navbar___navigation___nav-container .nav-content li a {
   text-align: center;
-  color: #6A0260;
+  color: whitesmoke;
+}
+
+.navbar___navigation___nav-container .nav-content li a:hover {
+  color: black;
 }
 
 .navbar___navigation___logout {
   height: 30px;
   width: 130px;
-  border-radius: 10px;
-  background-color: #C4C4C4;
-  color: #6A0260;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: whitesmoke;
+  cursor: pointer;
+  border: 1px solid whitesmoke;
+}
+
+.navbar___navigation___logout:hover {
+  background-color: whitesmoke;
+  color: black;
 }
 /*# sourceMappingURL=navbar.css.map */

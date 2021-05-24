@@ -13,12 +13,12 @@ const Navbar: React.FC = () => {
                 <div className="navbar___navigation">
                     <nav className="navbar___navigation___nav-container">
                         <ul className="nav-content">
-                            <li><a href="#">my profile</a></li>
-                            <li><a href="#">users</a></li>
+                            <li><a href="#">My profile</a></li>
+                            <li><a href="#">Profiles</a></li>
                         </ul>
                     </nav>
-
-                    <button className="navbar___navigation___logout">logout</button>
+                    <p>sing up</p>
+                    <button className="navbar___navigation___logout">Log Out</button>
 
                 </div>
             </div>

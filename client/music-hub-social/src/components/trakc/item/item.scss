@@ -1,0 +1,28 @@
+.item {
+
+    height: 70px;
+    width: auto;
+    border: 1px solid black ;
+    background-color: rgba(20, 17, 17, 0.7);
+    display: flex;
+    align-items: center;
+
+    &___img {
+
+        height: 50px;
+        width: 50px;
+        background-color: whitesmoke;
+        border: 1px solid black;
+    }
+    &___info {
+
+        & * {
+            color: whitesmoke;
+        }
+      
+    }
+    &___func {
+
+        justify-self: end;
+    }
+}

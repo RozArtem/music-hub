@@ -1,8 +1,13 @@
 import React from 'react'
 
+
+
+
+import './play-bar.css'
+
 const PlayBar = () => {
     return (
-        <div>
+        <div className='play-bar'>
             
         </div>
     )

@@ -1,0 +1,29 @@
+.functional-bar {
+
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 20%;
+    
+    background-color: rgba(20, 17, 17, 0.3);
+    border: 1px solid black;
+    box-shadow: -27px 39px 24px 50px rgba(34, 60, 80, 0.2);
+  
+    border-radius: 15px 0 0 15px;
+
+    &___button {
+
+        margin-top: 15px;
+        border-radius: 12px;
+        border: 1px solid black;
+        color: white;
+        height: 35px;
+        background-color:rgba(20, 17, 17, 0.7) ;
+        
+        &:hover {
+            background-color: whitesmoke;
+            color: black;
+            cursor: pointer;
+        }
+    }
+}

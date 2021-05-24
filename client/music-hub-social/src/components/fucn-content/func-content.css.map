@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EAEV,UAAU,EAAE,IAAI;EAChB,MAAM,EAAE,GAAG;EACX,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;EACd,OAAO,EAAE,IAAI;CAIf",
+    "sources": [
+        "func-content.scss"
+    ],
+    "names": [],
+    "file": "func-content.css"
+}

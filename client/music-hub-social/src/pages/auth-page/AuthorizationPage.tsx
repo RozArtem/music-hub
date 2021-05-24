@@ -1,4 +1,5 @@
 import React from 'react'
+import Authorization from '../../components/auth/Authorization'
 import Registration from '../../components/auth/Registration'
 
 
@@ -12,7 +13,7 @@ const AuthorizationPage: React.FC = () => {
             <div className="auth-page___logo">
                 <img src="./logo.svg" alt="music-hub-social" />
             </div>
-            <Registration />
+           <Registration />
         </div>
     )
 }

@@ -2,5 +2,13 @@
   height: 30px;
   width: auto;
   margin-top: 15px;
+  border-radius: 10px;
+  padding: 3px;
+  padding-left: 5px;
+}
+
+.input:focus {
+  outline: none;
+  background-color: #80a5a5;
 }
 /*# sourceMappingURL=input.css.map */

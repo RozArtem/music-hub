@@ -8,6 +8,56 @@
     background-color: $playbarback;
     width: 100%;
     opacity: .7;
+    padding: 15px;
+
+    display: flex;
+  
    
+    &___play-bar {
+        display: flex;
+        background-color: whitesmoke;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        width: 70px;
+        border-radius: 40%;
+        padding: 3px;
+        margin-left: 90px;
+        
+
+        & *:hover {
+
+            color: black;
+            cursor: pointer;
+           
+        }
+
+        &___left {
+           
+            transform: rotate(-180deg);
+        }
+
+        &___play {
+
+            font-size: 28px;
+            margin-right: -5px;
+        }
+    }
    
+    &___track-info {
+
+        width: 70%;
+        margin-left: 20px;
+        
+        
+        & * {
+            color: white;
+        }
+
+        & progress {
+
+            width: 100%;
+        }
+
+    }
 }

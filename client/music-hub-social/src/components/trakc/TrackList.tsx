@@ -13,6 +13,12 @@ const TrackList: React.FC = () => {
             <button className='track-list___searc-bar___btn'>SEARCH</button>
             </div>
           <TrackItem />
+          <TrackItem />
+          <TrackItem />
+          <TrackItem />
+          <TrackItem />
+          <TrackItem />
+          <TrackItem />
         </div>
     )
 }

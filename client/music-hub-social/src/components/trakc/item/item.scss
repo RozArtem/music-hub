@@ -6,6 +6,7 @@
     background-color: rgba(20, 17, 17, 0.7);
     display: flex;
     align-items: center;
+    padding: 5px;
 
     &___img {
 
@@ -13,8 +14,39 @@
         width: 50px;
         background-color: whitesmoke;
         border: 1px solid black;
+        margin-left: 5px;
+        
     }
+
+
+    &___play-bar {
+
+        color: whitesmoke;
+        font-size: 25px;
+        background-color: rgba(20, 17, 17, 0.7);
+        border: 1px solid black;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        padding-top: 5px;
+        cursor: pointer;
+        margin-left: 20px;
+        
+       
+
+        &:hover {
+            color: black;
+            background-color: whitesmoke;
+           
+        }
+        
+
+    }
+
     &___info {
+
+        margin-left: 20px;
 
         & * {
             color: whitesmoke;
@@ -23,6 +55,49 @@
     }
     &___func {
 
-        justify-self: end;
+        align-self: flex-end;
+        margin-left: auto;
+        font-size: 18px;
+     
+        display: flex;
+        align-items: center;
+ 
+        & * {
+            color: whitesmoke;
+            cursor: pointer;
+            margin: 5px;
+            height: 20px;
+           
+        }
+        
+        &___add-to-fav {
+            
+            
+            &:hover {
+                color: rgb(91, 201, 195);
+               
+            }
+        
+        }
+
+        &___add-to-album {
+
+        
+            &:hover {
+                color: rgb(91, 201, 195);
+               
+            }
+        }
+
+
+        &___delete {
+
+
+            
+            &:hover {
+                color: rgb(231, 51, 38);
+               
+            }
+        }
     }
 }

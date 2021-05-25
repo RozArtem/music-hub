@@ -24,12 +24,13 @@ export class AuthController {
     @Post('login')
     login(@Body() dto: CreatUserDTO) {
 
-        return this.authService.login(dto)
+       return this.authService.login(dto)
+      
     }
 
     @Post('registration')
     registration(@Body() dto: CreatUserDTO) {
-
+        console.log(dto)
         return this.authService.registration(dto)
     }
 

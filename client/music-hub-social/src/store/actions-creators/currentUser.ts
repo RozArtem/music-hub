@@ -9,35 +9,40 @@ export const registration = (name: string, password: string, email: string) => {
    
     return async (dispatch: Dispatch<UserActions>) => {
         try {
-            const user = { name, email, password}
+          
             const responce = await axios.post(`${API_URL}auth/registration`, {
-                user
+                name, email, password
             })
-            alert(responce)
+            alert(responce.data)
         } catch (error) {
-    
-            console.log(error)
+           
+            console.log(error.response.data)
+            alert(error.response.data.message)
         }
     }
 }
     
    
 
-export const login = (login: string, password: string) => {
+export const login = (email: string, password: string) => {
 
     return async (dispatch: Dispatch<UserActions>) => {
 
         try {
+
+           
             dispatch({ type: UserActionTypes.LOGIN_USER })
-            await axios.post(`${API_URL}auth/login`, {
-                login,
+            const responce =  await axios.post(`${API_URL}auth/login`, {
+                email,
                 password
             })
             dispatch({ type: UserActionTypes.LOGIN_USER_SUCCESS })
-
+            localStorage.setItem('token', responce.data)
+          
         } catch (error) {
 
-            dispatch({ type: UserActionTypes.LOGIN_USER_ERROR, payload: error.data.message });
+            dispatch({ type: UserActionTypes.LOGIN_USER_ERROR, payload: error.response.data.message });
+            alert(error.response.data.message)
         }
     }
 }
@@ -49,12 +54,13 @@ export const auth = () => {
 
         try {
 
-            const responce: authDTO = await axios.get(`${API_URL}auth/auth`)
-            dispatch({ type: UserActionTypes.AUTH_USER, paylod: responce.user })
-            localStorage.setItem('token', responce.token)
+            const responce: authDTO = await axios.get(`${API_URL}auth/auth`,  
+            {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
+            dispatch({ type: UserActionTypes.AUTH_USER, paylod: responce.data.user })
+         
         } catch (error) {
 
-            dispatch({ type: UserActionTypes.LOGIN_USER_ERROR, payload: error.data.message });
+            dispatch({ type: UserActionTypes.LOGIN_USER_ERROR, payload:  error.response.data.message });
         }
     }
 }

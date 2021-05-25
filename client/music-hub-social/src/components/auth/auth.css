@@ -1,3 +1,7 @@
+.auth {
+  height: 50%;
+}
+
 .authorization {
   height: auto;
   width: 450px;
@@ -34,5 +38,10 @@
   margin-top: 5px;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  cursor: pointer;
+}
+
+.authorization___btn2:hover {
+  color: whitesmoke;
 }
 /*# sourceMappingURL=auth.css.map */

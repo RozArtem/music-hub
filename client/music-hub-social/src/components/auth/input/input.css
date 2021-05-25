@@ -10,5 +10,6 @@
 .input:focus {
   outline: none;
   background-color: #80a5a5;
+  color: white;
 }
 /*# sourceMappingURL=input.css.map */

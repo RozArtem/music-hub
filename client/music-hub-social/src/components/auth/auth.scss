@@ -1,4 +1,5 @@
 .auth {
+    height: 50%;
 }
 
 .authorization {
@@ -31,5 +32,11 @@
     &___btn2 {
         margin-top: 5px;
         align-self: flex-end;
+        cursor: pointer;
+
+
+        &:hover {
+            color: whitesmoke;
+        }
     }
 }

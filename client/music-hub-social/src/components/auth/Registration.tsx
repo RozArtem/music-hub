@@ -5,11 +5,14 @@ import Input from './input/Input';
 
 import './auth.css';
 import { useActions } from '../../hooks/useActions';
+import { NavLink } from 'react-router-dom';
+
+interface IRegistration {
+    setComponent: Function;
+}
 
 
-
-
-const Registration: React.FC = () => {
+const Registration: React.FC<IRegistration> = ({setComponent}: IRegistration) => {
 
     const {registration} = useActions();
   
@@ -22,7 +25,12 @@ const Registration: React.FC = () => {
     function Registration(): void {
         
         registration(stateName, statePassword, stateEmail)
+        setEmail('')
+        setName('')
+        setPassword('')
     }
+
+   
     return (
 
         <div className='auth'>
@@ -32,7 +40,7 @@ const Registration: React.FC = () => {
                 <Input setValue={setEmail} value={stateEmail} type='text' placeholder='Enter your email' />
                 <Input setValue={setPassword} value={statePassword} type='password' placeholder='Enter your password' />
                 <button className="authorization___btn" onClick={() => {Registration()}} >Sign Up</button>
-                <div className="authorization___btn2"> have already  account? sign in</div>
+                <div className="authorization___btn2" onClick={() => setComponent(true)}>  have already  account? sign in </div>
             </div>
         </div>
 

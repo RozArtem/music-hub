@@ -7,14 +7,23 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     background: $ColorBackFoLinear;
     background: $linearColorBack;
 
     &___logo {
-        height: 250px;
-        width: 250px;
+      
+        margin-top: 50px;
+        height: 50%;
+      
+        display: flex;
+
+        & img {
+            height: 250px;
+            width: 250px;
+            align-self: center;
+        }
     }
 }

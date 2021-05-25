@@ -8,7 +8,11 @@ export interface registrationDTO {
 }
 
 export interface authDTO {
-
-    readonly user: IUser;
-    readonly token: string;
+    
+    readonly data: {
+        readonly user: IUser;
+        readonly token: string;
+    }
+    
+   
 }

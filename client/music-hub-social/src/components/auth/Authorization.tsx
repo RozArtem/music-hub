@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from './input/Input'
 import { NavLink } from "react-router-dom";
-
-
 import './auth.css'
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypeSelector';
 
-const Authorization: React.FC = () => {
 
+
+interface IAuthorization {
+    setComponent: Function;
+}
+
+
+const Authorization: React.FC<IAuthorization> = ({ setComponent }: IAuthorization) => {
+
+    const { error } = useTypedSelector(state => state.currentUser)
+    const { login } = useActions();
 
     const [stateEmail, setEmail] = useState<string>('')
     const [statePassword, setPassword] = useState<string>('')
 
+ 
 
     return (
         <div className='auth'>
@@ -18,8 +28,8 @@ const Authorization: React.FC = () => {
                 <div className="authorization___header">Authorization</div>
                 <Input setValue={setEmail} value={stateEmail} type='text' placeholder='Enter your email' />
                 <Input setValue={setPassword} value={statePassword} type='password' placeholder='Enter your password' />
-                <button className="authorization___btn" >Sign In</button>
-                <div className="authorization___btn2">  haven't  account yet? sign up</div>
+                <button className="authorization___btn" onClick={() => login(stateEmail, statePassword)} >Sign In</button>
+                <div className="authorization___btn2" onClick={() => setComponent(false)}>  haven't  account yet? sign up</div>
             </div>
         </div>
     )

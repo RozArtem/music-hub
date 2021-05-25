@@ -5,19 +5,23 @@ import { UserActions, UserActionTypes } from '../../types/currentUser';
 import {Dispatch} from "redux";
 
 
-export const registration = async (user: registrationDTO) => {
-
-    try {
-
-        const responce = await axios.post(`${API_URL}auth/registration`, {
-            user
-        })
-        alert(responce)
-    } catch (error) {
-
-        alert(error.response.data.message)
+export const registration = (name: string, password: string, email: string) => {
+   
+    return async (dispatch: Dispatch<UserActions>) => {
+        try {
+            const user = { name, email, password}
+            const responce = await axios.post(`${API_URL}auth/registration`, {
+                user
+            })
+            alert(responce)
+        } catch (error) {
+    
+            console.log(error)
+        }
     }
 }
+    
+   
 
 export const login = (login: string, password: string) => {
 

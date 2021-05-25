@@ -1,4 +1,4 @@
-import { IUser } from "../../../types/entity-interfaces";
+import { ITrack, IUser } from "../../../types/entity-interfaces";
 
 export interface registrationDTO {
 
@@ -15,4 +15,9 @@ export interface authDTO {
     }
     
    
+}
+
+export interface IGetTracks {
+    
+    readonly data: ITrack[]
 }

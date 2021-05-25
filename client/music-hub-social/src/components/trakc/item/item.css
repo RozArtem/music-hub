@@ -40,11 +40,30 @@
 }
 
 .item___info {
+  width: 75%;
   margin-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 50px;
 }
 
 .item___info * {
   color: whitesmoke;
+}
+
+.item___name {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.item___duration {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .item___func {

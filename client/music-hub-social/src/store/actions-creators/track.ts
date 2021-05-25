@@ -3,6 +3,7 @@ import { Dispatch } from "redux"
 import { API_URL } from "../../config"
 import { IComment, ITrack } from "../../types/entity-interfaces"
 import { TracksActions, TracksActionsTypes } from "../../types/track"
+import { IGetTracks } from "./dto"
 
 
 
@@ -57,7 +58,8 @@ export const getOne = (trackID: string) => {
 
         try {
             dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
-            const responce: ITrack = await axios.get(`${API_URL}/track/${trackID}`)
+            const responce: ITrack = await axios.get(`${API_URL}/track/${trackID}`
+            )
             dispatch({ type: TracksActionsTypes.GET_TRACK, payload: responce })
             dispatch({ type: TracksActionsTypes.GET_COMMENTS, payload: responce.comments })
         } catch (error) {
@@ -72,10 +74,13 @@ export const getAll = () => {
     return async (dispatch: Dispatch<TracksActions>) => {
 
         try {
+            
             dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
-            const responce: ITrack[] = await axios.get(`${API_URL}/track`)
-            dispatch({ type: TracksActionsTypes.GET_ALL_TRACKS, payload: responce })
-
+            const responce: IGetTracks = await axios.get(`${API_URL}track`)
+  
+            dispatch({ type: TracksActionsTypes.GET_ALL_TRACKS, payload: responce.data })
+            debugger
+            
         } catch (error) {
 
             dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error });

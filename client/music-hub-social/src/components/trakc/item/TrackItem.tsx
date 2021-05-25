@@ -1,9 +1,12 @@
 import React from 'react'
+import { ITrack } from '../../../types/entity-interfaces'
 
 
 import './item.css'
 
-const TrackItem = () => {
+
+
+const TrackItem: React.FC<ITrack> = (prop: ITrack) => {
     return (
         <div className='item'>
             <div className="item___img">
@@ -14,8 +17,8 @@ const TrackItem = () => {
                </div>
             <div className="item___info">
                
-                <div className="item__name">
-                    <p>Name</p>
+                <div className="item___name">
+                    {prop.name}
                 </div>
 
                 <div className="item___duration">

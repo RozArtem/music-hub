@@ -6,9 +6,7 @@
   width: 100%;
   opacity: .7;
   padding: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
 }
 
 .play-bar___play-bar {

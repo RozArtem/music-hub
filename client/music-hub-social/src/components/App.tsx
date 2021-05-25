@@ -24,20 +24,17 @@ const App = () => {
 
     <div>
       <Router>
-        {isAuth ?
-          <Switch>
+     
+           <Switch>
+           <Route path="/home" exact={true} component={HomePage} />
+           <Route path="/authorization-page" component={AuthorizationPage} />
 
-            <Route path="/" component={HomePage} />
-            <Redirect to="/" />
 
-          </Switch>
-          :
-          <Switch>
+           
+           <Redirect to="/home" />
 
-            <Route path="/authorization-page" component={AuthorizationPage} />
-            
-          </Switch>
-        }
+         </Switch>
+
 
       </Router>
     </div>

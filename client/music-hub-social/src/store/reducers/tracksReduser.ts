@@ -38,6 +38,10 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
 
             return { ...state, currentTrack: action.payload, isLoading: false }
         }
+        case TracksActionsTypes.GET_ALL_TRACKS: {
+
+            return { ...state, tracks: action.payload, isLoading: false }
+        }
         case TracksActionsTypes.GET_COMMENTS: {
 
             return { ...state, coments: action.payload }

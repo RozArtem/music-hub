@@ -3,6 +3,7 @@ import axios from 'axios';
 import { authDTO, registrationDTO } from './dto';
 import { UserActions, UserActionTypes } from '../../types/currentUser';
 import {Dispatch} from "redux";
+import { type } from 'os';
 
 
 export const registration = (name: string, password: string, email: string) => {
@@ -62,6 +63,14 @@ export const auth = () => {
 
             dispatch({ type: UserActionTypes.LOGIN_USER_ERROR, payload:  error.response.data.message });
         }
+    }
+}
+export const logout = () => {
+
+    return  (dispatch: Dispatch<UserActions>) => {
+
+        dispatch({type: UserActionTypes.LOGOUT_USER})
+        localStorage.removeItem('token')
     }
 }
 

@@ -1,0 +1,30 @@
+.user-item {
+  color: black;
+  height: 80px;
+  background-color: rgba(20, 17, 17, 0.7);
+  margin-top: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+}
+
+.user-item * {
+  color: whitesmoke;
+}
+
+.user-item___tracks {
+  margin-right: 60px;
+}
+
+.user-item:hover {
+  background-color: rgba(245, 245, 245, 0.3);
+  color: black;
+}
+/*# sourceMappingURL=user-item.css.map */

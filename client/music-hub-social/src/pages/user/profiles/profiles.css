@@ -1,1 +1,12 @@
-/* No CSS *//*# sourceMappingURL=profiles.css.map */
+.pofiles {
+  height: 100vh;
+  width: 100vw;
+  background: #020024;
+  background: linear-gradient(225deg, #020024 1%, #096d79 49%, #00d4ff 88%);
+}
+
+.pofiles___list {
+  height: 89vh;
+  overflow: auto;
+}
+/*# sourceMappingURL=profiles.css.map */

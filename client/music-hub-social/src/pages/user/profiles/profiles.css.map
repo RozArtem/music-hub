@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAGA,AAAA,QAAQ,CAAC;EAEL,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EAEZ,UAAU,ECEO,OAAa;EDD9B,UAAU,ECAK,6DAAiG;CDOnH;;AALI,AAAD,eAAQ,CAAC;EAEL,MAAM,EAAE,IAAI;EACZ,QAAQ,EAAE,IAAI;CACjB",
     "sources": [
-        "profiles.scss"
+        "profiles.scss",
+        "../../../utils.scss"
     ],
     "names": [],
     "file": "profiles.css"

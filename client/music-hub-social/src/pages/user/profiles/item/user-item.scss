@@ -1,0 +1,27 @@
+@import "../../../../utils.scss";
+
+.user-item {
+    color: black;
+
+    height: 80px;
+    background-color: $BackColorForItem;
+    margin-top: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+    & * {
+        color: whitesmoke;
+    }
+
+    &___tracks {
+
+        margin-right: 60px;
+    }
+
+    &:hover {
+        background-color: rgba(245, 245, 245, 0.3);
+        color: black;
+    }
+}

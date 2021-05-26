@@ -79,8 +79,7 @@ export const getAll = () => {
             const responce: IGetTracks = await axios.get(`${API_URL}track`)
   
             dispatch({ type: TracksActionsTypes.GET_ALL_TRACKS, payload: responce.data })
-            debugger
-            
+          
         } catch (error) {
 
             dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error });

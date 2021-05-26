@@ -11,29 +11,30 @@ import {
 } from "react-router-dom";
 import { useTypedSelector } from '../hooks/useTypeSelector'
 import { useActions } from '../hooks/useActions'
+import ProfilesPage from '../pages/user/profiles/ProfilesPage'
 
 const App = () => {
 
 
   const { isAuth } = useTypedSelector(state => state.currentUser)
-  const {auth} = useActions()
-  
-  useEffect(() => {auth()}, [])
-  
+  const { auth } = useActions()
+
+  useEffect(() => { auth() }, [])
+
   return (
 
     <div>
       <Router>
-     
-           <Switch>
-           <Route path="/home" exact={true} component={HomePage} />
-           <Route path="/authorization-page" component={AuthorizationPage} />
+
+        <Switch>
+          <Route path="/home" exact={true} component={HomePage} />
+          <Route path="/authorization-page" component={AuthorizationPage} />
+          <Route path='/profiles' component={ProfilesPage} />
 
 
-           
-           <Redirect to="/home" />
+          <Redirect to="/home" />
 
-         </Switch>
+        </Switch>
 
 
       </Router>

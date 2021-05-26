@@ -1,0 +1,17 @@
+@import '../../../utils.scss';
+
+
+.pofiles {
+
+    height: 100vh;
+    width: 100vw;
+
+    background: $ColorBackFoLinear;
+    background: $linearColorBack;
+
+    &___list {
+
+        height: 89vh;
+        overflow: auto;
+    }
+}

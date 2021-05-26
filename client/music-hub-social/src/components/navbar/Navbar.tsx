@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
                 <nav className="navbar___navigation___nav-container">
                     <ul className="nav-content">
                         {isAuth && <li><a href="#">My profile</a></li>}
-                        <li><a href="#">Profiles</a></li>
+                        <li> <NavLink  to='/profiles'><a >Profiles</a></NavLink></li>
                     </ul>
                 </nav>
 

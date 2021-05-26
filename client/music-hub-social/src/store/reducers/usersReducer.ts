@@ -36,11 +36,6 @@ export const usersReducer = (state = initialState, action : UsersActions): IUser
             
           return {...state, currentUser: action.payload, isLoading: false}
 
-
-          case UsersActionTypes.FETCH_CURRENT_PROFILE_SUCCESS:
-            
-            return {...state, currentUser: action.payload, isLoading: false}
-
         case UsersActionTypes.FETCH_CURRENT_PROFILE_ERROR:
             
             return {...state, error: action.payload}

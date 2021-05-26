@@ -11,19 +11,19 @@ import { Track } from 'src/track/track.model';
 export class UsersService {
     constructor(@InjectModel(User) private userRepository: typeof User,
         private albumService: AlbumService
-       ) { }
+    ) { }
 
 
     async creatUser(dto: CreatUserDTO): Promise<User> {
-        
+
         const userID = uuidv4()
         const user = await this.userRepository.create({ ...dto, id: userID });
         await this.albumService.creatFav(userID)
-      
+
         return user;
     }
-
-    async getUsers( offset = 0, count =10 ): Promise<User[]> {
+    
+    async getUsers(count = 10, offset = 0): Promise<User[]> {
 
         const users = await this.userRepository.findAll(
             {
@@ -34,9 +34,11 @@ export class UsersService {
 
         return users
     }
-    async getOneUserByEmail(email : string ): Promise<User> {
 
-        const user = await this.userRepository.findOne({where: {email}});
+ 
+    async getOneUserByEmail(email: string): Promise<User> {
+
+        const user = await this.userRepository.findOne({ where: { email } });
 
         return user
     }
@@ -49,7 +51,7 @@ export class UsersService {
     async getUserProfile(id: string): Promise<User> {
 
         const user = await this.userRepository.findOne({ where: { id }, include: { model: Track } })
-    
+
         return user
     }
 

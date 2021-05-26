@@ -11,6 +11,33 @@
   
     border-radius: 15px 0 0 15px;
 
+
+    &___container {
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &___info-block {
+        
+        height: 50%;
+        width: 100%;
+        padding: 10px;
+        background-color:   rgba(20, 17, 17, 0.7);
+        border-radius: 15px 0 0 0;
+
+        
+            & * {
+                color: whitesmoke;
+            }
+        
+            &___link {
+
+                text-decoration: underline;
+            }
+       
+    }
+
     &___button {
 
         margin-top: 15px;

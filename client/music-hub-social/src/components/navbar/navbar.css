@@ -82,13 +82,6 @@
   color: black;
 }
 
-.navbar___navigation p {
-  color: whitesmoke;
-  text-transform: lowercase;
-  margin-right: -40px;
-  cursor: pointer;
-}
-
 .navbar___navigation___logout {
   height: 30px;
   width: 130px;
@@ -100,8 +93,16 @@
   border: 1px solid whitesmoke;
 }
 
+.navbar___navigation___logout_nav {
+  color: whitesmoke;
+}
+
 .navbar___navigation___logout:hover {
   background-color: whitesmoke;
+  color: black;
+}
+
+.navbar___navigation___logout:hover * {
   color: black;
 }
 /*# sourceMappingURL=navbar.css.map */

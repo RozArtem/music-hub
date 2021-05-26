@@ -67,12 +67,6 @@
            
         }
 
-        & p {
-            color: whitesmoke;
-            text-transform: lowercase;
-            margin-right: -40px;
-            cursor: pointer;
-        }
 
         &___logout {
             height: 30px;
@@ -84,9 +78,19 @@
             cursor: pointer;
             border: 1px solid whitesmoke;
 
+            &_nav {
+                color: whitesmoke;
+              
+               
+            }
+
             &:hover {
                 background-color: whitesmoke;
                 color: black;
+
+                & * {
+                    color: black;
+                }
             }
         }
     }

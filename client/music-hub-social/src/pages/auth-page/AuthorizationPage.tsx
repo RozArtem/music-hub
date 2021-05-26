@@ -22,7 +22,7 @@ const AuthorizationPage: React.FC = () => {
             <div className="auth-page___logo">
                 <NavLink to='/home'><img src="./logo.svg" alt="music-hub-social" /></NavLink>
             </div>
-            {isAuth || toggler ?
+            {!toggler ?
                 <Authorization setComponent={setToggler} />
                 :
                 <Registration setComponent={setToggler} />

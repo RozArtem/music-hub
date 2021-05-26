@@ -1,0 +1,15 @@
+
+login >
+ authController >
+ 	authService >
+	 currentUser >
+ 	  AddTrackActionCreator > 
+  		 TrackController >
+	 	   AddTrackService > 
+			   TrackModel>
+				getAllTrackActionCreator >
+					render (
+						TrackList
+							trak(FromTrackStore).map  > trackItem track.owner
+							
+						)

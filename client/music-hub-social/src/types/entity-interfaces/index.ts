@@ -10,7 +10,7 @@ export interface ITrack {
     id: string;
     name: string;
     audio: string;
-    piture?: string;
+    picture: string;
     author: string;
     album?: string;
     comments: IComment[];

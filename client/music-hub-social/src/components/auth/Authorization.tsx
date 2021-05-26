@@ -34,7 +34,7 @@ const Authorization: React.FC<IAuthorization> = ({ setComponent }: IAuthorizatio
                 <Input setValue={setEmail} value={stateEmail} type='text' placeholder='Enter your email' />
                 <Input setValue={setPassword} value={statePassword} type='password' placeholder='Enter your password' />
                 <button className="authorization___btn" onClick={() => Login() } >Sign In</button>
-                <div className="authorization___btn2" onClick={() => setComponent(false)}>  haven't  account yet? sign up</div>
+                <div className="authorization___btn2" onClick={() => setComponent(true)}>  haven't  account yet? sign up</div>
             </div>
         </div>
     )

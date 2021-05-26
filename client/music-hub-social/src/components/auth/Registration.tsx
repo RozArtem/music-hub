@@ -40,7 +40,7 @@ const Registration: React.FC<IRegistration> = ({setComponent}: IRegistration) =>
                 <Input setValue={setEmail} value={stateEmail} type='text' placeholder='Enter your email' />
                 <Input setValue={setPassword} value={statePassword} type='password' placeholder='Enter your password' />
                 <button className="authorization___btn" onClick={() => {Registration()}} >Sign Up</button>
-                <div className="authorization___btn2" onClick={() => setComponent(true)}>  have already  account? sign in </div>
+                <div className="authorization___btn2" onClick={() => setComponent(false)}>  have already  account? sign in </div>
             </div>
         </div>
 

@@ -15,6 +15,32 @@
   border-radius: 15px 0 0 15px;
 }
 
+.functional-bar___container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.functional-bar___info-block {
+  height: 50%;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(20, 17, 17, 0.7);
+  border-radius: 15px 0 0 0;
+}
+
+.functional-bar___info-block * {
+  color: whitesmoke;
+}
+
+.functional-bar___info-block___link {
+  text-decoration: underline;
+}
+
 .functional-bar___button {
   margin-top: 15px;
   border-radius: 12px;

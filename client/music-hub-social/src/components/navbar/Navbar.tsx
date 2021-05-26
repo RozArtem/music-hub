@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
 import './navbar.css'
@@ -7,31 +7,38 @@ import './navbar.css'
 
 const Navbar: React.FC = () => {
 
-    const {logout} = useActions()
+    const history = useHistory()
+    const { logout } = useActions()
     const { isAuth } = useTypedSelector(state => state.currentUser)
+
+    function moveToSinInOrLogOut() {
+
+        isAuth ? logout() : history.push('/authorization-page')
+
+    }
 
     return (
         <div className="navbar">
-              <NavLink to='/home'> <div className="navbar___logo-container">
+            <NavLink to='/home'> <div className="navbar___logo-container">
 
-                   <img src="./logo.svg" alt="musichubsocial" /> 
+                <img src="./logo.svg" alt="musichubsocial" />
 
-                </div>
-                </NavLink> 
-                <div className="navbar___navigation">
-                    <nav className="navbar___navigation___nav-container">
-                        <ul className="nav-content">
-                            <li><a href="#">My profile</a></li>
-                            <li><a href="#">Profiles</a></li>
-                        </ul>
-                    </nav>
-                    {!isAuth && <p>Sing In</p>}
-                    <button className="navbar___navigation___logout"
-                    onClick={() => {logout()}}
-                    > {isAuth? 'Log Out' : <NavLink to='/authorization-page'>Sing Up</NavLink>}</button>
-
-                </div>
             </div>
+            </NavLink>
+            <div className="navbar___navigation">
+                <nav className="navbar___navigation___nav-container">
+                    <ul className="nav-content">
+                        {isAuth && <li><a href="#">My profile</a></li>}
+                        <li><a href="#">Profiles</a></li>
+                    </ul>
+                </nav>
+
+                <button className="navbar___navigation___logout"
+                    onClick={() => { moveToSinInOrLogOut() }}
+                > {isAuth ? 'Log Out' : 'Sing In'}</button>
+
+            </div>
+        </div>
     )
 }
 

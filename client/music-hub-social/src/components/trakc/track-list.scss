@@ -15,6 +15,28 @@
         height: 90%;
         padding: 15px;
         overflow: auto;
+
+        &::-webkit-scrollbar {
+          
+           width: 10px;
+           border-radius: 0 0 15px 0;
+           border-bottom: 1px solid black;
+        } 
+       
+        &::-webkit-scrollbar-track{
+          
+            background-color: rgba(245, 245, 245, 0.1);
+            border-radius: 0 0 15px 0;
+            width: 10px;
+            border-bottom: 1px solid black;
+        }
+        &::-webkit-scrollbar-thumb {
+
+            background-color: rgba(20, 17, 17, 0.5);
+            border-radius: 0 0 15px 0;
+          
+            
+          }
     }
 
     &___searc-bar {
@@ -48,7 +70,7 @@
             width: 15%;
             background-color: rgba(20, 17, 17, 0.7);
             color: rgb(245, 245, 245);
-            cursor: pointer;
+           
           
 
             &:hover {

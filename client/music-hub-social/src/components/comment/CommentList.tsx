@@ -1,9 +1,27 @@
 import React from 'react'
+import CommentItem from './item/CommentItem'
+
+
+import './comment-list.css'
 
 const CommentList = () => {
     return (
-        <div>
-            
+        <div className='comment-list'>
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+            <CommentItem />
+           
         </div>
     )
 }

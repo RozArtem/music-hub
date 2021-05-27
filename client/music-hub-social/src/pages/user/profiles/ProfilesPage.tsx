@@ -32,6 +32,14 @@ const ProfilesPage: React.FC = () => {
 
                    return <UserItem key={user.id} {...user} />
                })} 
+               {users.map(user => {
+
+                   return <UserItem key={user.id} {...user} />
+               })} 
+               {users.map(user => {
+
+                   return <UserItem key={user.id} {...user} />
+               })} 
 
 
             </div>

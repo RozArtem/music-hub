@@ -21,6 +21,10 @@ export interface IGetTracks {
 
     readonly data: ITrack[]
 }
+export interface IGetTrack {
+
+    readonly data: ITrack
+}
 
 export interface IFethcUsers {
 

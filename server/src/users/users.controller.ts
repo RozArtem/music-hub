@@ -18,6 +18,12 @@ export class UsersController {
 
         return this.userService.getUserProfile(id)
     }
+    @Get('/user/:id')
+    getUser(@Param('id') id: string) {
+
+        return this.userService.getUserById(id)
+    }
+
     @Get()
     getUsers(
         @Query('count') count: number,

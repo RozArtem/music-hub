@@ -6,16 +6,23 @@ import { ITrack } from '../../../types/entity-interfaces'
 
 import './item.css'
 
+interface ITrackProps {
+
+    track: ITrack;
+    onChoiseTrack: Function
+}
 
 
-const TrackItem: React.FC<ITrack> = (prop: ITrack) => {
+const TrackItem: React.FC<ITrackProps> = ({track, onChoiseTrack}) => {
 
     const { isAuth } = useTypedSelector(state => state.currentUser)
 
+
+
     return (
-        <div className='item'>
+        <div className='item' onClick={() => onChoiseTrack(track.id)}>
             <div className="item___img">
-                <img src={API_URL + prop.picture} alt="trakc img" />
+                <img src={API_URL + track.picture} alt="trakc img" />
 
             </div>
             <div className="item___play-bar">
@@ -24,7 +31,7 @@ const TrackItem: React.FC<ITrack> = (prop: ITrack) => {
             <div className="item___info">
 
                 <div className="item___name">
-                    {prop.name}
+                    {track.name}
                 </div>
 
                 <div className="item___duration">

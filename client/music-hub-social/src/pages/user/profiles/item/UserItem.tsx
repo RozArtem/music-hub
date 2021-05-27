@@ -17,18 +17,14 @@ const UserItem: React.FC<IUser> = (user: IUser) => {
 
 
     let [count, setCount] = useState<any>([])
-    let [name, setName] = useState<any>([])
-
+   
     useEffect(() => {
 
         axios.get(`${API_URL}users/${user.id}`)
             .then(res => {
                 setCount(count = res.data.tracks);
             })
-        axios.get(`${API_URL}users/${user.id}`)
-            .then(res => {
-                setName(name = res.data);
-            })
+       
 
     }, [])
 
@@ -36,7 +32,7 @@ const UserItem: React.FC<IUser> = (user: IUser) => {
     return (
         <div className='user-item'>
             <div className="user-item___name">
-                {name.name}
+                {user.name}
            </div>
             <div className="user-item___tracks">
                 {count.length}  : songs downloaded

@@ -11,7 +11,7 @@ export interface ITrack {
     name: string;
     audio: string;
     picture: string;
-    author: string;
+    authorID: string;
     album?: string;
     comments: IComment[];
 }

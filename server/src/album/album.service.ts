@@ -40,11 +40,17 @@ export class AlbumService {
         return album.id
     }
 
-    async getaldums(): Promise<Album[]> {
+    async getAldums(userID: string): Promise<Album[]> {
 
-        const aldums = await this.albumRepositiry.findAll();
+        const aldums = await this.albumRepositiry.findAll({where: {ownerID: userID}});
 
         return aldums
+    }
+    async getFav(userID: string): Promise<Album> {
+
+        const aldum = await this.albumRepositiry.findOne({where: {ownerID: userID, name: 'favoirite'}, include: { model: Track }});
+       
+        return aldum
     }
     async getOne(id: string): Promise<Album> {
 
@@ -67,6 +73,28 @@ export class AlbumService {
         }
 
         throw new HttpException('Аудио файл или альбом не найден', HttpStatus.NOT_FOUND);
+
+
+    }
+
+    async deleteFromFavorite(trackID: string, user: IUser): Promise<string> {
+
+        const album = await this.albumRepositiry.findOne({where: {name: 'favoirite', ownerID: user.id}});
+        const track = await this.trackService.getOne(trackID);
+
+        await album.$remove('traks', track);
+
+        return track.id
+    }
+
+    async deleteFromAlbum(albumID: string, trackID: string, user: IUser): Promise<string> {
+
+        const album = await this.albumRepositiry.findOne({where: {id: albumID, ownerID: user.id}});
+        const track = await this.trackService.getOne(trackID);
+
+        await album.$remove('traks', track);
+
+        return track.id
 
 
     }

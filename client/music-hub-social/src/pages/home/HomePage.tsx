@@ -16,9 +16,13 @@ const HomePage = () => {
 
     useTypedSelector(state => state.currentUser)
 
-    const {auth} = useActions()
+    const { auth, getAllAlbums} = useActions()
 
-    useEffect(() => {auth()}, [])
+    useEffect(() => {
+        auth()
+        getAllAlbums()
+   
+    }, [])
 
     return (
         <div className='home'>

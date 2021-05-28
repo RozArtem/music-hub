@@ -12,8 +12,9 @@ export interface ITrack {
     audio: string;
     picture: string;
     authorID: string;
-    album?: string;
+    albums: IAlbum[];
     comments: IComment[];
+    inFav: boolean
 }
 
 export interface IComment {
@@ -27,7 +28,7 @@ export interface IAlbum {
     id: string;
     name: string;
     ownerID: string;
-    tracks?: ITrack[];
+    traks: ITrack[];
 }
 
 

@@ -20,7 +20,7 @@ export class Comment extends Model<Comment, CommentCreationAtrr> {
     id: string;
 
 
-    @Column({ type: DataType.STRING })
+    @Column({ type: DataType.TEXT })
     description: string;
 
     @ForeignKey(() => User)

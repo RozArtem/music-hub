@@ -48,11 +48,47 @@
   color: white;
   height: 35px;
   background-color: rgba(20, 17, 17, 0.7);
+  text-transform: uppercase;
 }
 
 .functional-bar___button:hover {
   background-color: whitesmoke;
   color: black;
   cursor: pointer;
+}
+
+.functional-bar___creator-album-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 850px;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 35px;
+}
+
+.functional-bar___creator-album-box input {
+  width: 80%;
+  height: 100%;
+  margin-top: 15px;
+  margin-left: -15px;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.functional-bar___creator-album-box button {
+  width: 20%;
+  height: 100%;
+  margin-top: 15px;
+  border-radius: 0 15px 15px 0;
+  border: none;
+  cursor: pointer;
+}
+
+.functional-bar___creator-album-box button:hover {
+  color: white;
+  background-color: rgba(20, 17, 17, 0.7);
 }
 /*# sourceMappingURL=func.css.map */

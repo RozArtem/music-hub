@@ -106,9 +106,13 @@
 }
 
 .item___func___add-to-album:hover {
-  color: #1382a3;
+  color: black;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+.item___func .item___func___inFav {
+  color: chartreuse;
 }
 
 .item___func___delete:hover {

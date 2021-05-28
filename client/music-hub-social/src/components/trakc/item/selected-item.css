@@ -100,13 +100,13 @@
 }
 
 .selected-item___func___add-to-fav:hover {
-  color: black;
+  color: #47af1e;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
 .selected-item___func___add-to-album:hover {
-  color: #1382a3;
+  color: #47af1e;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }

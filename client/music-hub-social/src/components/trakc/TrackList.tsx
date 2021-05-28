@@ -12,6 +12,7 @@ import './track-list.css'
 const TrackList: React.FC = () => {
 
     const { tracks, currentTrack } = useTypedSelector(state => state.track)
+    
 
     const { getAll, getOneTrack } = useActions()
 
@@ -21,12 +22,15 @@ const TrackList: React.FC = () => {
 
     const [toggler, setToggler] = useState<boolean>(true)
 
+
     function ChoiseTrack(trackID: string) {
 
         getOneTrack(trackID)
         setToggler(false)
     }
 
+    
+    
     return (
 
         <div className='track-list'>

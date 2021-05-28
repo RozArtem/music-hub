@@ -75,7 +75,10 @@
 
 .navbar___navigation___nav-container .nav-content li a {
   text-align: center;
+  padding: 3px;
   color: whitesmoke;
+  height: 100%;
+  width: 100%;
 }
 
 .navbar___navigation___nav-container .nav-content li a:hover {

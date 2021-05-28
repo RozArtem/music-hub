@@ -1,4 +1,4 @@
-import { ITrack, IUser } from "../../../types/entity-interfaces";
+import { IAlbum, ITrack, IUser } from "../../../types/entity-interfaces";
 
 export interface registrationDTO {
 
@@ -33,4 +33,12 @@ export interface IFethcUsers {
 export interface IFethcUser{
 
     readonly data: IUser
+}
+export interface IFethcAlbums{
+
+    readonly data: IAlbum[]
+}
+export interface IFethcAlbum{
+
+    readonly data: IAlbum
 }

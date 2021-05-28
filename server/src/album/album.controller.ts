@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
 import { AddToAlbumDTO } from 'src/album/dto/add-album.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { IUser } from 'src/auth/user-interface';
@@ -22,9 +22,15 @@ export class AlbumController {
     }
     @UseGuards(JwtAuthGuard)
     @Get()
-    getAll() {
+    getAll(@User() user: IUser) {
 
-        return this.albumService.getaldums()
+        return this.albumService.getAldums(user.id)
+    }
+    @UseGuards(JwtAuthGuard)
+    @Get('/fav')
+    getFav(@User() user: IUser) {
+
+        return this.albumService.getFav(user.id)
     }
     @UseGuards(JwtAuthGuard)
     @Get('/:id')
@@ -33,25 +39,44 @@ export class AlbumController {
         return this.albumService.getOne(id)
     }
 
- 
-    
+
+
     @UseGuards(JwtAuthGuard)
     @Post('/add-track')
-    addTrakToAlbum(@Body() dto: AddToAlbumDTO , @User() user: IUser ) {
+    addTrakToAlbum(@Body() dto: AddToAlbumDTO, @User() user: IUser) {
 
-      return this.albumService.addTrakcToAlbum(dto, user);
+        return this.albumService.addTrakcToAlbum(dto, user);
     }
 
-    
+
     @UseGuards(JwtAuthGuard)
     @Post('/add-to-fav')
-    addFavorite(@Body() dto : AddToFavDTO , @User() user: IUser ) {
+    addFavorite(@Body() dto: AddToFavDTO, @User() user: IUser) {
 
-      
-     return this.albumService.addTrakcToFav(dto, user)
+
+        return this.albumService.addTrakcToFav(dto, user)
     }
-   
+
+    @UseGuards(JwtAuthGuard)
+    @Delete('/delete-from-album')
+    deleteFromAlbum(
+        @Query('trackID') trackID: string,
+        @Query('trackID') albumID: string,
+        @User() user: IUser) {
 
 
-    
+        return this.albumService.deleteFromAlbum(albumID, trackID, user)
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Delete('/delete-from-fav')
+    deleteFromFavorite(@Query('trackID') trackID: string, @User() user: IUser) {
+
+
+        return this.albumService.deleteFromFavorite(trackID, user)
+    }
+
+
+
+
 }

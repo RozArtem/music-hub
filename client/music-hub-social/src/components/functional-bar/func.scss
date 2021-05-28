@@ -1,56 +1,81 @@
 .functional-bar {
-
     display: flex;
     flex-direction: column;
     padding: 15px;
     width: 20%;
-    
+
     background-color: rgba(20, 17, 17, 0.3);
     border: 1px solid black;
     box-shadow: -27px 39px 24px 50px rgba(34, 60, 80, 0.2);
-  
+
     border-radius: 15px 0 0 15px;
 
-
     &___container {
-
         display: flex;
         flex-direction: column;
     }
 
     &___info-block {
-        
         height: 50%;
         width: 100%;
         padding: 10px;
-        background-color:   rgba(20, 17, 17, 0.7);
+        background-color: rgba(20, 17, 17, 0.7);
         border-radius: 15px 0 0 0;
 
-        
-            & * {
-                color: whitesmoke;
-            }
-        
-            &___link {
+        & * {
+            color: whitesmoke;
+        }
 
-                text-decoration: underline;
-            }
-       
+        &___link {
+            text-decoration: underline;
+        }
     }
 
     &___button {
-
         margin-top: 15px;
         border-radius: 12px;
         border: 1px solid black;
         color: white;
         height: 35px;
-        background-color:rgba(20, 17, 17, 0.7) ;
-        
+        background-color: rgba(20, 17, 17, 0.7);
+        text-transform: uppercase;
+
         &:hover {
             background-color: whitesmoke;
             color: black;
             cursor: pointer;
+        }
+    }
+
+    &___creator-album-box {
+        display: flex;
+        width: 850px;
+        position: relative;
+        align-items: center;
+        height: 35px;
+
+        & input {
+            width: 80%;
+            height: 100%;
+            margin-top: 15px;
+            margin-left: -15px;
+            padding: 3px;
+            font-size: 16px;
+            
+        }
+        & button {
+            width: 20%;
+            height: 100%;
+            margin-top: 15px;
+            border-radius: 0 15px 15px 0;
+            border: none;
+            cursor: pointer;
+            
+
+            &:hover {
+                color: white;
+                background-color: rgba(20, 17, 17, 0.7);
+            }
         }
     }
 }

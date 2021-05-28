@@ -6,7 +6,8 @@ const initilaState: IAlbumState = {
     albums: [],
     currentAlbum: null,
     isLoading: false,
-    error: null
+    error: null,
+    Fav: null
 }
 
 export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbumState => {
@@ -19,7 +20,7 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
         case AlbumAtionsTypes.CREAT_ALBUM:
 
-            return { ...state, isLoading: false }
+            return { ...state, albums: [...state.albums, action.payload],  isLoading: false }
 
         case AlbumAtionsTypes.DELETE_ALBUM:
 
@@ -29,9 +30,16 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
             return {...state, albums: [...newAlbums]}
 
+        case AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM:
+            
+
+            return {...state }
+
         case AlbumAtionsTypes.GET_ALBUM: 
 
             return {...state, currentAlbum: action.payload, isLoading: false}
+
+       
 
         case AlbumAtionsTypes.GET_ALL_ALBUMS: 
 

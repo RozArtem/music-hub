@@ -38,6 +38,7 @@ interface addTrack {
 }
 interface addCommentToTrack {
     type: TracksActionsTypes.ADD_COMMENT_TO_TRACK;
+    payload: IComment;
     
 }
 interface getOwnTracks {

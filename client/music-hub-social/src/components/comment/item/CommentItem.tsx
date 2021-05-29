@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { API_URL } from '../../../config'
+import { useTypedSelector } from '../../../hooks/useTypeSelector'
 import { IComment } from '../../../types/entity-interfaces'
 
 import './comment.css'
@@ -10,25 +11,38 @@ import './comment.css'
 interface ICommentProp {
 
     commentItem: IComment
+
 }
 
-const CommentItem:React.FC<ICommentProp> = ({commentItem}) => {
+const CommentItem: React.FC<ICommentProp> = ({ commentItem }) => {
 
+
+    const { currentUser, isAuth} = useTypedSelector(state => state.currentUser)
+    
     let [author, setAuthor] = useState<string>()
+    let [owner, setOwner] = useState<boolean>(false)
 
     useEffect(() => {
 
-        axios.get(`${API_URL}users/${commentItem.ownerID}`)
-        .then(res => {
-            setAuthor(author = res.data.name);
-        })
+
+        if (currentUser?.id === commentItem.ownerID) {setOwner(true)}
+
+            axios.get(`${API_URL}users/${commentItem.ownerID}`)
+                .then(res => {
+                    setAuthor(author = res.data.name);
+                })
+
+
     }, [])
 
-        console.log(author)
+
     return (
         <div className='comment'>
             <div className="comment___author">{author}</div>
-            <div className="comment___text">{commentItem.description}</div>
+            <div className="comment___text">{commentItem.description}
+                {owner && isAuth  ? <div className="comment___text___delete">X</div> : null}
+            </div>
+
         </div>
     )
 }

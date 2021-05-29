@@ -2,7 +2,7 @@
 
     width: 95%;
     min-height: 100px;
-    margin-top: 5px;
+    margin-top: 20px;
     
     &___author {
 
@@ -21,10 +21,27 @@
     &___text {
 
         height: 70%;
+        min-height: 70%;
         background-color: whitesmoke;
         height: fit-content;
         padding: 10px;
         border-radius: 0 15px 15px 15px ;
+        display: flex;
+        justify-content: space-between;
+
+
+        &___delete {
+
+            color: red;
+            cursor: pointer;
+            align-self: flex-end;
+            margin-bottom: -3px;
+            margin-left: 3px;
+            
+            &:hover {
+                color: black;
+            }
+        }
     }
 
 

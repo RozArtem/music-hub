@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useActions } from '../../hooks/useActions'
+import { useTypedSelector } from '../../hooks/useTypeSelector'
+import './comment-list.css'
 import CommentItem from './item/CommentItem'
 
 
-import './comment-list.css'
-import { useTypedSelector } from '../../hooks/useTypeSelector'
 
-const CommentList: React.FC = () => {
 
-    const { currentTrack } = useTypedSelector(state => state.track)
+const CommentList: React.FC = React.memo(() => {
+
+
+    const { coments } = useTypedSelector(state => state.track)
+  
+
+
+
 
     return (
         <div className='comment-list'>
 
-            {currentTrack?.comments.map(comment => {
 
-                return <CommentItem key={comment.id} commentItem={comment} />
+            {coments.reverse().map(comment => {
+
+
+                 return <CommentItem key={comment.id} commentItem={comment}   />
             })}
-            
+
 
         </div>
     )
-}
+})
 
 export default CommentList

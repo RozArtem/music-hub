@@ -3,11 +3,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 70%;
-    padding-top: 15px;
+    height: 60%;
+    padding-bottom: 10px;
     overflow: auto;
     align-items: center;
-   
+
 
     &::-webkit-scrollbar {
           
@@ -32,3 +32,4 @@
        }
   
 }
+

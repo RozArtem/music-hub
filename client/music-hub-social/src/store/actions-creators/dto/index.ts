@@ -1,4 +1,4 @@
-import { IAlbum, ITrack, IUser } from "../../../types/entity-interfaces";
+import { IAlbum, IComment, ITrack, IUser } from "../../../types/entity-interfaces";
 
 export interface registrationDTO {
 
@@ -15,6 +15,11 @@ export interface authDTO {
     }
 
 
+}
+
+export interface IAddComment {
+    
+    readonly data: IComment
 }
 
 export interface IGetTracks {

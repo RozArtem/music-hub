@@ -26,7 +26,8 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
         }
         case TracksActionsTypes.ADD_COMMENT_TO_TRACK: {
 
-            return { ...state }
+           
+            return { ...state, coments: [...state.coments, action.payload]}
         }
 
         case TracksActionsTypes.GET_OWN_TRACKS: {

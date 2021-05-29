@@ -11,28 +11,37 @@ import './track-list.css'
 
 const TrackList: React.FC = () => {
 
-    const {  getOneTrack } = useActions()
-    
+    const { getOneTrack, addCommentToTrack } = useActions()
+
     const { tracks, currentTrack } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
+    const { isAuth } = useTypedSelector(state => state.currentUser)
+    const { coments } = useTypedSelector(state => state.track)
 
-  
 
-
-    useEffect(() => { }, []);
 
 
     const [toggler, setToggler] = useState<boolean>(true)
+    const [toggler2, setToggler2] = useState<boolean>(false)
+    const [description, setDescription] = useState<string>('')
 
 
-
+     console.log(toggler2 , 'toggler2')
     function ChoiseTrack(trackID: string) {
 
         getOneTrack(trackID)
         setToggler(false)
+      
     }
 
+    function addComment(trackID: any) {
 
+        if (description.trim() === '') { alert("Comment cannot be empty, please leave a text") }
+
+        addCommentToTrack(description, trackID)
+
+        setDescription('')
+    }
 
     return (
 
@@ -78,7 +87,24 @@ const TrackList: React.FC = () => {
                         <button className='track-list___searc-bar___btn' onClick={() => setToggler(true)}>BACK</button>
                     </div>
                     <SelectedItem track={currentTrack} />
-                    <CommentList />
+                    {isAuth ?
+                        <div className="comment-list___coment-area">
+                            <textarea name="comment" maxLength={255} minLength={3}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                            ></textarea>
+                            <button
+
+                                onClick={() => addComment(currentTrack?.id)}
+                            >Leave comment</button>
+                        </div>
+                        :
+                        <div className="comment-list___coment-area">
+                           Comments can be posted only by authorized users
+                        </div>
+                }
+
+                    <CommentList  />
                 </>
             }
 

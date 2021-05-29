@@ -1,5 +1,5 @@
 .selected-item {
-  height: 20%;
+  height: 10%;
   width: auto;
   border-bottom: 1px solid black;
   background-color: rgba(20, 17, 17, 0.7);
@@ -14,16 +14,16 @@
 }
 
 .selected-item___img {
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   background-color: whitesmoke;
   border: 1px solid black;
   margin-left: 5px;
 }
 
 .selected-item___img img {
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
 }
 
 .selected-item___play-bar {

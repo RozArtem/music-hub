@@ -1,5 +1,5 @@
 .selected-item {
-    height: 20%;
+    height: 10%;
     width: auto;
     border-bottom: 1px solid black;
     background-color: rgba(20, 17, 17, 0.7);
@@ -9,15 +9,16 @@
     margin-top: 1px;
 
     &___img {
-        height: 80px;
-        width: 80px;
+        
+        height: 50px;
+        width: 50px;
         background-color: whitesmoke;
         border: 1px solid black;
         margin-left: 5px;
 
         & img {
-            height: 80px;
-            width: 80px;
+            height: 50px;
+            width: 50px;
         }
     }
 

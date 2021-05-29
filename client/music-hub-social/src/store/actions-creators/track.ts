@@ -3,7 +3,7 @@ import { Dispatch } from "redux"
 import { API_URL } from "../../config"
 import { IComment, ITrack } from "../../types/entity-interfaces"
 import { TracksActions, TracksActionsTypes } from "../../types/track"
-import { IGetTrack, IGetTracks } from "./dto"
+import { IAddComment, IGetTrack, IGetTracks } from "./dto"
 
 
 
@@ -74,12 +74,12 @@ export const getAll = () => {
     return async (dispatch: Dispatch<TracksActions>) => {
 
         try {
-            
+
             dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
             const responce: IGetTracks = await axios.get(`${API_URL}track`)
-  
+
             dispatch({ type: TracksActionsTypes.GET_ALL_TRACKS, payload: responce.data })
-          
+
         } catch (error) {
 
             dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error });
@@ -132,7 +132,7 @@ export const deleteComment = (commentID: string) => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            dispatch({ type: TracksActionsTypes.DELETE_COMMENT_OF_TRACK , payload: responce})
+            dispatch({ type: TracksActionsTypes.DELETE_COMMENT_OF_TRACK, payload: responce })
 
         } catch (error) {
 
@@ -143,26 +143,29 @@ export const deleteComment = (commentID: string) => {
 
 
 
-export const addCommentToTrack = (describtios: string, trackID: string) => {
+export const addCommentToTrack = (description: string, trackID: string) => {
 
     return async (dispatch: Dispatch<TracksActions>) => {
 
         try {
-
-           await axios.post(`${API_URL}/${trackID}/add-comment`, {
-                describtios,
-                trackID
+           
+            const responce: IAddComment = await axios.post(`${API_URL}track/${trackID}/add-comment`, {
+                
+                description
+              
             },
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: TracksActionsTypes.ADD_COMMENT_TO_TRACK})
+
+              
+            dispatch({ type: TracksActionsTypes.ADD_COMMENT_TO_TRACK, payload: responce.data })
 
         } catch (error) {
 
-            dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error });
+            dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error.data });
         }
     }
 }

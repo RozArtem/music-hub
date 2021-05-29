@@ -16,7 +16,7 @@ const HomePage = () => {
 
    const {isAuth} = useTypedSelector(state => state.currentUser)
 
-    const { getAllAlbums, getFavAlbum, getAll  } = useActions()
+    const { getAllAlbums, getFavAlbum, getAll , auth } = useActions()
 
     
 
@@ -24,6 +24,7 @@ const HomePage = () => {
         getAllAlbums()
         getFavAlbum()
         getAll()
+        auth()
     }, [isAuth])
 
     return (

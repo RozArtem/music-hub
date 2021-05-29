@@ -22,6 +22,9 @@ const CommentItem: React.FC<ICommentProp> = ({ commentItem }) => {
     let [author, setAuthor] = useState<string>()
     let [owner, setOwner] = useState<boolean>(false)
 
+
+    
+
     useEffect(() => {
 
 

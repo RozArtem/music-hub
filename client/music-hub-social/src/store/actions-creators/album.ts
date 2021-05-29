@@ -70,7 +70,7 @@ export const getFavAlbum = () => {
 
         } catch (error) {
 
-            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data.message });
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data });
         }
     }
 }

@@ -70,6 +70,7 @@ export const logout = () => {
     return  (dispatch: Dispatch<UserActions>) => {
 
         dispatch({type: UserActionTypes.LOGOUT_USER})
+        
         localStorage.removeItem('token')
     }
 }

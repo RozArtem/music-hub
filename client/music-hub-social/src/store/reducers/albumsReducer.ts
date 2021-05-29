@@ -26,12 +26,12 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
            
 
-            return {...state, albums: [...state.albums.filter(elm => elm.id !== action.payload)]}
+            return {...state, albums: [...state.albums.filter(elm => elm.id !== action.payload)],  isLoading: false}
 
         case AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM:
             
 
-            return {...state }
+            return {...state,  isLoading: false }
 
         case AlbumAtionsTypes.GET_ALBUM: 
 
@@ -49,15 +49,15 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
         case AlbumAtionsTypes.ADD_TRACK_TO_FAV: 
         
-            return {...state}
+            return {...state,  isLoading: false}
 
         case AlbumAtionsTypes.ADD_TRACK_TO_ALBUM: 
 
-            return {...state}
+            return {...state,  isLoading: false}
 
         case AlbumAtionsTypes.ERROR_ALBUMS_ACTION: 
 
-            return {...state, error: action.payload}
+            return {...state, error: action.payload,  isLoading: false}
         default:
             return state
     }

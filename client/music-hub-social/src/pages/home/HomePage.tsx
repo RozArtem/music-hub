@@ -14,15 +14,17 @@ import './home.css'
 
 const HomePage = () => {
 
-    useTypedSelector(state => state.currentUser)
+   const {isAuth} = useTypedSelector(state => state.currentUser)
 
-    const { auth, getAllAlbums, getFavAlbum} = useActions()
+    const { getAllAlbums, getFavAlbum, getAll  } = useActions()
+
+    
 
     useEffect(() => {
-        auth()
         getAllAlbums()
         getFavAlbum()
-    }, [])
+        getAll()
+    }, [isAuth])
 
     return (
         <div className='home'>

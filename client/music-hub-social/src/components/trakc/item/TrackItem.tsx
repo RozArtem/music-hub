@@ -19,7 +19,7 @@ interface ITrackProps {
 const TrackItem: React.FC<ITrackProps> = ({track, onChoiseTrack, onInFav}) => {
 
     const { isAuth } = useTypedSelector(state => state.currentUser)
-    const { Fav } = useTypedSelector(state => state.album)
+  
  
     const {addFavorite, deleteFromFavorite} = useActions()
 

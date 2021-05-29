@@ -11,17 +11,19 @@ import './track-list.css'
 
 const TrackList: React.FC = () => {
 
+    const {  getOneTrack } = useActions()
+    
     const { tracks, currentTrack } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
 
-    const { getAll, getOneTrack } = useActions()
+  
 
 
-    useEffect(() => { getAll() }, []);
+    useEffect(() => { }, []);
 
 
     const [toggler, setToggler] = useState<boolean>(true)
-    const [inFav, setinFav] = useState<boolean>(false)
+
 
 
     function ChoiseTrack(trackID: string) {
@@ -43,26 +45,31 @@ const TrackList: React.FC = () => {
                         <button className='track-list___searc-bar___btn'>SEARCH</button>
                     </div>
                     <div className="track-list___container">
-                        {tracks.map(track => {
 
-                            let inFav = false;
+                        {
 
-                            Fav?.traks.map(item => {
-                                if (item.id === track.id) {
+                            tracks.map(track => {
 
-                                    inFav = true
+                                let inFav = false;
 
-                                }
+                                Fav?.traks.map(item => {
+                                    if (item.id === track.id) {
 
+                                        inFav = true
+
+                                    }
+
+                                })
+
+
+                                return <TrackItem
+                                    onInFav={inFav}
+                                    key={track.id}
+                                    track={track}
+                                    onChoiseTrack={ChoiseTrack} />
                             })
+                        }
 
-
-                            return <TrackItem
-                                onInFav={inFav}
-                                key={track.id}
-                                track={track}
-                                onChoiseTrack={ChoiseTrack} />
-                        })}
                     </div>
                 </>
                 :

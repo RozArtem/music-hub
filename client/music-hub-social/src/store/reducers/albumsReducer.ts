@@ -24,11 +24,9 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
         case AlbumAtionsTypes.DELETE_ALBUM:
 
-                const newAlbums = [...state.albums]
+           
 
-                newAlbums.filter(elm => elm.id !== action.payload)
-
-            return {...state, albums: [...newAlbums]}
+            return {...state, albums: [...state.albums.filter(elm => elm.id !== action.payload)]}
 
         case AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM:
             
@@ -38,6 +36,10 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
         case AlbumAtionsTypes.GET_ALBUM: 
 
             return {...state, currentAlbum: action.payload, isLoading: false}
+
+        case AlbumAtionsTypes.GET_FAV_ALBUM: 
+
+            return {...state, Fav: action.payload, isLoading: false}
 
        
 

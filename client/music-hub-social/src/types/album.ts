@@ -53,7 +53,7 @@ interface getAllAlbums {
 interface getFavAlbum {
 
     type: AlbumAtionsTypes.GET_FAV_ALBUM,
-    payload: ITrack[]
+    payload: IAlbum
 }
 
 interface getAlbum {

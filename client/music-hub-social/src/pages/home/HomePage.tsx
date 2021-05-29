@@ -16,12 +16,12 @@ const HomePage = () => {
 
     useTypedSelector(state => state.currentUser)
 
-    const { auth, getAllAlbums} = useActions()
+    const { auth, getAllAlbums, getFavAlbum} = useActions()
 
     useEffect(() => {
         auth()
         getAllAlbums()
-   
+        getFavAlbum()
     }, [])
 
     return (

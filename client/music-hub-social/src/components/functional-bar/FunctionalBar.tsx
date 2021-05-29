@@ -11,20 +11,26 @@ import './func.css'
 const FunctionalBar: React.FC = () => {
 
     const { isAuth } = useTypedSelector(state => state.currentUser)
-    const { albums } = useTypedSelector(state => state.album)
+    const { albums, Fav } = useTypedSelector(state => state.album)
 
-    const {creatAlbum} = useActions();
+    const { creatAlbum, deleteAlbum } = useActions();
 
     const [toggler, setToggler] = useState<boolean>(false)
+    const [delteToggler, setDeleteToggler] = useState<boolean>(false)
     const [albumName, setAlbumName] = useState<string>('')
 
 
 
     function onCreatAlbum() {
 
+        if (albumName.trim() === '') {
+
+            return alert('Enter the name of your album')
+        }
         creatAlbum(albumName)
         setToggler(false)
-        
+        setAlbumName('')
+
     }
 
     return (
@@ -41,41 +47,56 @@ const FunctionalBar: React.FC = () => {
                 :
                 <div className="functional-bar___container">
 
-                    <button className='functional-bar___button'>ADD NEW</button>
-                    {toggler ?
+                    <div className="functional-bar___container-func">
 
-                        <div className="functional-bar___creator-album-box">
-                            <button className='functional-bar___button'
-                                onClick={() => setToggler(false)}
-                            > CANCEL
+                        <button className='functional-bar___button'>ADD NEW</button>
+                        {toggler ?
+
+                            <div className="functional-bar___creator-album-box">
+                                <button className='functional-bar___button' style={{ width: '15%' }}
+                                    onClick={() => setToggler(false)}
+                                > CANCEL
                              </button>
-                            <input type="text" autoFocus
-                                onChange={(event) => setAlbumName(event.target.value)} />
-                            <button
-                                onClick={() => onCreatAlbum()}
-                            >CREAT</button>
-                        </div>
+                                <input type="text" autoFocus minLength={3} maxLength={12} placeholder="Enter album's name"
+                                    onChange={(event) => setAlbumName(event.target.value)} />
+                                <button className='functional-bar___creator-album-box-button'
+                                    onClick={() => onCreatAlbum()}
+                                >CREAT</button>
+                            </div>
 
-                        :
+                            :
+
+                            <button className='functional-bar___button'
+                                onClick={() => setToggler(true)}> CREAT ALBUM
+                        </button>
+                        }
 
                         <button className='functional-bar___button'
-                            onClick={() => setToggler(true)}> CREAT ALBUM
+                        > {Fav?.name}
                         </button>
-                    }
+                    </div>
 
 
+                    <div className="albums-container">
+                        {albums.map(album => {
 
+                            if (album.name === 'favoirite') { return null }
+                            return <button className='functional-bar___button'
+                                onClick={() => deleteAlbum(album.id)} key={album.id}
+                                onMouseEnter={() => setDeleteToggler(true)}
+                                onMouseLeave={() => setDeleteToggler(false)}
+                            >{album?.name}</button>
 
-                    {albums.map(album => {
+                        })}
 
-                        return <button className='functional-bar___button'>{album?.name}</button>
-                    })}
+                    </div>
+
 
                 </div>
 
             }
 
-        </div>
+        </div >
     )
 }
 

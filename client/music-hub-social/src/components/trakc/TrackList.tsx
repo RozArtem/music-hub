@@ -12,7 +12,7 @@ import './track-list.css'
 const TrackList: React.FC = () => {
 
     const { tracks, currentTrack } = useTypedSelector(state => state.track)
-    
+    const { Fav } = useTypedSelector(state => state.album)
 
     const { getAll, getOneTrack } = useActions()
 
@@ -21,6 +21,7 @@ const TrackList: React.FC = () => {
 
 
     const [toggler, setToggler] = useState<boolean>(true)
+    const [inFav, setinFav] = useState<boolean>(false)
 
 
     function ChoiseTrack(trackID: string) {
@@ -29,8 +30,8 @@ const TrackList: React.FC = () => {
         setToggler(false)
     }
 
-    
-    
+
+
     return (
 
         <div className='track-list'>
@@ -43,7 +44,24 @@ const TrackList: React.FC = () => {
                     </div>
                     <div className="track-list___container">
                         {tracks.map(track => {
-                            return <TrackItem key={track.id} track={track} onChoiseTrack={ChoiseTrack} />
+
+                            let inFav = false;
+
+                            Fav?.traks.map(item => {
+                                if (item.id === track.id) {
+
+                                    inFav = true
+
+                                }
+
+                            })
+
+
+                            return <TrackItem
+                                onInFav={inFav}
+                                key={track.id}
+                                track={track}
+                                onChoiseTrack={ChoiseTrack} />
                         })}
                     </div>
                 </>
@@ -53,7 +71,7 @@ const TrackList: React.FC = () => {
                         <button className='track-list___searc-bar___btn' onClick={() => setToggler(true)}>BACK</button>
                     </div>
                     <SelectedItem track={currentTrack} />
-                    <CommentList  />
+                    <CommentList />
                 </>
             }
 

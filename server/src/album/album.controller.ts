@@ -75,6 +75,13 @@ export class AlbumController {
 
         return this.albumService.deleteFromFavorite(trackID, user)
     }
+    @UseGuards(JwtAuthGuard)
+    @Delete('/:albumID')
+    deleteAlbum(@Param('albumID') albumID: string, @User() user: IUser) {
+
+
+        return this.albumService.delete(albumID, user)
+    }
 
 
 

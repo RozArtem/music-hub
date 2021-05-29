@@ -22,6 +22,7 @@ export const getAllAlbums = () => {
                 })
 
             dispatch({ type: AlbumAtionsTypes.GET_ALL_ALBUMS, payload: responce.data })
+            
 
         } catch (error) {
 
@@ -51,6 +52,28 @@ export const getOneAlbum = (albumID: string) => {
         }
     }
 }
+
+export const getFavAlbum = () => {
+
+    return async (dispatch: Dispatch<AlbumsActions>) => {
+
+        try {
+            dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
+            const responce: IFethcAlbum = await axios.get(`${API_URL}albums/fav`,
+
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+            dispatch({ type: AlbumAtionsTypes.GET_FAV_ALBUM, payload: responce.data })
+
+        } catch (error) {
+
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data.message });
+        }
+    }
+}
 export const deleteAlbum = (albumID: string) => {
 
     return async (dispatch: Dispatch<AlbumsActions>) => {
@@ -68,7 +91,7 @@ export const deleteAlbum = (albumID: string) => {
 
         } catch (error) {
 
-            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data.message });
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data });
         }
     }
 }

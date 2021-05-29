@@ -11,35 +11,38 @@ import './item.css'
 interface ITrackProps {
 
     track: ITrack;
-    onChoiseTrack: Function
+    onChoiseTrack: Function;
+    onInFav: boolean;
 }
 
 
-const TrackItem: React.FC<ITrackProps> = ({track, onChoiseTrack}) => {
+const TrackItem: React.FC<ITrackProps> = ({track, onChoiseTrack, onInFav}) => {
 
     const { isAuth } = useTypedSelector(state => state.currentUser)
+    const { Fav } = useTypedSelector(state => state.album)
  
     const {addFavorite, deleteFromFavorite} = useActions()
-    
 
-    const [inFav, setInFav] = useState<boolean>(false)
-   
+    const [inFav, setinFav] = useState<boolean>(false)
 
-  
+
 
     function addToFavSong(e:any) {
         
         e.stopPropagation()
         addFavorite(track.id)
+        setinFav(true)
         
     }
     function deleteToFavSong(e: any ){
 
         e.stopPropagation()
         deleteFromFavorite(track.id)
+        setinFav(false)
        
     }
 
+    
     
     return (
         <div className='item' onClick={() => onChoiseTrack(track.id)}>
@@ -63,8 +66,8 @@ const TrackItem: React.FC<ITrackProps> = ({track, onChoiseTrack}) => {
             {
                 isAuth &&
                 <div className="item___func">
-                    <div className={  true ? 'item___func___inFav'  :'item___func___add-to-fav'  }
-                        onClick={(e) => inFav ? deleteToFavSong(e) : addToFavSong(e) }
+                    <div className={  inFav || onInFav  ? 'item___func___inFav'  :'item___func___add-to-fav'  }
+                        onClick={(e) => inFav || onInFav  ? deleteToFavSong(e) : addToFavSong(e) }
                     >❤</div>
                     <div className='item___func___add-to-album'>+</div>
                     <div className='item___func___delete'>х</div>

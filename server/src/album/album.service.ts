@@ -31,10 +31,10 @@ export class AlbumService {
 
         return favAlbum
     }
-    async delete(id: string): Promise<string> {
+    async delete(id: string, user:IUser ): Promise<string> {
 
 
-        const album = await this.albumRepositiry.findOne({ where: { id } })
+        const album = await this.albumRepositiry.findOne({ where: { id , ownerID: user.id} })
         album.destroy()
 
         return album.id

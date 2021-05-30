@@ -127,12 +127,12 @@ export const deleteComment = (commentID: string) => {
     return async (dispatch: Dispatch<TracksActions>) => {
 
         try {
-            const responce: string = await axios.delete(`${API_URL}/comment/${commentID}`, {
+            const responce  = await axios.delete(`${API_URL}comment/${commentID}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            dispatch({ type: TracksActionsTypes.DELETE_COMMENT_OF_TRACK, payload: responce })
+            dispatch({ type: TracksActionsTypes.DELETE_COMMENT_OF_TRACK, payload: responce.data })
 
         } catch (error) {
 

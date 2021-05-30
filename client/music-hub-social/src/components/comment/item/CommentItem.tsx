@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { API_URL } from '../../../config'
+import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypeSelector'
 import { IComment } from '../../../types/entity-interfaces'
 
@@ -18,7 +19,9 @@ const CommentItem: React.FC<ICommentProp> = ({ commentItem }) => {
 
 
     const { currentUser, isAuth} = useTypedSelector(state => state.currentUser)
-    
+    const {deleteComment} = useActions()
+
+
     let [author, setAuthor] = useState<string>()
     let [owner, setOwner] = useState<boolean>(false)
 
@@ -43,7 +46,8 @@ const CommentItem: React.FC<ICommentProp> = ({ commentItem }) => {
         <div className='comment'>
             <div className="comment___author">{author}</div>
             <div className="comment___text">{commentItem.description}
-                {owner && isAuth  ? <div className="comment___text___delete">X</div> : null}
+                {owner && isAuth  ? <div onClick={() => deleteComment(commentItem.id)}
+                 className="comment___text___delete">X</div> : null}
             </div>
 
         </div>

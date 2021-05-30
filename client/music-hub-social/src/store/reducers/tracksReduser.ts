@@ -67,14 +67,13 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
         }
         case TracksActionsTypes.DELETE_COMMENT_OF_TRACK: {
 
-            const newComment = [...state.coments]
 
-           newComment.filter(elm => elm.id !== action.payload)
+       
           
 
             return {
                 ...state, 
-                coments: [...newComment],
+                coments: [...state.coments.filter(elm => elm.id !== action.payload)],
                 isLoading: false
             }
         

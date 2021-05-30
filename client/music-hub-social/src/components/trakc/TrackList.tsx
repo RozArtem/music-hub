@@ -16,7 +16,7 @@ const TrackList: React.FC = () => {
     const { tracks, currentTrack } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
     const { isAuth } = useTypedSelector(state => state.currentUser)
-    const { coments } = useTypedSelector(state => state.track)
+  
 
 
 

@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/home" exact={true} component={HomePage} />
           <Route path="/authorization-page" component={AuthorizationPage} />
           <Route path='/profiles' component={ProfilesPage} />
-
+          
 
           <Redirect to="/home" />
 

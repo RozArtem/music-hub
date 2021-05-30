@@ -101,7 +101,7 @@ export const addFavorite = (trackId: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            await axios.post(`${API_URL}albums/add-to-fav`,
+           const responce = await axios.post(`${API_URL}albums/add-to-fav`,
 
                 {
                     trackId
@@ -112,11 +112,11 @@ export const addFavorite = (trackId: string) => {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.ADD_TRACK_TO_FAV })
+            dispatch({ type: AlbumAtionsTypes.ADD_TRACK_TO_FAV , payload: responce.data})
 
         } catch (error) {
 
-            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data.message });
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data});
         }
     }
 }
@@ -126,13 +126,13 @@ export const deleteFromFavorite = (trackId: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            await axios.delete(`${API_URL}albums/delete-from-fav?trackID=${trackId}`,
+          const responce =   await axios.delete(`${API_URL}albums/delete-from-fav?trackID=${trackId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM })
+            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM , payload: responce.data})
 
         } catch (error) {
 

@@ -101,18 +101,24 @@
 
 .item___func___add-to-fav:hover {
   color: black;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .item___func___add-to-album:hover {
   color: black;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .item___func .item___func___inFav {
   color: chartreuse;
+}
+
+.item___func .item___func___inFav:hover {
+  color: grey;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .item___func___delete:hover {

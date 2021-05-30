@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
+import { ITrack } from '../../types/entity-interfaces'
 import CommentList from '../comment/CommentList'
 import SelectedItem from './item/SelectedItem'
 import TrackItem from './item/TrackItem'
@@ -9,14 +10,20 @@ import TrackItem from './item/TrackItem'
 
 import './track-list.css'
 
-const TrackList: React.FC = () => {
+interface ITrackListProps {
+
+    tracks: ITrack[] | undefined
+}
+
+
+const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
 
     const { getOneTrack, addCommentToTrack } = useActions()
 
-    const { tracks, currentTrack } = useTypedSelector(state => state.track)
+    const { currentTrack } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
     const { isAuth } = useTypedSelector(state => state.currentUser)
-  
+
 
 
 
@@ -26,12 +33,12 @@ const TrackList: React.FC = () => {
     const [description, setDescription] = useState<string>('')
 
 
-     console.log(toggler2 , 'toggler2')
+    console.log(toggler2, 'toggler2')
     function ChoiseTrack(trackID: string) {
 
         getOneTrack(trackID)
         setToggler(false)
-      
+
     }
 
     function addComment(trackID: any) {
@@ -57,7 +64,7 @@ const TrackList: React.FC = () => {
 
                         {
 
-                            tracks.map(track => {
+                            tracks?.map(track => {
 
                                 let inFav = false;
 
@@ -69,7 +76,6 @@ const TrackList: React.FC = () => {
                                     }
 
                                 })
-
 
                                 return <TrackItem
                                     onInFav={inFav}
@@ -100,11 +106,11 @@ const TrackList: React.FC = () => {
                         </div>
                         :
                         <div className="comment-list___coment-area">
-                           Comments can be posted only by authorized users
+                            Comments can be posted only by authorized users
                         </div>
-                }
+                    }
 
-                    <CommentList  />
+                    <CommentList />
                 </>
             }
 

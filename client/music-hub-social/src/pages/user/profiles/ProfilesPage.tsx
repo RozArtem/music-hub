@@ -14,6 +14,7 @@ const ProfilesPage: React.FC = () => {
 
     const { getAllUsersProfiles } = useActions();
     const { users } = useTypedSelector(state => state.users)
+    const { currentUser } = useTypedSelector(state => state.currentUser)
 
     useEffect(() => {
 
@@ -30,18 +31,11 @@ const ProfilesPage: React.FC = () => {
             <div className="pofiles___list">
                {users.map(user => {
 
-                   return <UserItem key={user.id} {...user} />
-               })} 
-               {users.map(user => {
+                    if (user.id === currentUser?.id) { return null}
 
                    return <UserItem key={user.id} {...user} />
                })} 
-               {users.map(user => {
-
-                   return <UserItem key={user.id} {...user} />
-               })} 
-
-
+              
             </div>
             <PlayBar />
         </div>

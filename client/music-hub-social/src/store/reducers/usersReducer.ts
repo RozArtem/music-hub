@@ -6,7 +6,7 @@ import { IUsersState, UsersActions, UsersActionTypes } from "../../types/users"
 
 const initialState : IUsersState = {
     users: [],
-    currentUser: null ,
+    currentProfile: null ,
     isLoading: false,
     error: null
 }
@@ -34,7 +34,7 @@ export const usersReducer = (state = initialState, action : UsersActions): IUser
 
         case UsersActionTypes.FETCH_CURRENT_PROFILE_SUCCESS:
             
-          return {...state, currentUser: action.payload, isLoading: false}
+          return {...state, currentProfile: action.payload, isLoading: false}
 
         case UsersActionTypes.FETCH_CURRENT_PROFILE_ERROR:
             

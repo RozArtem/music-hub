@@ -3,7 +3,7 @@ import { IUser } from "./entity-interfaces";
 
 export interface IUsersState {
     users: IUser[];
-    currentUser: IUser | null;
+    currentProfile: IUser | null;
     isLoading: boolean;
     error: null | string;
 

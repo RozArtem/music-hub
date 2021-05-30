@@ -12,6 +12,7 @@ import {
 import { useTypedSelector } from '../hooks/useTypeSelector'
 import { useActions } from '../hooks/useActions'
 import ProfilesPage from '../pages/user/profiles/ProfilesPage'
+import UserPage from '../pages/user/user/UserPage'
 
 const App = () => {
 
@@ -19,7 +20,7 @@ const App = () => {
   const { isAuth } = useTypedSelector(state => state.currentUser)
   const { auth } = useActions()
 
-  useEffect(() => { auth() }, [])
+  useEffect(() => { auth()  }, [])
 
   return (
 
@@ -30,7 +31,7 @@ const App = () => {
           <Route path="/home" exact={true} component={HomePage} />
           <Route path="/authorization-page" component={AuthorizationPage} />
           <Route path='/profiles' component={ProfilesPage} />
-          
+          <Route path='/profile' component={UserPage} />
 
           <Redirect to="/home" />
 

@@ -13,37 +13,48 @@ interface ITrackProps {
     track: ITrack;
     onChoiseTrack: Function;
     onInFav: boolean;
+ 
 }
 
 
-const TrackItem: React.FC<ITrackProps> = ({track, onChoiseTrack, onInFav}) => {
+const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => {
 
-    const { isAuth } = useTypedSelector(state => state.currentUser)
+    const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
   
- 
-    const {addFavorite, deleteFromFavorite} = useActions()
+    let [owner, setOwner] = useState<boolean>(false)
+
+    const { addFavorite, deleteFromFavorite , getFavAlbum} = useActions()
 
     const [inFav, setinFav] = useState<boolean>(false)
 
 
 
-    function addToFavSong(e:any) {
+    useEffect(() => {
         
+      
+        if (currentUser?.id === track.authorID) {setOwner(true)}
+        
+    }, [])
+
+    function addToFavSong(e: any) {
+
         e.stopPropagation()
         addFavorite(track.id)
         setinFav(true)
-        
+        getFavAlbum()
+     
+
     }
-    function deleteToFavSong(e: any ){
+    function deleteToFavSong(e: any) {
 
         e.stopPropagation()
         deleteFromFavorite(track.id)
         setinFav(false)
-       
+        getFavAlbum()
     }
 
-    
-    
+
+
     return (
         <div className='item' onClick={() => onChoiseTrack(track.id)}>
             <div className="item___img">
@@ -66,11 +77,11 @@ const TrackItem: React.FC<ITrackProps> = ({track, onChoiseTrack, onInFav}) => {
             {
                 isAuth &&
                 <div className="item___func">
-                    <div className={  inFav || onInFav  ? 'item___func___inFav'  :'item___func___add-to-fav'  }
-                        onClick={(e) => inFav || onInFav  ? deleteToFavSong(e) : addToFavSong(e) }
+                    <div className={ onInFav ? 'item___func___inFav' : 'item___func___add-to-fav'}
+                        onClick={(e) => onInFav ? deleteToFavSong(e) : addToFavSong(e)}
                     >❤</div>
                     <div className='item___func___add-to-album'>+</div>
-                    <div className='item___func___delete'>х</div>
+                    {owner && <div className='item___func___delete'>х</div> }
                 </div>
             }
         </div>

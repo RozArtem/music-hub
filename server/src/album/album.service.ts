@@ -99,7 +99,7 @@ export class AlbumService {
 
     }
 
-    async addTrakcToFav(dto: AddToFavDTO, user: IUser): Promise<AddToFavDTO> {
+    async addTrakcToFav(dto: AddToFavDTO, user: IUser): Promise<Track> {
 
         const album = await this.albumRepositiry.findOne({where: {name: 'favoirite', ownerID: user.id}});
         const track = await this.trackService.getOne(dto.trackId);
@@ -108,7 +108,7 @@ export class AlbumService {
         if (album && track) {
             await album.$add('traks', track);
 
-            return dto
+            return track
         }
 
         throw new HttpException('что-то пошло не так', HttpStatus.NOT_FOUND);

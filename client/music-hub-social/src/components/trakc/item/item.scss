@@ -84,19 +84,23 @@
         &___add-to-fav {
             &:hover {
                 color: black;
-                transform: scale(1.1);
+                transform: scale(1.5);
             }
         }
 
         &___add-to-album {
             &:hover {
                 color: black;
-                transform: scale(1.1);
+                transform: scale(1.5);
             }
         }
         .item___func___inFav {
-
             color: chartreuse;
+
+            &:hover {
+                color: grey;
+                transform: scale(1.5);
+            }
         }
 
         &___delete {

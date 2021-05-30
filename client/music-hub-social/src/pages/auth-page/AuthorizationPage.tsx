@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Authorization from '../../components/auth/Authorization'
 import Registration from '../../components/auth/Registration'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
+import logo from '../../logo.svg'
 
 
 
@@ -20,7 +21,7 @@ const AuthorizationPage: React.FC = () => {
         <div className='auth-page'>
 
             <div className="auth-page___logo">
-                <NavLink to='/home'><img src="./logo.svg" alt="music-hub-social" /></NavLink>
+                <NavLink to='/home'><img src={logo} alt="music-hub-social" /></NavLink>
             </div>
             {!toggler ?
                 <Authorization setComponent={setToggler} />

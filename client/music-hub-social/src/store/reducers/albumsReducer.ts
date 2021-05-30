@@ -7,7 +7,12 @@ const initilaState: IAlbumState = {
     currentAlbum: null,
     isLoading: false,
     error: null,
-    Fav: null
+    Fav: {
+        id: '',
+        name: '',
+        ownerID: '',
+        traks: []
+    }
 }
 
 export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbumState => {
@@ -31,7 +36,8 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
         case AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM:
             
 
-            return {...state,  isLoading: false }
+            return {...state,  isLoading: false, 
+                Fav: {...state.Fav, traks: [... state.Fav.traks.filter(elm => elm.id !== action.payload)]  }}
 
         case AlbumAtionsTypes.GET_ALBUM: 
 
@@ -48,8 +54,12 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
             return {...state, albums: action.payload, isLoading: false}
 
         case AlbumAtionsTypes.ADD_TRACK_TO_FAV: 
-        
-            return {...state,  isLoading: false}
+
+        const som = state.Fav.traks
+
+            return {...state,  isLoading: false,
+                 Fav: {...state.Fav, traks: [...state.Fav.traks, action.payload]} }
+               
 
         case AlbumAtionsTypes.ADD_TRACK_TO_ALBUM: 
 

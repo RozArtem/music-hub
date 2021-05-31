@@ -59,9 +59,27 @@
   margin-left: 30px;
   height: 100px;
   width: 100px;
+  margin-right: 30px;
 }
 
 .album-page-container {
   height: 80%;
+}
+
+.delete {
+  border-radius: 0 12px 12px 0;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  background-color: rgba(245, 245, 245, 0.7);
+  color: black;
+}
+
+.delete:hover {
+  background-color: rgba(20, 17, 17, 0.7);
+  color: whitesmoke;
+  -webkit-box-shadow: 11px 3px 8px 7px rgba(34, 60, 80, 0.33);
+          box-shadow: 11px 3px 8px 7px rgba(34, 60, 80, 0.33);
 }
 /*# sourceMappingURL=album-page.css.map */

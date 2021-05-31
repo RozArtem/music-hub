@@ -14,7 +14,7 @@ const FunctionalBar: React.FC = () => {
     const { albums, Fav } = useTypedSelector(state => state.album)
     const history = useHistory()
 
-    const { creatAlbum, deleteAlbum, getOneAlbum } = useActions();
+    const { creatAlbum, getOneAlbum } = useActions();
 
     const [toggler, setToggler] = useState<boolean>(false)
     const [delteToggler, setDeleteToggler] = useState<boolean>(false)
@@ -90,9 +90,7 @@ const FunctionalBar: React.FC = () => {
 
                             if (album.name === 'favoirite') { return null }
                             return <button className='functional-bar___button'
-                               // onClick={() => deleteAlbum(album.id)} key={album.id}
-                                onMouseEnter={() => setDeleteToggler(true)}
-                                onMouseLeave={() => setDeleteToggler(false)}
+                                key={album.id}
                                 onClick={() => selectAlbum(album.id)}
                             >{album?.name}</button>
 

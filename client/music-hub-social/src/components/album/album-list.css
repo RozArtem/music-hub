@@ -1,0 +1,23 @@
+.albums-block {
+  position: relative;
+  height: 100px;
+  width: 200px;
+  border: 1px solid black;
+  overflow: auto;
+  background: rgba(20, 17, 17, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  top: 100%;
+}
+/*# sourceMappingURL=album-list.css.map */

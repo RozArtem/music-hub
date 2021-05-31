@@ -1,0 +1,26 @@
+@import "../../utils.scss";
+
+
+.albums-block {
+
+    position: relative;
+    height: 100px;
+    width: 200px;
+    border: 1px solid black;
+    overflow: auto;
+    background: $BackColorForItem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 100%;
+  
+    
+
+    
+    
+
+
+
+}
+

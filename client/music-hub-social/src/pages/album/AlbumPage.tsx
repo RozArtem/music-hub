@@ -2,16 +2,26 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import Navbar from '../../components/navbar/Navbar'
 import TrackList from '../../components/trakc/TrackList'
+import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
 import logo from '../../logo.svg'
+
 import './album-page.css'
 
 
 const AlbumPage: React.FC = () => {
 
     const { currentAlbum } = useTypedSelector(state => state.album)
+    const { deleteAlbum } = useActions();
 
     const history = useHistory()
+
+
+    function onDeleteAlbum() {
+
+        currentAlbum && deleteAlbum(currentAlbum.id)
+        history.push('/home')
+    }
 
     return (
         <div className='album-page'>
@@ -31,6 +41,11 @@ const AlbumPage: React.FC = () => {
                         <p>album's tracks: {currentAlbum?.traks?.length}</p>
                     </div>
                     <img src={logo} alt="logo" />
+
+                    {currentAlbum?.name !== 'favoirite' && <button className='delete'
+
+                        onClick={() => onDeleteAlbum()}
+                    > Delete album </button>}
 
                 </div>
 

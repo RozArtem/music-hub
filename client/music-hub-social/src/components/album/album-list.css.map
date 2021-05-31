@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,aAAa,CAAC;EAEV,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,eAAe;EACvB,QAAQ,EAAE,IAAI;EACd,UAAU,ECCK,qBAAqB;EDApC,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,aAAa;EAC9B,GAAG,EAAE,IAAI;CASZ",
+    "sources": [
+        "album-list.scss",
+        "../../utils.scss"
+    ],
+    "names": [],
+    "file": "album-list.css"
+}

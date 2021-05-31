@@ -116,7 +116,6 @@
 }
 
 .item___func .item___func___inFav:hover {
-  color: grey;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }

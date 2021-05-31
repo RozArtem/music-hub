@@ -82,15 +82,23 @@
 
         &___add-to-fav {
             &:hover {
-                color: rgb(71, 175, 30);
-                transform: scale(1.1);
+                color: black;
+                transform: scale(1.5);
             }
         }
 
         &___add-to-album {
             &:hover {
-                color: rgb(71, 175, 30);
-                transform: scale(1.1);
+                color: black;
+                transform: scale(1.5);
+            }
+        }
+        .item___func___inFav {
+            color: chartreuse;
+
+            &:hover {
+                color: grey;
+                transform: scale(1.5);
             }
         }
 

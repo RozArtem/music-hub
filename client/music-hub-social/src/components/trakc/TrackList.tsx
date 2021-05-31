@@ -29,16 +29,22 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
 
 
     const [toggler, setToggler] = useState<boolean>(true)
-    const [toggler2, setToggler2] = useState<boolean>(false)
+    const [toggler2, setToggler2] = useState<boolean>(true)
     const [description, setDescription] = useState<string>('')
 
 
-    console.log(toggler2, 'toggler2')
-    function ChoiseTrack(trackID: string) {
+    useEffect(() => {
+        
+      
+
+    }, [])
+
+    function ChoiseTrack(trackID: string, onInFav:boolean) {
 
         getOneTrack(trackID)
         setToggler(false)
 
+        setToggler2(onInFav)
     }
 
     function addComment(trackID: any) {
@@ -50,6 +56,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
         setDescription('')
     }
 
+   
     return (
 
         <div className='track-list'>
@@ -92,7 +99,12 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
                     <div className="track-list___searc-bar">
                         <button className='track-list___searc-bar___btn' onClick={() => setToggler(true)}>BACK</button>
                     </div>
-                    <SelectedItem track={currentTrack} />
+
+              
+                        <SelectedItem track={currentTrack} fav={toggler2} onSetToggler2={setToggler2} />
+
+
+
                     {isAuth ?
                         <div className="comment-list___coment-area">
                             <textarea name="comment" maxLength={255} minLength={3}

@@ -100,15 +100,25 @@
 }
 
 .selected-item___func___add-to-fav:hover {
-  color: #47af1e;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  color: black;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .selected-item___func___add-to-album:hover {
-  color: #47af1e;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  color: black;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.selected-item___func .item___func___inFav {
+  color: chartreuse;
+}
+
+.selected-item___func .item___func___inFav:hover {
+  color: grey;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .selected-item___func___delete:hover {

@@ -41,7 +41,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
         e.stopPropagation()
         addFavorite(track.id)
         setinFav(true)
-        getFavAlbum()
+    
      
 
     }
@@ -50,13 +50,13 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
         e.stopPropagation()
         deleteFromFavorite(track.id)
         setinFav(false)
-        getFavAlbum()
+     
     }
 
 
 
     return (
-        <div className='item' onClick={() => onChoiseTrack(track.id)}>
+        <div className='item' onClick={() => onChoiseTrack(track.id, onInFav)}>
             <div className="item___img">
                 <img src={API_URL + track.picture} alt="trakc img" />
 

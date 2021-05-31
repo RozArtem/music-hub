@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
 
@@ -12,8 +12,9 @@ const FunctionalBar: React.FC = () => {
 
     const { isAuth } = useTypedSelector(state => state.currentUser)
     const { albums, Fav } = useTypedSelector(state => state.album)
+    const history = useHistory()
 
-    const { creatAlbum, deleteAlbum } = useActions();
+    const { creatAlbum, deleteAlbum, getOneAlbum } = useActions();
 
     const [toggler, setToggler] = useState<boolean>(false)
     const [delteToggler, setDeleteToggler] = useState<boolean>(false)
@@ -31,6 +32,12 @@ const FunctionalBar: React.FC = () => {
         setToggler(false)
         setAlbumName('')
 
+    }
+
+    function selectAlbum(albumID: string): void {
+
+        getOneAlbum(albumID)
+        history.push(`/albums/${albumID}`)
     }
 
     return (
@@ -72,6 +79,7 @@ const FunctionalBar: React.FC = () => {
                         }
 
                         <button className='functional-bar___button'
+                            onClick={() => selectAlbum(Fav.id)}
                         > {Fav?.name}
                         </button>
                     </div>
@@ -82,9 +90,10 @@ const FunctionalBar: React.FC = () => {
 
                             if (album.name === 'favoirite') { return null }
                             return <button className='functional-bar___button'
-                                onClick={() => deleteAlbum(album.id)} key={album.id}
+                               // onClick={() => deleteAlbum(album.id)} key={album.id}
                                 onMouseEnter={() => setDeleteToggler(true)}
                                 onMouseLeave={() => setDeleteToggler(false)}
+                                onClick={() => selectAlbum(album.id)}
                             >{album?.name}</button>
 
                         })}

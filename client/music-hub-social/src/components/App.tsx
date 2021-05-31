@@ -13,6 +13,7 @@ import { useTypedSelector } from '../hooks/useTypeSelector'
 import { useActions } from '../hooks/useActions'
 import ProfilesPage from '../pages/user/profiles/ProfilesPage'
 import UserPage from '../pages/user/user/UserPage'
+import AlbumPage from '../pages/album/AlbumPage'
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/authorization-page" component={AuthorizationPage} />
           <Route path='/profiles' component={ProfilesPage} />
           <Route path='/profile' component={UserPage} />
+          <Route path='/albums' component={AlbumPage} />
 
           <Redirect to="/home" />
 

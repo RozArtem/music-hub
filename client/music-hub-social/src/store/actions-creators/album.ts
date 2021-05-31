@@ -37,14 +37,14 @@ export const getOneAlbum = (albumID: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce: IAlbum = await axios.get(`${API_URL}albums/${albumID}`,
+            const responce: IFethcAlbum = await axios.get(`${API_URL}albums/${albumID}`,
 
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.GET_ALBUM, payload: responce })
+            dispatch({ type: AlbumAtionsTypes.GET_ALBUM, payload: responce.data })
 
         } catch (error) {
 

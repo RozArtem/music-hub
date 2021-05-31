@@ -63,10 +63,10 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
             {toggler ?
 
                 <>
-                    <div className="track-list___searc-bar">
+                  {tracks && tracks?.length >= 10 && <div className="track-list___searc-bar">
                         <input className='track-list___searc-bar___search' type='text' />
                         <button className='track-list___searc-bar___btn'>SEARCH</button>
-                    </div>
+                    </div> }  
                     <div className="track-list___container">
 
                         {

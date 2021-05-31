@@ -3,7 +3,7 @@ import { IUser } from "./entity-interfaces";
 
 export interface IUsersState {
     users: IUser[];
-    currentProfile: IUser | null;
+    currentProfile: IUser;
     isLoading: boolean;
     error: null | string;
 
@@ -11,13 +11,14 @@ export interface IUsersState {
 
 
 export enum UsersActionTypes {
-  
+
     FETCH_PROFILES = 'FETCH_PROFILES',
     FETCH_PROFILE = 'FETCH_PROFILE',
     FETCH_CURRENT_PROFILE_SUCCESS = 'FETCH_CURRENT_PROFILE_SUCCESS',
     FETCH_CURRENT_PROFILE_ERROR = 'FETCH_CURRENT_PROFILE_ERROR',
     FETCH_PROFILES_SUCCESS = 'FETCH_PROFILES_SUCCESS',
     FETCH_PROFILES_ERROR = 'FETCH_PROFILES_ERROR',
+    DELETE_TRACK_OF_CURRENT_USER = 'DELETE_TRACK_OF_CURRENT_USER'
 
 }
 
@@ -30,6 +31,10 @@ interface FetchProfilesSuccessAction {
 }
 interface FetchProfilesErrorAction {
     type: UsersActionTypes.FETCH_PROFILES_ERROR;
+    payload: string;
+}
+interface DeleteTrackFromCurrentProfile {
+    type: UsersActionTypes.DELETE_TRACK_OF_CURRENT_USER;
     payload: string;
 }
 interface FetchProfileAction {
@@ -49,4 +54,5 @@ export type UsersActions =
     FetchProfilesErrorAction |
     FetchProfileAction |
     FetchCurrentProfileSuccessAction |
-    FetchCurrentProfileErrorAction
+    FetchCurrentProfileErrorAction |
+    DeleteTrackFromCurrentProfile

@@ -109,12 +109,12 @@ export const deleteOne = (trackID: string) => {
 
         try {
 
-            const responce: string = await axios.delete(`${API_URL}/track/${trackID}`, {
+            const responce = await axios.delete(`${API_URL}track/${trackID}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            dispatch({ type: TracksActionsTypes.DELETE_TRACK, payload: responce })
+            dispatch({ type: TracksActionsTypes.DELETE_TRACK, payload: responce.data })
 
         } catch (error) {
 

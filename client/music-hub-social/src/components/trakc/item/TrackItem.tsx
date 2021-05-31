@@ -13,27 +13,27 @@ interface ITrackProps {
     track: ITrack;
     onChoiseTrack: Function;
     onInFav: boolean;
- 
+
 }
 
 
 const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => {
 
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
-  
+
     let [owner, setOwner] = useState<boolean>(false)
 
-    const { addFavorite, deleteFromFavorite , getFavAlbum} = useActions()
+    const { addFavorite, deleteFromFavorite,  DeleteTrackFromCurrentProfile} = useActions()
 
     const [inFav, setinFav] = useState<boolean>(false)
 
 
 
     useEffect(() => {
-        
-      
-        if (currentUser?.id === track.authorID) {setOwner(true)}
-        
+
+
+        if (currentUser?.id === track.authorID) { setOwner(true) }
+
     }, [])
 
     function addToFavSong(e: any) {
@@ -41,8 +41,8 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
         e.stopPropagation()
         addFavorite(track.id)
         setinFav(true)
-    
-     
+
+
 
     }
     function deleteToFavSong(e: any) {
@@ -50,7 +50,14 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
         e.stopPropagation()
         deleteFromFavorite(track.id)
         setinFav(false)
-     
+
+    }
+
+    function deleteTrack(e: any) {
+
+        e.stopPropagation()
+        DeleteTrackFromCurrentProfile(track.id)
+       
     }
 
 
@@ -77,11 +84,13 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
             {
                 isAuth &&
                 <div className="item___func">
-                    <div className={ onInFav ? 'item___func___inFav' : 'item___func___add-to-fav'}
+                    <div className={onInFav ? 'item___func___inFav' : 'item___func___add-to-fav'}
                         onClick={(e) => onInFav ? deleteToFavSong(e) : addToFavSong(e)}
                     >❤</div>
                     <div className='item___func___add-to-album'>+</div>
-                    {owner && <div className='item___func___delete'>х</div> }
+                    {owner && <div className='item___func___delete'
+                        onClick={(e) => { deleteTrack(e) }}
+                    >х</div>}
                 </div>
             }
         </div>

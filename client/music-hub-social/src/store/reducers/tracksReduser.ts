@@ -53,14 +53,11 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
         }
         case TracksActionsTypes.DELETE_TRACK: {
 
-            const newTraks = [...state.tracks]
-
-                newTraks.filter(elm => elm.id !== action.payload)
           
 
             return {
                 ...state, 
-                tracks: [...newTraks ],
+                tracks: [...state.tracks.filter(elm => elm.id !== action.payload)],
                 isLoading: false
             }
         

@@ -55,7 +55,7 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
         case AlbumAtionsTypes.ADD_TRACK_TO_FAV: 
 
-        const som = state.Fav.traks
+        
 
             return {...state,  isLoading: false,
                  Fav: {...state.Fav, traks: [...state.Fav.traks, action.payload]} }

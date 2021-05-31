@@ -20,6 +20,26 @@ export const getUserProfile = (userId: string) => {
     }
 }
 
+export const DeleteTrackFromCurrentProfile = (trackID: string) => {
+
+    return async (dispatch: Dispatch<UsersActions>) => {
+
+        try {
+
+            const responce = await axios.delete(`${API_URL}track/${trackID}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            dispatch({ type: UsersActionTypes.DELETE_TRACK_OF_CURRENT_USER, payload: responce.data })
+
+        } catch (error) {
+
+            dispatch({ type: UsersActionTypes.FETCH_PROFILES_ERROR, payload: error });
+        }
+    }
+}
+
 
 export const getAllUsersProfiles = (count : number, offset: number) => {
 

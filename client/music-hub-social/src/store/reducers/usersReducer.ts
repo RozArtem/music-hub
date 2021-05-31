@@ -4,41 +4,57 @@ import { IUsersState, UsersActions, UsersActionTypes } from "../../types/users"
 
 
 
-const initialState : IUsersState = {
+const initialState: IUsersState = {
     users: [],
-    currentProfile: null ,
+    currentProfile: {
+        id: '',
+        name: '',
+        email: '',
+        tracks: []
+    },
     isLoading: false,
     error: null
 }
 
 
-export const usersReducer = (state = initialState, action : UsersActions): IUsersState => {
-    
+export const usersReducer = (state = initialState, action: UsersActions): IUsersState => {
+
     switch (action.type) {
 
         case UsersActionTypes.FETCH_PROFILES:
-            
-            return {...state, isLoading: true }
+
+            return { ...state, isLoading: true }
 
         case UsersActionTypes.FETCH_PROFILES_SUCCESS:
-            
-            return {...state, users: action.payload, isLoading: false}
+
+            return { ...state, users: action.payload, isLoading: false }
+
+        case UsersActionTypes.DELETE_TRACK_OF_CURRENT_USER:
+
+            return {
+                ...state,
+                currentProfile: {
+                    ...state.currentProfile,
+                    tracks: [...state.currentProfile?.tracks?.filter(item => item.id !== action.payload)]
+                }
+            }
+
 
         case UsersActionTypes.FETCH_PROFILES_ERROR:
-            
-            return {...state, error: action.payload, users: []}
+
+            return { ...state, error: action.payload, users: [] }
 
         case UsersActionTypes.FETCH_PROFILE:
-            
-            return {...state, isLoading: true}
+
+            return { ...state, isLoading: true }
 
         case UsersActionTypes.FETCH_CURRENT_PROFILE_SUCCESS:
-            
-          return {...state, currentProfile: action.payload, isLoading: false}
+
+            return { ...state, currentProfile: action.payload, isLoading: false }
 
         case UsersActionTypes.FETCH_CURRENT_PROFILE_ERROR:
-            
-            return {...state, error: action.payload}
+
+            return { ...state, error: action.payload }
 
         default:
             return state

@@ -2,7 +2,7 @@ export interface IUser {
     id: string;
     name: string;
     email: string;
-    tracks?: any[];
+    tracks: ITrack[];
     albums?: any[];
 }
 

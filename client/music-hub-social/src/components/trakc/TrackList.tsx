@@ -29,22 +29,22 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
 
 
     const [toggler, setToggler] = useState<boolean>(true)
-    const [toggler2, setToggler2] = useState<boolean>(true)
+    const [checkInFavForSelected, setCheckInFavForSelected] = useState<boolean>(true)
     const [description, setDescription] = useState<string>('')
 
 
     useEffect(() => {
-        
-      
+
+
 
     }, [])
 
-    function ChoiseTrack(trackID: string, onInFav:boolean) {
+    function ChoiseTrack(trackID: string, onInFav: boolean) {
 
         getOneTrack(trackID)
         setToggler(false)
 
-        setToggler2(onInFav)
+        setCheckInFavForSelected(onInFav)
     }
 
     function addComment(trackID: any) {
@@ -56,7 +56,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
         setDescription('')
     }
 
-   
+
     return (
 
         <div className='track-list'>
@@ -100,8 +100,12 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
                         <button className='track-list___searc-bar___btn' onClick={() => setToggler(true)}>BACK</button>
                     </div>
 
-              
-                        <SelectedItem track={currentTrack} fav={toggler2} onSetToggler2={setToggler2} />
+
+                    <SelectedItem
+                        track={currentTrack}
+                        fav={checkInFavForSelected}
+                        onSetToggler2={setCheckInFavForSelected}
+                    />
 
 
 

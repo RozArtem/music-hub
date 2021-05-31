@@ -14,17 +14,21 @@ import './user-page.css'
 
 const UserPage: React.FC = () => {
 
+  
+    
+
     const { currentProfile } = useTypedSelector(state => state.users)
     const { Fav } = useTypedSelector(state => state.album)
-    const { getOneTrack, getFavAlbum, getUserProfile} = useActions()
+    const { getFavAlbum, getUserProfile } = useActions()
 
 
     const history = useHistory()
-
+    const location = history.location.pathname.split('/');
+    console.log();
     useEffect(() => {
 
         getFavAlbum()
-       
+        getUserProfile(location[2])
     }, [])
 
     return (
@@ -53,9 +57,9 @@ const UserPage: React.FC = () => {
             </div>
             <div className="track-list-container">
 
-            <TrackList tracks={currentProfile?.tracks} />
+                <TrackList tracks={currentProfile?.tracks} />
             </div>
-          
+
 
         </div>
     )

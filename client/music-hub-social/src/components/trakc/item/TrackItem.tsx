@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { API_URL } from '../../../config'
 import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypeSelector'
-import { ITrack } from '../../../types/entity-interfaces'
+import { IAlbum, ITrack } from '../../../types/entity-interfaces'
 import AlbumList from '../../album/AlbumList'
+import Faav from '../fav/Faav'
 
 
 import './item.css'
@@ -14,23 +15,25 @@ interface ITrackProps {
     track: ITrack;
     onChoiseTrack: Function;
     onInFav: boolean;
-
+    albums: IAlbum[]
 }
 
 
-const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => {
+const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, albums }) => {
 
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
-    const { albums } = useTypedSelector(state => state.album)
+
 
     let [owner, setOwner] = useState<boolean>(false)
+    let [inFav, setInFav] = useState<boolean>(false)
     const [showAlbumsBlock, setShowAlbumsBlock] = useState<boolean>(false)
+    const { Fav } = useTypedSelector(state => state.album)
 
     const {
         addFavorite,
         deleteFromFavorite,
-        DeleteTrackFromCurrentProfile,
-        addTrakcToAlbum
+        DeleteTrackFromCurrentProfile
+
     } = useActions()
 
 
@@ -39,7 +42,9 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
 
     useEffect(() => {
 
-
+      
+      
+       
         if (currentUser?.id === track.authorID) { setOwner(true) }
 
     }, [])
@@ -105,6 +110,8 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
                     <div className={onInFav ? 'item___func___inFav' : 'item___func___add-to-fav'}
                         onClick={(e) => onInFav ? deleteToFavSong(e) : addToFavSong(e)}
                     >❤</div>
+
+                    <Faav  track={track}/>
                     {albums.length > 1 &&
 
                         <div className='item___func___add-to-album'
@@ -126,7 +133,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav }) => 
 
             {isAuth && showAlbumsBlock &&
 
-                <AlbumList setShowAlbumsBlock={setShowAlbumsBlock} />
+                <AlbumList setShowAlbumsBlock={setShowAlbumsBlock} track={track} albums={albums} />
             }
 
         </div>

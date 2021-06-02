@@ -12,12 +12,22 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   top: 100%;
+  scroll-behavior: smooth;
+}
+
+.albums-block::-webkit-scrollbar {
+  width: 10px;
+  border-bottom: 1px solid black;
+}
+
+.albums-block::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0.1);
+  width: 10px;
+  border-bottom: 1px solid black;
+}
+
+.albums-block::-webkit-scrollbar-thumb {
+  background-color: black;
 }
 /*# sourceMappingURL=album-list.css.map */

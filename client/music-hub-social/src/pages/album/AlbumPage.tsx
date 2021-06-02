@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import Navbar from '../../components/navbar/Navbar'
 import TrackList from '../../components/trakc/TrackList'
@@ -11,9 +11,9 @@ import './album-page.css'
 
 const AlbumPage: React.FC = () => {
 
-    const { currentAlbum } = useTypedSelector(state => state.album)
-    const { deleteAlbum } = useActions();
-
+    const { currentAlbum, albums } = useTypedSelector(state => state.album)
+    const { deleteAlbum, getAllAlbums } = useActions();
+    
     const history = useHistory()
 
 
@@ -22,6 +22,13 @@ const AlbumPage: React.FC = () => {
         currentAlbum && deleteAlbum(currentAlbum.id)
         history.push('/home')
     }
+
+
+    useEffect(() => {
+       
+        getAllAlbums()
+        
+    }, [])
 
     return (
         <div className='album-page'>
@@ -53,7 +60,7 @@ const AlbumPage: React.FC = () => {
             </div>
             <div className="album-page-container">
 
-                <TrackList tracks={currentAlbum?.traks} />
+                <TrackList tracks={currentAlbum?.traks} albums={albums} />
             </div>
 
         </div>

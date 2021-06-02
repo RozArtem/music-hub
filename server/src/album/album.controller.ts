@@ -60,8 +60,8 @@ export class AlbumController {
     @UseGuards(JwtAuthGuard)
     @Delete('/delete-from-album')
     deleteFromAlbum(
+        @Query('albumID') albumID: string,
         @Query('trackID') trackID: string,
-        @Query('trackID') albumID: string,
         @User() user: IUser) {
 
 

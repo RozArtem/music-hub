@@ -1,0 +1,20 @@
+.inalbum {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    cursor: pointer;
+    padding: 3px;
+    justify-content: space-between;
+
+    & * {
+        color: rgb(173, 173, 173);
+        
+    }
+
+    &:hover {
+        & * {
+            color: black;
+        }
+        background-color: rgba(245, 245, 245, 0.5);
+    }
+}

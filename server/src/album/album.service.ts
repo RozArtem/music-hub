@@ -42,7 +42,7 @@ export class AlbumService {
 
     async getAldums(userID: string): Promise<Album[]> {
 
-        const aldums = await this.albumRepositiry.findAll({where: {ownerID: userID}});
+        const aldums = await this.albumRepositiry.findAll({where: {ownerID: userID}, include: {model: Track}});
 
         return aldums
     }
@@ -59,7 +59,7 @@ export class AlbumService {
         return aldum
     }
 
-    async addTrakcToAlbum(dto: AddToAlbumDTO, user: IUser): Promise<AddToAlbumDTO> {
+    async addTrakcToAlbum(dto: AddToAlbumDTO, user: IUser): Promise<any> {
 
         const album = await this.albumRepositiry.findOne({where: {id: dto.albumID, ownerID: user.id}});;
         const track = await this.trackService.getOne(dto.trackId);
@@ -68,7 +68,7 @@ export class AlbumService {
         if (album && track) {
             await album.$add('traks', track);
 
-            return dto
+            return  { album, track}
           
         }
 
@@ -87,14 +87,14 @@ export class AlbumService {
         return track.id
     }
 
-    async deleteFromAlbum(albumID: string, trackID: string, user: IUser): Promise<string> {
+    async deleteFromAlbum(albumID: string, trackID: string, user: IUser): Promise<any> {
 
         const album = await this.albumRepositiry.findOne({where: {id: albumID, ownerID: user.id}});
         const track = await this.trackService.getOne(trackID);
 
         await album.$remove('traks', track);
 
-        return track.id
+        return {album, track}
 
 
     }

@@ -1,23 +1,29 @@
-import React from 'react'
-import { useTypedSelector } from '../../hooks/useTypeSelector'
-import { IAlbum } from '../../types/entity-interfaces'
-import AlbumItem from './item/AlbumItem'
+import React, { useEffect } from 'react'
+import { useActions } from '../../hooks/useActions'
+import { IAlbum, ITrack } from '../../types/entity-interfaces'
 import './album-list.css'
+import InAlbum from './in-album/InAlbum'
 
 interface IAlbumListProps {
 
     setShowAlbumsBlock: Function
+    track: ITrack
+    albums: IAlbum[]
 
 
 }
 
 
-const AlbumList: React.FC<IAlbumListProps> = ({ setShowAlbumsBlock }) => {
+const AlbumList: React.FC<IAlbumListProps> = ({ setShowAlbumsBlock, track, albums }) => {
 
 
-    const { albums } = useTypedSelector(state => state.album)
+   const {getAllAlbums} = useActions()
 
-    console.log(albums.length)
+    useEffect(() => {
+     
+        getAllAlbums()
+        
+    }, [])
 
     return (
 
@@ -32,9 +38,11 @@ const AlbumList: React.FC<IAlbumListProps> = ({ setShowAlbumsBlock }) => {
             {
                 albums.map(album => {
 
+                  
                     if (album.name === 'favoirite') { return null }
 
-                    return <AlbumItem key={album.id} album={album} />
+                    return <InAlbum album={album} track={track} />
+                    
                 })
             }
 

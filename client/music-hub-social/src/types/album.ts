@@ -5,7 +5,7 @@ import { IAlbum, IComment, ITrack } from "./entity-interfaces";
 export interface IAlbumState {
 
     albums: IAlbum[];
-    currentAlbum: IAlbum | null;
+    currentAlbum: IAlbum;
     isLoading: boolean;
     Fav: IAlbum ;
     error: null | string;
@@ -38,6 +38,7 @@ interface addTrakcToFav {
 interface addTrakcToAlbum {
 
     type: AlbumAtionsTypes.ADD_TRACK_TO_ALBUM
+    payload: any
 }
 
 interface deleteAlbum {
@@ -87,7 +88,7 @@ interface deleteFromFavorite {
 interface deleteFromAlbum {
 
     type: AlbumAtionsTypes.DELETE_FROM_ALBUM
-    //  payload: string
+    payload: any
 }
 
 

@@ -4,6 +4,7 @@ import { Dispatch } from "redux";
 import { AlbumAtionsTypes, AlbumsActions } from '../../types/album';
 import { IAlbum } from '../../types/entity-interfaces';
 import { IFethcAlbum, IFethcAlbums, IGetTracks } from './dto';
+import { Console } from 'console';
 
 
 
@@ -141,19 +142,20 @@ export const deleteFromFavorite = (trackId: string) => {
     }
 }
 
-export const deleteFromAlbum = (trackId: string) => {
+export const deleteFromAlbum = (albumID: string, trackID: string) => {
 
     return async (dispatch: Dispatch<AlbumsActions>) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            await axios.delete(`${API_URL}albums/delete-from-album?trackID=${trackId}`,
+           const  responce = await axios.delete(`${API_URL}albums/delete-from-album?albumID=${albumID}&trackID=${trackID}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_ALBUM })
+
+            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_ALBUM , payload: responce.data})
 
         } catch (error) {
 
@@ -168,7 +170,8 @@ export const addTrakcToAlbum = (trackId: string, albumID: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            await axios.post(`${API_URL}albums/dd-track`,
+
+         const  responce = await axios.post(`${API_URL}albums/add-track`,
 
                 {
                     trackId,
@@ -180,11 +183,13 @@ export const addTrakcToAlbum = (trackId: string, albumID: string) => {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.ADD_TRACK_TO_ALBUM })
+
+              
+            dispatch({ type: AlbumAtionsTypes.ADD_TRACK_TO_ALBUM, payload: responce.data })
 
         } catch (error) {
 
-            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data.message });
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data});
         }
     }
 }

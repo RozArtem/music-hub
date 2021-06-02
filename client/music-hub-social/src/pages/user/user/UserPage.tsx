@@ -18,7 +18,7 @@ const UserPage: React.FC = () => {
     
 
     const { currentProfile } = useTypedSelector(state => state.users)
-    const { Fav } = useTypedSelector(state => state.album)
+    const { Fav , albums} = useTypedSelector(state => state.album)
     const { getFavAlbum, getUserProfile } = useActions()
 
 
@@ -57,7 +57,7 @@ const UserPage: React.FC = () => {
             </div>
             <div className="track-list-container">
 
-                <TrackList tracks={currentProfile?.tracks} />
+                <TrackList tracks={currentProfile?.tracks} albums={albums} />
             </div>
 
 

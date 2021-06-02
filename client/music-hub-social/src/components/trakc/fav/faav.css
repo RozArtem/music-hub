@@ -1,0 +1,24 @@
+.fav___inFav {
+  height: 20px;
+  color: chartreuse;
+  margin: 5px;
+}
+
+.fav___inFav:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.fav___add-to-fav {
+  color: rgba(245, 245, 245, 0.3);
+  cursor: pointer;
+  margin: 5px;
+  height: 20px;
+}
+
+.fav___add-to-fav:hover {
+  color: black;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+/*# sourceMappingURL=faav.css.map */

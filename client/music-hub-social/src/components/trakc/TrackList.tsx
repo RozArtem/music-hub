@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
-import { ITrack } from '../../types/entity-interfaces'
+import { IAlbum, ITrack } from '../../types/entity-interfaces'
 import CommentList from '../comment/CommentList'
 import SelectedItem from './item/SelectedItem'
 import TrackItem from './item/TrackItem'
@@ -13,16 +13,18 @@ import './track-list.css'
 interface ITrackListProps {
 
     tracks: ITrack[] | undefined
+    albums: IAlbum[]
 }
 
 
-const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
+const TrackList: React.FC<ITrackListProps> = ({ tracks , albums}) => {
 
     const { getOneTrack, addCommentToTrack } = useActions()
 
     const { currentTrack } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
     const { isAuth } = useTypedSelector(state => state.currentUser)
+ 
 
 
 
@@ -88,7 +90,8 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks }) => {
                                     onInFav={inFav}
                                     key={track.id}
                                     track={track}
-                                    onChoiseTrack={ChoiseTrack} />
+                                    onChoiseTrack={ChoiseTrack}
+                                    albums = {albums}/>
                             })
                         }
 

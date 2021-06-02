@@ -13,6 +13,7 @@
   height: 90%;
   padding: 15px;
   overflow: auto;
+  scroll-behavior: smooth;
 }
 
 .track-list___container::-webkit-scrollbar {

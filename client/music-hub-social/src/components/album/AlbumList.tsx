@@ -19,11 +19,7 @@ const AlbumList: React.FC<IAlbumListProps> = ({ setShowAlbumsBlock, track, album
 
    const {getAllAlbums} = useActions()
 
-    useEffect(() => {
-     
-        getAllAlbums()
-        
-    }, [])
+   
 
     return (
 

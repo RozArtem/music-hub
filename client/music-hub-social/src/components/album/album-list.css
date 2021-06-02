@@ -17,17 +17,18 @@
 }
 
 .albums-block::-webkit-scrollbar {
-  width: 10px;
+  width: 3px;
   border-bottom: 1px solid black;
 }
 
 .albums-block::-webkit-scrollbar-track {
   background-color: rgba(245, 245, 245, 0.1);
-  width: 10px;
+  width: 3px;
   border-bottom: 1px solid black;
 }
 
 .albums-block::-webkit-scrollbar-thumb {
   background-color: black;
+  width: 3px;
 }
 /*# sourceMappingURL=album-list.css.map */

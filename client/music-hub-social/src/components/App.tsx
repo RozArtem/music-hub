@@ -14,6 +14,7 @@ import { useActions } from '../hooks/useActions'
 import ProfilesPage from '../pages/user/profiles/ProfilesPage'
 import UserPage from '../pages/user/user/UserPage'
 import AlbumPage from '../pages/album/AlbumPage'
+import AddTrackPage from '../pages/add-track/AddTrackPage'
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
           <Route path='/profiles' component={ProfilesPage} />
           <Route path='/profile' component={UserPage} />
           <Route path='/albums' component={AlbumPage} />
+          <Route path='/add-track' component={AddTrackPage} />
 
           <Redirect to="/home" />
 

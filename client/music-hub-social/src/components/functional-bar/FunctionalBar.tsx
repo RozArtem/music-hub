@@ -56,7 +56,10 @@ const FunctionalBar: React.FC = () => {
 
                     <div className="functional-bar___container-func">
 
-                        <button className='functional-bar___button'>ADD NEW</button>
+                        <button className='functional-bar___button'
+                        onClick={() => history.push('/add-track')}
+                        
+                        >ADD NEW</button>
                         {toggler ?
 
                             <div className="functional-bar___creator-album-box">

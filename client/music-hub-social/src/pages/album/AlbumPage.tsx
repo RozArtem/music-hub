@@ -12,7 +12,7 @@ import './album-page.css'
 const AlbumPage: React.FC = () => {
 
     const { currentAlbum, albums } = useTypedSelector(state => state.album)
-    const { deleteAlbum, getAllAlbums } = useActions();
+    const { deleteAlbum, getAllAlbums , searchInAlbum} = useActions();
     
     const history = useHistory()
 
@@ -60,7 +60,7 @@ const AlbumPage: React.FC = () => {
             </div>
             <div className="album-page-container">
 
-                <TrackList tracks={currentAlbum?.traks} albums={albums} />
+                <TrackList tracks={currentAlbum?.traks} albums={albums}  serchFunc={searchInAlbum} />
             </div>
 
         </div>

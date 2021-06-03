@@ -9,7 +9,7 @@ import { AddCommentDTO } from '../comment/dto/add-comment.dto';
 import { CommentService } from 'src/comment/comment.service';
 import { IUser } from 'src/auth/user-interface';
 import { Album } from 'src/album/album.model';
-
+import { Op } from "sequelize";
 
 
 
@@ -45,7 +45,7 @@ export class TrackService {
     async getAll(count = 10, offset = 0): Promise<Track[]> {
         const tracks = await this.trackRepository.findAll({
 
-            include: {model: Album},
+            include: { model: Album },
             offset: (Number(offset)),
             limit: (Number(count))
         });
@@ -89,12 +89,15 @@ export class TrackService {
 
     async serch(query: string): Promise<Track[]> {
 
-        const nameSerch = new RegExp(query, 'i');
+
 
         const tracks = await this.trackRepository.findAll(
             {
                 where: {
-                    name: `${nameSerch}`
+                    name:
+                    {
+                        [Op.regexp]: query
+                    }
                 }
             })
 
@@ -108,14 +111,18 @@ export class TrackService {
         const tracks = await this.trackRepository.findAll(
             {
                 where: {
-                    name: `${nameSerch}`,
+
+                    name:
+                    {
+                        [Op.regexp]: query
+                    },
                     authorID: userID
                 }
             })
 
         return tracks
     }
-    
+
     async searchInAlbum(query: string, albumID: string): Promise<Track[]> {
 
         const nameSerch = new RegExp(query, 'i');
@@ -123,7 +130,11 @@ export class TrackService {
         const tracks = await this.trackRepository.findAll(
             {
                 where: {
-                    name: `${nameSerch}`,
+
+                    name:
+                    {
+                        [Op.regexp]: query
+                    },
                     albums: albumID
                 }
             })

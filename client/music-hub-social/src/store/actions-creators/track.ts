@@ -99,6 +99,36 @@ export const search = (query: string) => {
 
         try {
             dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
+            const responce: any  = await axios.get(`${API_URL}track/search/${query}`)
+            dispatch({ type: TracksActionsTypes.SEATCH_TRACK, payload: responce.data})
+
+        } catch (error) {
+
+            dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error });
+        }
+    }
+}
+export const searchUserOwnTraks = (query: string) => {
+
+    return async (dispatch: Dispatch<TracksActions>) => {
+
+        try {
+            dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
+            const responce: ITrack[] = await axios.get(`${API_URL}/track?name=${query}`)
+            dispatch({ type: TracksActionsTypes.SEATCH_TRACK, payload: responce })
+
+        } catch (error) {
+
+            dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error });
+        }
+    }
+}
+export const searchInAlbum = (query: string) => {
+
+    return async (dispatch: Dispatch<TracksActions>) => {
+
+        try {
+            dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
             const responce: ITrack[] = await axios.get(`${API_URL}/track?name=${query}`)
             dispatch({ type: TracksActionsTypes.SEATCH_TRACK, payload: responce })
 

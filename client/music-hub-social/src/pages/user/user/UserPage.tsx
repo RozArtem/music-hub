@@ -19,7 +19,7 @@ const UserPage: React.FC = () => {
 
     const { currentProfile } = useTypedSelector(state => state.users)
     const { Fav , albums} = useTypedSelector(state => state.album)
-    const { getFavAlbum, getUserProfile } = useActions()
+    const { getFavAlbum, getUserProfile, searchUserOwnTraks } = useActions()
 
 
     const history = useHistory()
@@ -57,7 +57,7 @@ const UserPage: React.FC = () => {
             </div>
             <div className="track-list-container">
 
-                <TrackList tracks={currentProfile?.tracks} albums={albums} />
+                <TrackList tracks={currentProfile?.tracks} albums={albums} serchFunc={searchUserOwnTraks}/>
             </div>
 
 

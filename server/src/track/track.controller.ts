@@ -73,8 +73,8 @@ export class TrackController {
         return this.trackService.searchInAlbum(name, albumID)
     }
 
-    @Get('search')
-    search(@Query('name') name: string) {
+    @Get('search/:name')
+    search(@Param('name') name: string) {
 
         return this.trackService.serch(name)
     }

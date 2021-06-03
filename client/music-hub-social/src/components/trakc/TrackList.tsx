@@ -14,17 +14,18 @@ interface ITrackListProps {
 
     tracks: ITrack[] | undefined
     albums: IAlbum[]
+    serchFunc: Function
 }
 
 
-const TrackList: React.FC<ITrackListProps> = ({ tracks , albums}) => {
+const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => {
 
     const { getOneTrack, addCommentToTrack } = useActions()
 
     const { currentTrack } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
     const { isAuth } = useTypedSelector(state => state.currentUser)
- 
+
 
 
 
@@ -33,6 +34,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks , albums}) => {
     const [toggler, setToggler] = useState<boolean>(true)
     const [checkInFavForSelected, setCheckInFavForSelected] = useState<boolean>(true)
     const [description, setDescription] = useState<string>('')
+    const [serchValue, setSerchValue] = useState<string>('')
 
 
     useEffect(() => {
@@ -58,6 +60,11 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks , albums}) => {
         setDescription('')
     }
 
+ 
+
+       
+        
+
 
     return (
 
@@ -65,10 +72,15 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks , albums}) => {
             {toggler ?
 
                 <>
-                  {tracks && tracks?.length >= 10 && <div className="track-list___searc-bar">
-                        <input className='track-list___searc-bar___search' type='text' />
-                        <button className='track-list___searc-bar___btn'>SEARCH</button>
-                    </div> }  
+                    {tracks && tracks?.length >= 10 && <div className="track-list___searc-bar">
+                        <input className='track-list___searc-bar___search' type='text'
+                            value={serchValue}
+                            onChange={(e) => { setSerchValue(e.target.value) }}
+                        />
+                        <button className='track-list___searc-bar___btn'
+                            onClick={() => {serchFunc(serchValue)}}
+                        >SEARCH</button>
+                    </div>}
                     <div className="track-list___container">
 
                         {
@@ -91,7 +103,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks , albums}) => {
                                     key={track.id}
                                     track={track}
                                     onChoiseTrack={ChoiseTrack}
-                                    albums = {albums}/>
+                                    albums={albums} />
                             })
                         }
 

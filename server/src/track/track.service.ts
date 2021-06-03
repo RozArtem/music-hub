@@ -101,5 +101,35 @@ export class TrackService {
         return tracks
     }
 
+    async searchUserOwnTraks(query: string, userID: string): Promise<Track[]> {
+
+        const nameSerch = new RegExp(query, 'i');
+
+        const tracks = await this.trackRepository.findAll(
+            {
+                where: {
+                    name: `${nameSerch}`,
+                    authorID: userID
+                }
+            })
+
+        return tracks
+    }
+    
+    async searchInAlbum(query: string, albumID: string): Promise<Track[]> {
+
+        const nameSerch = new RegExp(query, 'i');
+
+        const tracks = await this.trackRepository.findAll(
+            {
+                where: {
+                    name: `${nameSerch}`,
+                    albums: albumID
+                }
+            })
+
+        return tracks
+    }
+
 
 }

@@ -61,6 +61,18 @@ export class TrackController {
         return this.trackService.addComment(dto, id, user)
     }
     
+    @Get('search/:userID/own-tracks')
+    searchUserOwnTraks(@Param('userID') userID: string, @Query('name') name: string) {
+
+        return this.trackService.searchUserOwnTraks(name, userID)
+    }
+
+    @Get('search/:albumID/tracks')
+    searchInAlbum(@Param('albumID') albumID: string, @Query('name') name: string) {
+
+        return this.trackService.searchInAlbum(name, albumID)
+    }
+
     @Get('search')
     search(@Query('name') name: string) {
 

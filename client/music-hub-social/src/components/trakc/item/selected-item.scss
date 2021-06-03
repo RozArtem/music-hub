@@ -9,7 +9,6 @@
     margin-top: 1px;
 
     &___img {
-        
         height: 50px;
         width: 50px;
         background-color: whitesmoke;
@@ -56,10 +55,13 @@
 
     &___name {
         align-self: center;
+     
     }
 
     &___author {
         align-self: center;
+        cursor: pointer;
+        text-decoration: underline;
     }
 
     &___duration {
@@ -103,6 +105,10 @@
         }
 
         &___delete {
+            color: grey;
+            position: relative;
+            top: -40px;
+
             &:hover {
                 color: rgb(167, 23, 13);
                 transform: scale(1.1);

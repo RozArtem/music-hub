@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { API_URL } from '../../../config'
 import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypeSelector'
@@ -20,26 +20,27 @@ interface ITrackProps {
 
 
 
-const SelectedItem: React.FC<ITrackProps> = ({ track, fav , onSetToggler2}) => {
+const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
-    const { isAuth } = useTypedSelector(state => state.currentUser)
 
+    const history = useHistory()
+    const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
+    const { users} = useTypedSelector(state => state.users)
+    let [owner, setOwner] = useState<boolean>(false)
     const { Fav } = useTypedSelector(state => state.album)
-    const { addFavorite, deleteFromFavorite } = useActions()
+    const { addFavorite,
+        deleteFromFavorite,
+        DeleteTrackFromCurrentProfile } = useActions()
 
-    let [author, setAuthor] = useState<any>()
 
-    
+    const author =   users.find(user => user.id === track?.authorID)
 
     useEffect(() => {
 
 
-     
+        if (currentUser?.id === track?.authorID) { setOwner(true) }
 
-        axios.get(`${API_URL}users/user/${track?.authorID}`)
-            .then(res => {
-                setAuthor(author = res.data.name);
-            })
+      
     }, [])
 
     function addToFavSong(e: any) {
@@ -55,6 +56,12 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav , onSetToggler2}) => {
         e.stopPropagation()
         track && deleteFromFavorite(track.id)
         onSetToggler2(false)
+
+    }
+    function deleteTrack(e: any) {
+
+        e.stopPropagation()
+        track && DeleteTrackFromCurrentProfile(track?.id)
 
     }
 
@@ -75,8 +82,12 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav , onSetToggler2}) => {
                     {track?.name}
                 </div>
 
-                <div className="selected-item___author">
-                    uploaded by: {author}
+                <div className="selected-item___author"
+
+                    onClick={() => {history.push(`/profile/${author?.id}`)}}
+                
+                >
+                    uploaded by: {author?.name}
                 </div>
 
                 <div className="selected-item___duration">
@@ -86,11 +97,14 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav , onSetToggler2}) => {
             {
                 isAuth &&
                 <div className="selected-item___func">
-                    <div className={fav  ? 'item___func___inFav' : 'item___func___add-to-fav'}
-                        onClick={(e) => fav  ? deleteToFavSong(e) : addToFavSong(e)}
+                    <div className={fav ? 'item___func___inFav' : 'item___func___add-to-fav'}
+                        onClick={(e) => fav ? deleteToFavSong(e) : addToFavSong(e)}
                     >❤</div>
                     <div className='item___func___add-to-album'>+</div>
-                    <div className='selected-item___func___delete'>х</div>
+                    {owner && <div className='selected-item___func___delete'
+                        onClick={(e) => { deleteTrack(e) }}
+                    >х</div>}
+
                 </div>
             }
         </div>

@@ -37,13 +37,9 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
     } = useActions()
 
 
-
-
+  
 
     useEffect(() => {
-
-      
-      
        
         if (currentUser?.id === track.authorID) { setOwner(true) }
 

@@ -129,6 +129,12 @@
           transform: scale(1.5);
 }
 
+.item___func___delete {
+  color: grey;
+  position: relative;
+  top: -40px;
+}
+
 .item___func___delete:hover {
   color: #a7170d;
   -webkit-transform: scale(1.1);

@@ -8,22 +8,28 @@ import { IAddComment, IGetTrack, IGetTracks } from "./dto"
 
 
 
-export const addTrack = (name: string, formData: FormData) => {
+export const addTrack = (name: string, picture: any,  audio: any) => {
 
     return async (dispatch: Dispatch<TracksActions>) => {
-
         try {
 
-            const responce: ITrack = await axios.post(`${API_URL}`, {
-                name,
-                formData
-            },
-                {
+
+            const files = new FormData();
+
+
+            files.append('picture', picture);
+            files.append('audio', audio);
+            files.append('name', name)
+   
+            const responce: any = await axios.post(`${API_URL}track`,  files 
+           
+               , {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: TracksActionsTypes.ADD_TRACK, payload: responce })
+                debugger
+              dispatch({ type: TracksActionsTypes.ADD_TRACK, payload: responce.data })
 
         } catch (error) {
 
@@ -127,7 +133,7 @@ export const deleteComment = (commentID: string) => {
     return async (dispatch: Dispatch<TracksActions>) => {
 
         try {
-            const responce  = await axios.delete(`${API_URL}comment/${commentID}`, {
+            const responce = await axios.delete(`${API_URL}comment/${commentID}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -148,11 +154,11 @@ export const addCommentToTrack = (description: string, trackID: string) => {
     return async (dispatch: Dispatch<TracksActions>) => {
 
         try {
-           
+
             const responce: IAddComment = await axios.post(`${API_URL}track/${trackID}/add-comment`, {
-                
+
                 description
-              
+
             },
                 {
                     headers: {
@@ -160,7 +166,7 @@ export const addCommentToTrack = (description: string, trackID: string) => {
                     }
                 })
 
-              
+
             dispatch({ type: TracksActionsTypes.ADD_COMMENT_TO_TRACK, payload: responce.data })
 
         } catch (error) {

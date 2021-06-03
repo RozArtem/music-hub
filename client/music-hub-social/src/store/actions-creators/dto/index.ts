@@ -18,7 +18,7 @@ export interface authDTO {
 }
 
 export interface IAddComment {
-    
+
     readonly data: IComment
 }
 
@@ -35,15 +35,15 @@ export interface IFethcUsers {
 
     readonly data: IUser[]
 }
-export interface IFethcUser{
+export interface IFethcUser {
 
     readonly data: IUser
 }
-export interface IFethcAlbums{
+export interface IFethcAlbums {
 
     readonly data: IAlbum[]
 }
-export interface IFethcAlbum{
+export interface IFethcAlbum {
 
     readonly data: IAlbum
 }

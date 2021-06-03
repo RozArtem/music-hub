@@ -24,8 +24,8 @@ export class TrackController {
     ]))
     create(@UploadedFiles() files, @Body() dto: CreatTackDTO, @User() user : IUser) {
         
-        const { picture, audio } = files
-        return    {files, dto} //this.trackService.creat(dto, picture[0], audio[0], user);
+       const { picture, audio } = files
+        return  this.trackService.creat(dto, picture[0], audio[0], user);
     }
 
     @UseGuards(JwtAuthGuard) 

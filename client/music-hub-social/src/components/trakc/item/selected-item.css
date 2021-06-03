@@ -72,6 +72,8 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .selected-item___duration {
@@ -119,6 +121,12 @@
   color: grey;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
+}
+
+.selected-item___func___delete {
+  color: grey;
+  position: relative;
+  top: -40px;
 }
 
 .selected-item___func___delete:hover {

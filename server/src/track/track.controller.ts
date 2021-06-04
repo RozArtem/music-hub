@@ -61,8 +61,8 @@ export class TrackController {
         return this.trackService.addComment(dto, id, user)
     }
     
-    @Get('search/:userID/own-tracks')
-    searchUserOwnTraks(@Param('userID') userID: string, @Query('name') name: string) {
+    @Get('search/:userID/own-tracks/:name')
+    searchUserOwnTraks(@Param('userID') userID: string, @Param('name') name: string) {
 
         return this.trackService.searchUserOwnTraks(name, userID)
     }

@@ -38,6 +38,15 @@ export const usersReducer = (state = initialState, action: UsersActions): IUsers
                     tracks: [...state.currentProfile?.tracks?.filter(item => item.id !== action.payload)]
                 }
             }
+        case UsersActionTypes.SEAR_OWN_TRACKS:
+
+            return {
+                ...state,
+                currentProfile: {
+                    ...state.currentProfile,
+                    tracks: action.payload
+                }
+            }
 
 
         case UsersActionTypes.FETCH_PROFILES_ERROR:

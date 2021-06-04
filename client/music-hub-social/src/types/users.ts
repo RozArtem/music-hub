@@ -1,4 +1,4 @@
-import { IUser } from "./entity-interfaces";
+import { ITrack, IUser } from "./entity-interfaces";
 
 
 export interface IUsersState {
@@ -18,12 +18,17 @@ export enum UsersActionTypes {
     FETCH_CURRENT_PROFILE_ERROR = 'FETCH_CURRENT_PROFILE_ERROR',
     FETCH_PROFILES_SUCCESS = 'FETCH_PROFILES_SUCCESS',
     FETCH_PROFILES_ERROR = 'FETCH_PROFILES_ERROR',
-    DELETE_TRACK_OF_CURRENT_USER = 'DELETE_TRACK_OF_CURRENT_USER'
+    DELETE_TRACK_OF_CURRENT_USER = 'DELETE_TRACK_OF_CURRENT_USER',
+    SEAR_OWN_TRACKS = 'SEAR_OWN_TRACKS'
 
 }
 
 interface FetchProfilesAction {
     type: UsersActionTypes.FETCH_PROFILES;
+}
+interface SearchOwnTracks {
+    type: UsersActionTypes.SEAR_OWN_TRACKS
+    payload: ITrack[]
 }
 interface FetchProfilesSuccessAction {
     type: UsersActionTypes.FETCH_PROFILES_SUCCESS;
@@ -55,4 +60,5 @@ export type UsersActions =
     FetchProfileAction |
     FetchCurrentProfileSuccessAction |
     FetchCurrentProfileErrorAction |
-    DeleteTrackFromCurrentProfile
+    DeleteTrackFromCurrentProfile |
+    SearchOwnTracks

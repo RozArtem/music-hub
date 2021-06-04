@@ -32,6 +32,8 @@ interface searchTrack {
     type: TracksActionsTypes.SEATCH_TRACK;
     payload: ITrack[]
 }
+
+
 interface addTrack {
     type: TracksActionsTypes.ADD_TRACK;
     payload: ITrack

@@ -68,6 +68,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
         e.stopPropagation()
         DeleteTrackFromCurrentProfile(track.id)
 
+
     }
 
     function onBlockAddToAlbum(e: any) {
@@ -82,7 +83,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
     return (
 
 
-        <div className='item' onClick={() => onChoiseTrack(track.id, onInFav)}>
+        <div className='item' onClick={() => onChoiseTrack(track, onInFav)}>
             <div className="item___img">
                 <img src={API_URL + track.picture} alt="trakc img" />
 

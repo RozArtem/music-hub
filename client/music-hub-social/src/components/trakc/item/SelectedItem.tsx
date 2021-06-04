@@ -25,24 +25,28 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
     const history = useHistory()
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
-    const { users} = useTypedSelector(state => state.users)
+    const { users, currentProfile} = useTypedSelector(state => state.users)
     let [owner, setOwner] = useState<boolean>(false)
     const { Fav } = useTypedSelector(state => state.album)
     const { addFavorite,
         deleteFromFavorite,
-        DeleteTrackFromCurrentProfile } = useActions()
+        DeleteTrackFromCurrentProfile,
+        getUserProfile } = useActions()
 
 
-    const author =   users.find(user => user.id === track?.authorID)
+ 
 
+  
     useEffect(() => {
-
+        
 
         if (currentUser?.id === track?.authorID) { setOwner(true) }
 
       
     }, [])
 
+
+    console.log(currentProfile)
     function addToFavSong(e: any) {
 
         e.stopPropagation()
@@ -84,10 +88,10 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
                 <div className="selected-item___author"
 
-                    onClick={() => {history.push(`/profile/${author?.id}`)}}
+                    onClick={() => {history.push(`/profile/${currentProfile?.id}`)}}
                 
                 >
-                    uploaded by: {author?.name}
+                    uploaded by: {currentProfile?.name}
                 </div>
 
                 <div className="selected-item___duration">

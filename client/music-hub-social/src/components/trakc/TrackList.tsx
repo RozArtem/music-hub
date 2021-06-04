@@ -20,7 +20,7 @@ interface ITrackListProps {
 
 const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => {
 
-    const { getOneTrack, addCommentToTrack } = useActions()
+    const { getOneTrack, addCommentToTrack, getAll, getUserProfile } = useActions()
 
     const { currentTrack } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
@@ -32,6 +32,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
 
 
     const [toggler, setToggler] = useState<boolean>(true)
+    const [serching, setSerching] = useState<boolean>(false)
     const [checkInFavForSelected, setCheckInFavForSelected] = useState<boolean>(true)
     const [description, setDescription] = useState<string>('')
     const [serchValue, setSerchValue] = useState<string>('')
@@ -43,11 +44,11 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
 
     }, [])
 
-    function ChoiseTrack(trackID: string, onInFav: boolean) {
+    function ChoiseTrack(track: ITrack, onInFav: boolean) {
 
-        getOneTrack(trackID)
+        getOneTrack(track.id)
         setToggler(false)
-
+        getUserProfile(track?.authorID || '')
         setCheckInFavForSelected(onInFav)
     }
 
@@ -60,10 +61,19 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
         setDescription('')
     }
 
- 
 
-       
-        
+
+    function onSearch() {
+
+        if (serchValue.trim() === '') {
+            getAll()
+            setSerching(false)
+        }
+
+        serchFunc(serchValue)
+        setSerching(true)
+    }
+
 
 
     return (
@@ -72,15 +82,19 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
             {toggler ?
 
                 <>
-                    {tracks && tracks?.length >= 10 && <div className="track-list___searc-bar">
+                    {serching || tracks && tracks?.length >= 10 ? <div className="track-list___searc-bar">
                         <input className='track-list___searc-bar___search' type='text'
                             value={serchValue}
                             onChange={(e) => { setSerchValue(e.target.value) }}
                         />
                         <button className='track-list___searc-bar___btn'
-                            onClick={() => {serchFunc(serchValue)}}
+                            onClick={() => { onSearch() }}
                         >SEARCH</button>
-                    </div>}
+                    </div>
+
+                        :
+                        null
+                    }
                     <div className="track-list___container">
 
                         {

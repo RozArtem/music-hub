@@ -67,10 +67,10 @@ export class TrackController {
         return this.trackService.searchUserOwnTraks(name, userID)
     }
 
-    @Get('search/:albumID/tracks')
-    searchInAlbum(@Param('albumID') albumID: string, @Query('name') name: string) {
+    @Get('search/:albumID/tracks/:name')
+    searchInAlbum(@Param('albumID') albumID: string, @Param('name') name: string) {
 
-        return this.trackService.searchInAlbum(name, albumID)
+        return  this.trackService.searchInAlbum(name, albumID)
     }
 
     @Get('search/:name')

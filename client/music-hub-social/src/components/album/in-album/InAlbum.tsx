@@ -38,7 +38,7 @@ const InAlbum: React.FC<IInAlbum> = ({ album,
 
     }
 
-    console.log(itemInAlbum)
+  
     return (
 
         <div >

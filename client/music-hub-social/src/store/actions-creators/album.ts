@@ -23,11 +23,11 @@ export const getAllAlbums = () => {
                 })
 
             dispatch({ type: AlbumAtionsTypes.GET_ALL_ALBUMS, payload: responce.data })
-            
+
 
         } catch (error) {
 
-            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.response.data});
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.response.data });
         }
     }
 }
@@ -102,7 +102,7 @@ export const addFavorite = (trackId: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-           const responce = await axios.post(`${API_URL}albums/add-to-fav`,
+            const responce = await axios.post(`${API_URL}albums/add-to-fav`,
 
                 {
                     trackId
@@ -113,11 +113,11 @@ export const addFavorite = (trackId: string) => {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.ADD_TRACK_TO_FAV , payload: responce.data})
+            dispatch({ type: AlbumAtionsTypes.ADD_TRACK_TO_FAV, payload: responce.data })
 
         } catch (error) {
 
-            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data});
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data });
         }
     }
 }
@@ -127,17 +127,41 @@ export const deleteFromFavorite = (trackId: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-          const responce =   await axios.delete(`${API_URL}albums/delete-from-fav?trackID=${trackId}`,
+            const responce = await axios.delete(`${API_URL}albums/delete-from-fav?trackID=${trackId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM , payload: responce.data})
+            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_FAV_ALBUM, payload: responce.data })
 
         } catch (error) {
 
             dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data.message });
+        }
+    }
+}
+
+
+export const searchInAlbum = (albumID: string, query: string) => {
+
+    return async (dispatch: Dispatch<AlbumsActions>) => {
+
+        try {
+            dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
+            const responce: any = await axios.get(`${API_URL}track/search/${albumID}/tracks/${query}`,
+
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }
+            )
+            dispatch({ type: AlbumAtionsTypes.SEATCH_TRACKS_IN_ALBUM, payload: responce.data })
+
+        } catch (error) {
+
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error });
         }
     }
 }
@@ -148,14 +172,14 @@ export const deleteFromAlbum = (albumID: string, trackID: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-           const  responce = await axios.delete(`${API_URL}albums/delete-from-album?albumID=${albumID}&trackID=${trackID}`,
+            const responce = await axios.delete(`${API_URL}albums/delete-from-album?albumID=${albumID}&trackID=${trackID}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
 
-            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_ALBUM , payload: responce.data})
+            dispatch({ type: AlbumAtionsTypes.DELETE_FROM_ALBUM, payload: responce.data })
 
         } catch (error) {
 
@@ -171,7 +195,7 @@ export const addTrakcToAlbum = (trackId: string, albumID: string) => {
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
 
-         const  responce = await axios.post(`${API_URL}albums/add-track`,
+            const responce = await axios.post(`${API_URL}albums/add-track`,
 
                 {
                     trackId,
@@ -184,26 +208,26 @@ export const addTrakcToAlbum = (trackId: string, albumID: string) => {
                     }
                 })
 
-              
+
             dispatch({ type: AlbumAtionsTypes.ADD_TRACK_TO_ALBUM, payload: responce.data })
 
         } catch (error) {
 
-            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data});
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data });
         }
     }
 }
-export const  creatAlbum = (name: string) => {
+export const creatAlbum = (name: string) => {
 
     return async (dispatch: Dispatch<AlbumsActions>) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce  =  await axios.post(`${API_URL}albums`,
+            const responce = await axios.post(`${API_URL}albums`,
 
-            {
-                name
-            },
+                {
+                    name
+                },
 
                 {
                     headers: {
@@ -212,7 +236,7 @@ export const  creatAlbum = (name: string) => {
                 })
 
             dispatch({ type: AlbumAtionsTypes.CREAT_ALBUM, payload: responce.data })
-          
+
 
         } catch (error) {
 

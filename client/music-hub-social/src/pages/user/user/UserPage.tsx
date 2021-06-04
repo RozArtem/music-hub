@@ -20,7 +20,7 @@ const UserPage: React.FC = () => {
     const { currentProfile } = useTypedSelector(state => state.users)
     const { Fav , albums} = useTypedSelector(state => state.album)
     const { getFavAlbum, getUserProfile, searchUserOwnTraks } = useActions()
-    const [serchValue, setSerchValue] = useState<string>('')
+    
 
 
     const history = useHistory()
@@ -34,7 +34,7 @@ const UserPage: React.FC = () => {
 
     function seachTrack(query: string) {
         
-        if (serchValue.trim() === '') {
+        if (query.trim() === '') {
             getUserProfile(location[2])
          
         }

@@ -67,6 +67,19 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
             }
         }
+        case AlbumAtionsTypes.SEATCH_TRACKS_IN_ALBUM: {
+
+        
+
+
+            return {
+                ...state, isLoading: false,
+                currentAlbum: {...state.currentAlbum, traks:action.payload.tracks}
+
+
+
+            }
+        }
 
         case AlbumAtionsTypes.GET_ALBUM:
 

@@ -10,6 +10,7 @@ import { CommentService } from 'src/comment/comment.service';
 import { IUser } from 'src/auth/user-interface';
 import { Album } from 'src/album/album.model';
 import { Op } from "sequelize";
+import { AlbumService } from 'src/album/album.service';
 
 
 
@@ -19,7 +20,8 @@ export class TrackService {
     constructor(
         @InjectModel(Track) private trackRepository: typeof Track,
         private fileService: FileService,
-        private commentService: CommentService,
+        private commentService: CommentService
+
 
     ) { }
 
@@ -106,7 +108,7 @@ export class TrackService {
 
     async searchUserOwnTraks(query: string, userID: string): Promise<Track[]> {
 
-        const nameSerch = new RegExp(query, 'i');
+       
 
         const tracks = await this.trackRepository.findAll(
             {
@@ -123,9 +125,9 @@ export class TrackService {
         return tracks
     }
 
-    async searchInAlbum(query: string, albumID: string): Promise<Track[]> {
-
-        const nameSerch = new RegExp(query, 'i');
+    async searchInAlbum(query: string, albumID: string): Promise<any> {
+        
+        
 
         const tracks = await this.trackRepository.findAll(
             {
@@ -134,12 +136,18 @@ export class TrackService {
                     name:
                     {
                         [Op.regexp]: query
-                    },
-                    albums: albumID
+                    }
+    
+                }, 
+                include: {
+                    model: Album,
+                    where: {
+                        id: albumID
+                    }
                 }
             })
 
-        return tracks
+        return {tracks, albumID}
     }
 
 

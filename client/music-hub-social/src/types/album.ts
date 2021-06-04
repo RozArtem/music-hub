@@ -7,7 +7,7 @@ export interface IAlbumState {
     albums: IAlbum[];
     currentAlbum: IAlbum;
     isLoading: boolean;
-    Fav: IAlbum ;
+    Fav: IAlbum;
     error: null | string;
 }
 
@@ -25,7 +25,8 @@ export enum AlbumAtionsTypes {
     ERROR_ALBUMS_ACTION = 'ERROR_ALBUMS_ACTION',
     GET_FAV_ALBUM = 'GET_FAV_ALBUM',
     DELETE_FROM_FAV_ALBUM = 'DELETE_FROM_FAV_ALBUM',
-    DELETE_FROM_ALBUM = 'DELETE_FROM_ALBUM'
+    DELETE_FROM_ALBUM = 'DELETE_FROM_ALBUM',
+    SEATCH_TRACKS_IN_ALBUM = 'SEATCH_TRACKS_IN_ALBUM'
 }
 
 
@@ -33,6 +34,11 @@ interface addTrakcToFav {
 
     type: AlbumAtionsTypes.ADD_TRACK_TO_FAV,
     payload: ITrack
+}
+interface SearchTrackInAlbum {
+
+    type: AlbumAtionsTypes.SEATCH_TRACKS_IN_ALBUM,
+    payload: any
 }
 
 interface addTrakcToAlbum {
@@ -104,4 +110,5 @@ export type AlbumsActions =
     errroAlbumsActions |
     getFavAlbum |
     deleteFromFavorite |
-    deleteFromAlbum
+    deleteFromAlbum |
+    SearchTrackInAlbum

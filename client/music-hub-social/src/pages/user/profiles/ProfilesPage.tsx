@@ -37,7 +37,7 @@ const ProfilesPage: React.FC = () => {
                })} 
               
             </div>
-            <PlayBar />
+            
         </div>
     )
 }

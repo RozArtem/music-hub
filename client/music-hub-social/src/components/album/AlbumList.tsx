@@ -37,7 +37,7 @@ const AlbumList: React.FC<IAlbumListProps> = ({ setShowAlbumsBlock, track, album
                   
                     if (album.name === 'favoirite') { return null }
 
-                    return <InAlbum album={album} track={track} />
+                    return <InAlbum album={album} track={track}  key={album.id}/>
                     
                 })
             }

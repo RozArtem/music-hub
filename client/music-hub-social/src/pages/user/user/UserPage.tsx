@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import Navbar from '../../../components/navbar/Navbar'
+import PlayBar from '../../../components/play-bar/PlayBar'
 import TrackItem from '../../../components/trakc/item/TrackItem'
 import TrackList from '../../../components/trakc/TrackList'
 import { useActions } from '../../../hooks/useActions'
@@ -70,7 +71,7 @@ const UserPage: React.FC = () => {
                 <TrackList tracks={currentProfile?.tracks} albums={albums} serchFunc={seachTrack}/>
             </div>
 
-
+          
         </div>
     )
 }

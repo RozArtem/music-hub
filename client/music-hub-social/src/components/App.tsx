@@ -15,6 +15,7 @@ import ProfilesPage from '../pages/user/profiles/ProfilesPage'
 import UserPage from '../pages/user/user/UserPage'
 import AlbumPage from '../pages/album/AlbumPage'
 import AddTrackPage from '../pages/add-track/AddTrackPage'
+import PlayBar from './play-bar/PlayBar'
 
 const App = () => {
 
@@ -43,6 +44,8 @@ const App = () => {
 
 
       </Router>
+
+      <PlayBar />
     </div>
   )
 }

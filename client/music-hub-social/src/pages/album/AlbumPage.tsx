@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import Navbar from '../../components/navbar/Navbar'
+import PlayBar from '../../components/play-bar/PlayBar'
 import TrackList from '../../components/trakc/TrackList'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
@@ -72,7 +73,7 @@ const AlbumPage: React.FC = () => {
 
                 <TrackList tracks={currentAlbum?.traks} albums={albums} serchFunc={onSearchInAlbum} />
             </div>
-
+           
         </div>
     )
 }

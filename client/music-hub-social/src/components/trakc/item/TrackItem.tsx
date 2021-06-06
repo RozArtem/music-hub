@@ -19,28 +19,39 @@ interface ITrackProps {
 }
 
 
+
 const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, albums }) => {
 
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
+    const { pause, active, currentTime, duration , audio} = useTypedSelector(state => state.player)
 
 
     let [owner, setOwner] = useState<boolean>(false)
-    let [inFav, setInFav] = useState<boolean>(false)
+
     const [showAlbumsBlock, setShowAlbumsBlock] = useState<boolean>(false)
-    const { Fav } = useTypedSelector(state => state.album)
+
 
     const {
         addFavorite,
         deleteFromFavorite,
-        DeleteTrackFromCurrentProfile
+        DeleteTrackFromCurrentProfile,
+        setActiveTrack,
+        pauseTrack,
+        playTrack
+   
+
 
     } = useActions()
 
 
-  
+
+
+
 
     useEffect(() => {
-       
+
+      
+
         if (currentUser?.id === track.authorID) { setOwner(true) }
 
     }, [])
@@ -71,11 +82,29 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
 
     }
 
-    function onBlockAddToAlbum(e: any) {
+    function setPlayTrack(e: any) {
 
         e.stopPropagation()
-        setShowAlbumsBlock(true)
 
+        playTrack()
+
+   
+      
+        if (active?.id !== track.id) {
+            setActiveTrack(track)
+           
+        }
+
+      
+    }
+
+    function setPauseTrack(e: any) {
+
+        e.stopPropagation()
+        pauseTrack()
+
+       
+      
     }
 
 
@@ -88,18 +117,32 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
                 <img src={API_URL + track.picture} alt="trakc img" />
 
             </div>
-            <div className="item___play-bar">
-                ▶
-               </div>
+
+            <div className="item___play-bar"
+
+                onClick={(e) => {
+                    active?.id === track.id && !pause ?
+
+                        setPauseTrack(e)
+
+                        :
+
+                        setPlayTrack(e)
+                }}
+
+            >
+                {active?.id === track.id && !pause ? '||' : '>'}
+            </div>
             <div className="item___info">
 
                 <div className="item___name">
+
+
                     {track.name}
+
                 </div>
 
-                <div className="item___duration">
-                    15:15/!%:!%
-               </div>
+
             </div>
             {
                 isAuth &&
@@ -108,7 +151,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
                         onClick={(e) => onInFav ? deleteToFavSong(e) : addToFavSong(e)}
                     >❤</div>
 
-                    <Faav  track={track}/>
+                    <Faav track={track} />
                     {albums.length > 1 &&
 
                         <div className='item___func___add-to-album'

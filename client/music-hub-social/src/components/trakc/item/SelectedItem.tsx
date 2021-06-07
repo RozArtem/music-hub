@@ -25,24 +25,30 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
     const history = useHistory()
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
-    const { users, currentProfile} = useTypedSelector(state => state.users)
+    const { currentProfile } = useTypedSelector(state => state.users)
+    const { active , pause} = useTypedSelector(state => state.player)
     let [owner, setOwner] = useState<boolean>(false)
-    const { Fav } = useTypedSelector(state => state.album)
-    const { addFavorite,
+    const {
+        addFavorite,
         deleteFromFavorite,
         DeleteTrackFromCurrentProfile,
-        getUserProfile } = useActions()
+        setActiveTrack,
+        pauseTrack,
+        playTrack
+
+    }
+        = useActions()
 
 
- 
 
-  
+
+
     useEffect(() => {
-        
+
 
         if (currentUser?.id === track?.authorID) { setOwner(true) }
 
-      
+
     }, [])
 
 
@@ -69,6 +75,32 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
     }
 
+    function setPlayTrack(e: any) {
+
+        e.stopPropagation()
+
+        playTrack()
+
+
+
+        if (active?.id !== track?.id) {
+            track && setActiveTrack(track)
+
+        }
+
+
+    }
+
+    function setPauseTrack(e: any) {
+
+        e.stopPropagation()
+        pauseTrack()
+
+
+
+    }
+
+
 
     return (
 
@@ -77,8 +109,21 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
                 <img src={API_URL + track?.picture} alt="trakc img" />
 
             </div>
-            <div className="selected-item___play-bar">
-                ▶
+            <div className="selected-item___play-bar"
+
+                onClick={(e) => {
+                    active?.id === track?.id && !pause ?
+
+                        setPauseTrack(e)
+
+                        :
+
+                        setPlayTrack(e)
+                }}
+
+
+            >
+                {active?.id === track?.id && !pause ? '||' : '>'}
                </div>
             <div className="selected-item___info">
 
@@ -88,8 +133,8 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
                 <div className="selected-item___author"
 
-                    onClick={() => {history.push(`/profile/${currentProfile?.id}`)}}
-                
+                    onClick={() => { history.push(`/profile/${currentProfile?.id}`) }}
+
                 >
                     uploaded by: {currentProfile?.name}
                 </div>

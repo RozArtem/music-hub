@@ -41,7 +41,15 @@ const PlayBar = React.memo(() => {
 
     }
 
-   
+        if (pause) {
+
+            audioObj.pause()
+        }
+    
+        if(!pause && audioObj) {
+
+            audioObj.play()
+        }
 
     if (!active) {
 
@@ -59,7 +67,7 @@ const PlayBar = React.memo(() => {
                 onPlay={(e) => onPlayTrack(e)}
                 onPause={(e) => onPauseTrack(e)}
                 autoPlay={true}
-
+              
 
             ></audio>
 

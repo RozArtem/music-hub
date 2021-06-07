@@ -147,9 +147,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
             {
                 isAuth &&
                 <div className="item___func">
-                    <div className={onInFav ? 'item___func___inFav' : 'item___func___add-to-fav'}
-                        onClick={(e) => onInFav ? deleteToFavSong(e) : addToFavSong(e)}
-                    >❤</div>
+                   
 
                     <Faav track={track} />
                     {albums.length > 1 &&
@@ -159,7 +157,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
                             onMouseEnter={() => { setShowAlbumsBlock(true) }}
                             onMouseOver={() => { setShowAlbumsBlock(true) }}
                             onMouseLeave={() => { setShowAlbumsBlock(false) }}
-                        >+</div>
+                        >{!showAlbumsBlock && '+'}</div>
                     }
                     {owner && <div className='item___func___delete'
                         onClick={(e) => { deleteTrack(e) }}

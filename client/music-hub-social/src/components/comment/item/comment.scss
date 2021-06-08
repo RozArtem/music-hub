@@ -46,3 +46,59 @@
 
 
 }
+
+
+
+@media (max-width: 900px) {
+
+    .comment {
+
+        width: 95%;
+        min-height: 100px;
+        margin-top: 20px;
+        font-size: 12px;
+        
+        &___author {
+    
+            
+            height: 30%;
+            background-color: rgba(146, 146, 135, 0.7);
+            padding: 5px;
+            border-radius: 0 100%  0 0;
+            width: 30%;
+        
+            
+    
+       
+        }
+    
+        &___text {
+    
+            height: 70%;
+            min-height: 70%;
+            background-color: whitesmoke;
+            height: fit-content;
+            padding: 10px;
+            border-radius: 0 15px 15px 15px ;
+            display: flex;
+            justify-content: space-between;
+    
+    
+            &___delete {
+    
+                color: red;
+                cursor: pointer;
+                align-self: flex-end;
+                margin-bottom: -3px;
+                margin-left: 3px;
+                
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+    
+    
+    }
+    
+ }

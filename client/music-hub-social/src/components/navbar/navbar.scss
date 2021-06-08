@@ -98,6 +98,12 @@
 @media (max-width: 1200px) {
     .navbar {
         justify-content: space-around;
+
+
+        
+   
+
+
         &___navigation {
             width: 70%;
 
@@ -131,5 +137,8 @@
     .mobile-func {
         color: whitesmoke;
         margin-left: 15px;
+        cursor: pointer;
     }
+
+
 }

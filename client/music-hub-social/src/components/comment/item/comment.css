@@ -41,4 +41,47 @@
 .comment___text___delete:hover {
   color: black;
 }
+
+@media (max-width: 900px) {
+  .comment {
+    width: 95%;
+    min-height: 100px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  .comment___author {
+    height: 30%;
+    background-color: rgba(146, 146, 135, 0.7);
+    padding: 5px;
+    border-radius: 0 100%  0 0;
+    width: 30%;
+  }
+  .comment___text {
+    height: 70%;
+    min-height: 70%;
+    background-color: whitesmoke;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 0 15px 15px 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .comment___text___delete {
+    color: red;
+    cursor: pointer;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    margin-bottom: -3px;
+    margin-left: 3px;
+  }
+  .comment___text___delete:hover {
+    color: black;
+  }
+}
 /*# sourceMappingURL=comment.css.map */

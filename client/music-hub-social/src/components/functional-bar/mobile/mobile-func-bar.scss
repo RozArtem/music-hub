@@ -189,3 +189,12 @@
 .hide-albums {
     border-bottom: 1px solid whitesmoke;
 }
+
+
+@media (min-width: 900px) {
+    .mobile-functional-bar {
+        display: none;
+    }
+
+
+}

@@ -4,4 +4,10 @@
   background: linear-gradient(225deg, #020024 1%, #096d79 49%, #00d4ff 88%);
   padding-bottom: 50px;
 }
+
+@media (max-width: 900px) {
+  .fucn-content {
+    padding: 0;
+  }
+}
 /*# sourceMappingURL=home.css.map */

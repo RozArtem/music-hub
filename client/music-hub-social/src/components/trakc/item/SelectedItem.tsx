@@ -140,7 +140,7 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
                 </div>
 
                 <div className="selected-item___duration">
-                    15:15/!%:!%
+                  
                </div>
             </div>
             {

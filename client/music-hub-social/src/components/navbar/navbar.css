@@ -41,6 +41,10 @@
   width: 50%;
 }
 
+.navbar___navigation___nav-container .modile-nav {
+  display: none;
+}
+
 .navbar___navigation___nav-container .nav-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,5 +111,41 @@
 
 .navbar___navigation___logout:hover * {
   color: black;
+}
+
+@media (max-width: 1200px) {
+  .navbar {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .navbar___navigation {
+    width: 70%;
+  }
+  .navbar___navigation___nav-container {
+    width: 50%;
+  }
+  .navbar___navigation___nav-container a {
+    color: whitesmoke;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .navbar___navigation {
+    width: 70%;
+  }
+  .navbar___navigation___nav-container {
+    width: 50%;
+  }
+  .navbar___navigation___nav-container .nav-content {
+    display: none;
+  }
+  .mobile-func {
+    color: whitesmoke;
+    margin-left: 15px;
+  }
 }
 /*# sourceMappingURL=navbar.css.map */

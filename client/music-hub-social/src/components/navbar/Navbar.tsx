@@ -11,6 +11,8 @@ const Navbar: React.FC = () => {
     const history = useHistory()
     const { logout , getUserProfile} = useActions()
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
+    const { isShowFucnBar } = useTypedSelector(state => state.player)
+    const { ShowFucnBar, HideFucnBar} = useActions()
 
     function moveToSinInOrLogOut() {
 
@@ -33,6 +35,7 @@ const Navbar: React.FC = () => {
             </NavLink>
             <div className="navbar___navigation">
                 <nav className="navbar___navigation___nav-container">
+                   
                     <ul className="nav-content">
                         {isAuth && <li onClick={() => moveToMyProfile()}><a >My profile</a></li>}
                         <li> <NavLink  to='/profiles'><a >Profiles</a></NavLink></li>
@@ -42,7 +45,12 @@ const Navbar: React.FC = () => {
                 <button className="navbar___navigation___logout"
                     onClick={() => { moveToSinInOrLogOut() }}
                 > {isAuth ? 'Log Out' : 'Sing In'}</button>
+                <div className="mobile-func"
 
+                    onClick={()=> {isShowFucnBar? HideFucnBar() : ShowFucnBar()}}
+                >
+                {isShowFucnBar ? 'X': '☰'}
+                </div>
             </div>
         </div>
     )

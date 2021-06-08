@@ -31,6 +31,9 @@
         &___nav-container {
             width: 50%;
 
+            .modile-nav {
+                display: none;
+            }
             .nav-content {
                 display: flex;
                 justify-content: space-between;
@@ -49,7 +52,6 @@
 
                     &:hover {
                         background-color: whitesmoke;
-                        
                     }
 
                     a {
@@ -60,15 +62,12 @@
                         width: 100%;
 
                         &:hover {
-                            
-                           color: black;
+                            color: black;
                         }
                     }
                 }
             }
-           
         }
-
 
         &___logout {
             height: 30px;
@@ -82,8 +81,6 @@
 
             &_nav {
                 color: whitesmoke;
-              
-               
             }
 
             &:hover {
@@ -95,5 +92,44 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar {
+        justify-content: space-around;
+        &___navigation {
+            width: 70%;
+
+            &___nav-container {
+                width: 50%;
+
+                a {
+                    color: whitesmoke;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        justify-content: space-around;
+        &___navigation {
+            width: 70%;
+
+            &___nav-container {
+                width: 50%;
+
+                .nav-content {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .mobile-func {
+        color: whitesmoke;
+        margin-left: 15px;
     }
 }

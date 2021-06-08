@@ -54,10 +54,15 @@ const AddTrackPage = () => {
 
         if (!pictureData || !trackData) {
 
-          return   alert('Seletc files for your track')
+            return alert('Seletc files for your track')
         }
 
         addTrack(name, pictureData, trackData)
+
+        setTrackData(null)
+        setPictureData(null)
+        setName('')
+       
     }
 
 

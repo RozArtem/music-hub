@@ -7,6 +7,7 @@ export interface IPlayerState {
     currentTime: number;
     pause: boolean
     audio: null | HTMLAudioElement
+    isShowFucnBar: boolean
 
 }
 
@@ -18,8 +19,16 @@ export enum PlayerActionTypes {
     SET_DURATION = "SET_DURATION",
     SET_CURRENT_TIME = "SET_CURRENT_TIME",
     SET_VOLUME = "SET_VOLUME",
+    SHOW_FUNCK_BAR = "SHOW_FUNCK_BAR",
+    HIDE_FUNCK_BAR = "HIDE_FUNCK_BAR",
 }
 
+interface ShowAction {
+    type: PlayerActionTypes.SHOW_FUNCK_BAR
+}
+interface HideAction {
+    type: PlayerActionTypes.HIDE_FUNCK_BAR
+}
 interface PlayAction {
     type: PlayerActionTypes.PLAY
 }
@@ -28,11 +37,11 @@ interface PauseAction {
 }
 interface SetActiveAction {
     type: PlayerActionTypes.SET_ACTIVE,
-    payload: ITrack ;
+    payload: ITrack;
 }
 interface SetAudio {
     type: PlayerActionTypes.SET_AUDIO,
-    payload: HTMLAudioElement ;
+    payload: HTMLAudioElement;
 }
 interface SetDurationAction {
     type: PlayerActionTypes.SET_DURATION,
@@ -54,4 +63,6 @@ export type PlayerAction =
     SetDurationAction |
     SetVolumeAction |
     SetCurrentTimeAction |
-    SetAudio
+    SetAudio |
+    ShowAction |
+    HideAction

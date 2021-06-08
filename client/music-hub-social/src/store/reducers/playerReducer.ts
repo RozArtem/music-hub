@@ -6,12 +6,16 @@ const initialState: IPlayerState = {
     active: null,
     volume: 50,
     pause: false,
-    audio: null
-   
+    audio: null,
+    isShowFucnBar: false
 }
 
 export const playerReducer = (state = initialState, action: PlayerAction): IPlayerState => {
     switch (action.type) {
+        case PlayerActionTypes.SHOW_FUNCK_BAR:
+            return {...state, isShowFucnBar:true}
+        case PlayerActionTypes.HIDE_FUNCK_BAR:
+            return {...state, isShowFucnBar:false, }
         case PlayerActionTypes.PAUSE:
             return {...state, pause:true}
         case PlayerActionTypes.PLAY:

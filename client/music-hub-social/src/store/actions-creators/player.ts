@@ -5,6 +5,12 @@ import { PlayerAction, PlayerActionTypes } from "../../types/player"
 
 
 
+export const ShowFucnBar = (): PlayerAction => {
+    return {type: PlayerActionTypes.SHOW_FUNCK_BAR}
+}
+export const HideFucnBar = (): PlayerAction => {
+    return {type: PlayerActionTypes.HIDE_FUNCK_BAR}
+}
 export const playTrack = (): PlayerAction => {
     return {type: PlayerActionTypes.PLAY}
 }

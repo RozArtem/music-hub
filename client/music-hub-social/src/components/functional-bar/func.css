@@ -131,4 +131,10 @@
   width: 3px;
   background-color: rgba(20, 17, 17, 0.5);
 }
+
+@media (max-width: 900px) {
+  .functional-bar {
+    display: none;
+  }
+}
 /*# sourceMappingURL=func.css.map */

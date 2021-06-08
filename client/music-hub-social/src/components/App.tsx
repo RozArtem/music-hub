@@ -16,11 +16,12 @@ import UserPage from '../pages/user/user/UserPage'
 import AlbumPage from '../pages/album/AlbumPage'
 import AddTrackPage from '../pages/add-track/AddTrackPage'
 import PlayBar from './play-bar/PlayBar'
+import MobileFucnBar from './functional-bar/mobile/MobileFucnBar'
 
 const App = () => {
 
 
-  const { isAuth } = useTypedSelector(state => state.currentUser)
+  const { isShowFucnBar } = useTypedSelector(state => state.player)
   const { auth } = useActions()
 
   useEffect(() => { auth()  }, [])
@@ -43,6 +44,7 @@ const App = () => {
         </Switch>
 
 
+        {isShowFucnBar && <MobileFucnBar />}  
       </Router>
 
       <PlayBar />

@@ -87,7 +87,7 @@ const FunctionalBar: React.FC = () => {
                         </button>
                     </div>
 
-
+                    
                     <div className="albums-container">
                         {albums.map(album => {
 

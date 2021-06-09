@@ -40,3 +40,50 @@
         }
     }
 }
+
+
+@media(max-width:900px) {
+    .auth {
+        height: 50%;
+    }
+    
+    .authorization {
+        height: auto;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+    
+        &___header {
+            align-self: center;
+            text-align: center;
+            font-size: 18px;
+        }
+    
+        &___btn {
+            height: 30px;
+            border: none;
+            color: white;
+            margin-top: 15px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            background: rgb(17, 15, 50);
+            background: linear-gradient(
+                360deg,
+                rgba(17, 15, 50, 1) 34%,
+                rgba(9, 38, 121, 1) 100%,
+                rgba(0, 212, 255, 1) 100%
+            );
+        }
+        &___btn2 {
+            margin-top: 5px;
+            align-self: flex-end;
+            cursor: pointer;
+    
+    
+            &:hover {
+                color: whitesmoke;
+            }
+        }
+    }
+    
+}

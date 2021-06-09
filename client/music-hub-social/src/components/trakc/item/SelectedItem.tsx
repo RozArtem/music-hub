@@ -123,7 +123,11 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
 
             >
-                {active?.id === track?.id && !pause ? '||' : '>'}
+         
+                {active?.id === track?.id && !pause ? 
+                <div className="play-sml">||</div> 
+                 : 
+                 <div className="play-sml">{'>'}</div>}
                </div>
             <div className="selected-item___info">
 

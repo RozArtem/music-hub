@@ -131,13 +131,17 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
                 }}
 
             >
-                {active?.id === track.id && !pause ? '||' : '>'}
+                {active?.id === track.id && !pause ? 
+                <div className="play-sml">||</div> 
+                 : 
+                 <div className="play-sml">{'>'}</div>}
             </div>
             <div className="item___info">
 
                 <div className="item___name">
 
-
+                
+                
                     {track.name}
 
                 </div>

@@ -81,7 +81,6 @@
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    height: 10%;
     border-radius: 0 0 12px 0;
   }
   .user-page___container_btn {

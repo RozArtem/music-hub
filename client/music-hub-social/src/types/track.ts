@@ -3,10 +3,12 @@ import { IComment, ITrack } from "./entity-interfaces";
 
 export interface ITrackState {
     tracks: ITrack[];
-    currentTrack: ITrack | null ;
+    currentTrack: ITrack | null;
     coments: IComment[];
     isLoading: boolean;
     error: null | string;
+    offset: number;
+    countOfAll: number;
 }
 
 
@@ -22,11 +24,27 @@ export enum TracksActionsTypes {
     SEATCH_TRACK = 'SEATCH_TRACK',
     ADD_COMMENT_TO_TRACK = 'ADD_COMMENT_TO_TRACK',
     GET_COMMENTS = 'GET_COMMENTS',
-    DELETE_COMMENT_OF_TRACK = 'DELETE_COMMENT_OF_TRACK'
+    DELETE_COMMENT_OF_TRACK = 'DELETE_COMMENT_OF_TRACK',
+    INCREASE_OFFSET = 'INCREASE_OFFSET',
+    DECREASE_OFFSET = 'DECREASE_OFFSET',
+    NULLIFY_OFFSET = 'NULLIFY_OFFSET'
 
-    
+
 }
 
+
+interface nullifyOffset {
+    type: TracksActionsTypes.NULLIFY_OFFSET;
+
+}
+interface increaseOffset {
+    type: TracksActionsTypes.INCREASE_OFFSET;
+
+}
+
+interface decreaseOffset {
+    type: TracksActionsTypes.DECREASE_OFFSET;
+}
 
 interface searchTrack {
     type: TracksActionsTypes.SEATCH_TRACK;
@@ -41,7 +59,7 @@ interface addTrack {
 interface addCommentToTrack {
     type: TracksActionsTypes.ADD_COMMENT_TO_TRACK;
     payload: IComment;
-    
+
 }
 interface getOwnTracks {
     type: TracksActionsTypes.GET_OWN_TRACKS;
@@ -60,7 +78,10 @@ interface getingTrackLoad {
 }
 interface getAllTraks {
     type: TracksActionsTypes.GET_ALL_TRACKS;
-    payload: ITrack[]
+    payload: {
+        tracks: ITrack[],
+        countOfAll: number
+    }
 }
 interface deletTrack {
     type: TracksActionsTypes.DELETE_TRACK;
@@ -69,7 +90,7 @@ interface deletTrack {
 interface deletCommentOfTrack {
     type: TracksActionsTypes.DELETE_COMMENT_OF_TRACK;
     payload: string
-    
+
 }
 interface trackErrorAction {
     type: TracksActionsTypes.TRACK_ACTION_ERROS;
@@ -86,4 +107,7 @@ export type TracksActions =
     searchTrack |
     addCommentToTrack |
     getCommentsTracks |
-    deletCommentOfTrack
+    deletCommentOfTrack |
+    increaseOffset |
+    decreaseOffset |
+    nullifyOffset

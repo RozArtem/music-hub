@@ -44,7 +44,7 @@ const MobileFucnBar = () => {
         history.push(`/profile/${currentUser?.id}`)
     }
 
-    console.log(albums.length)
+   
     return (
         <div className='mobile-functional-bar'>
 

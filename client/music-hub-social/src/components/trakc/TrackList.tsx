@@ -12,17 +12,23 @@ import './track-list.css'
 
 interface ITrackListProps {
 
-    tracks: ITrack[] | undefined
+    tracks: ITrack[]
     albums: IAlbum[]
     serchFunc: Function
 }
 
 
+
 const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => {
 
-    const { getOneTrack, addCommentToTrack, getAll, getUserProfile } = useActions()
+    const { getOneTrack,
+        addCommentToTrack,
+        getAll,
+        getUserProfile,
+        increaseOffset,
+        decreaseOffset } = useActions()
 
-    const { currentTrack } = useTypedSelector(state => state.track)
+    const { currentTrack, offset, countOfAll } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
     const { isAuth } = useTypedSelector(state => state.currentUser)
 
@@ -37,12 +43,32 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
     const [description, setDescription] = useState<string>('')
     const [serchValue, setSerchValue] = useState<string>('')
 
+    let list: Element
 
     useEffect(() => {
 
- 
+        list = document.getElementsByClassName('track-list___container')[0];
+        list?.addEventListener('scroll', ScrollHandler)
 
-    }, [])
+    }, [toggler])
+
+    useEffect(() => {
+
+       
+        
+        
+        if (tracks.length < countOfAll) {
+
+            getAll(10, offset )
+           
+        } else {
+
+
+        }
+
+    }, [offset])
+
+
 
     function ChoiseTrack(track: ITrack, onInFav: boolean) {
 
@@ -74,8 +100,34 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
         setSerching(true)
     }
 
+    function ScrollHandler(e: any) {
 
 
+        if( offset > countOfAll) {
+            console.log('wegewgwegew')
+        }
+
+
+        if (list.scrollHeight === (list.clientHeight + list.scrollTop) ) {
+
+
+
+               increaseOffset()   
+
+        }
+
+        if (list.scrollTop === 0 ) {
+
+            
+                decreaseOffset()
+            
+
+
+        }
+
+    }
+
+    console.log(tracks.length, countOfAll)
     return (
 
         <div className='track-list'>

@@ -6,7 +6,9 @@ const InitialState: ITrackState = {
     currentTrack: null,
     coments: [],
     isLoading: false,
-    error: null
+    error: null,
+    offset: 10,
+    countOfAll: 0,
 
 }
 
@@ -15,6 +17,22 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
 
     switch (action.type) {
 
+        case TracksActionsTypes.NULLIFY_OFFSET: {
+
+            return { ...state, offset: 0 }
+        }
+        case TracksActionsTypes.INCREASE_OFFSET: {
+
+            return { ...state, offset: state.offset + 10 }
+        }
+        case TracksActionsTypes.INCREASE_OFFSET: {
+
+            return { ...state, offset: state.offset + 10 }
+        }
+        case TracksActionsTypes.DECREASE_OFFSET: {
+
+            return { ...state, offset: state.offset - 10 }
+        }
         case TracksActionsTypes.GETING_TRACK_LOAD: {
 
             return { ...state, isLoading: true }
@@ -41,7 +59,11 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
         }
         case TracksActionsTypes.GET_ALL_TRACKS: {
 
-            return { ...state, tracks: action.payload, isLoading: false }
+            return { ...state, 
+                tracks: [...state.tracks, ...action.payload.tracks], 
+                isLoading: false,
+                countOfAll: action.payload.countOfAll
+            }
         }
         case TracksActionsTypes.GET_COMMENTS: {
 

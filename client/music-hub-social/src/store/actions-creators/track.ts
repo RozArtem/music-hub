@@ -8,7 +8,7 @@ import { IAddComment, IGetTrack, IGetTracks } from "./dto"
 
 
 
-export const addTrack = (name: string, picture: any,  audio: any) => {
+export const addTrack = (name: string, picture: any, audio: any) => {
 
     return async (dispatch: Dispatch<TracksActions>) => {
         try {
@@ -20,17 +20,17 @@ export const addTrack = (name: string, picture: any,  audio: any) => {
             files.append('picture', picture);
             files.append('audio', audio);
             files.append('name', name)
-   
-            const responce: any = await axios.post(`${API_URL}track`,  files 
-           
-               , {
+
+            const responce: any = await axios.post(`${API_URL}track`, files
+
+                , {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-                debugger
-              dispatch({ type: TracksActionsTypes.ADD_TRACK, payload: responce.data })
-              alert('New track has been uploaded')
+            debugger
+            dispatch({ type: TracksActionsTypes.ADD_TRACK, payload: responce.data })
+            alert('New track has been uploaded')
 
         } catch (error) {
 
@@ -76,14 +76,14 @@ export const getOneTrack = (trackID: string) => {
     }
 }
 
-export const getAll = () => {
+export const getAll = (count = 10, offset = 0) => {
 
     return async (dispatch: Dispatch<TracksActions>) => {
 
         try {
 
             dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
-            const responce: IGetTracks = await axios.get(`${API_URL}track`)
+            const responce: IGetTracks = await axios.get(`${API_URL}track?count=${count}&offset=${offset}`)
 
             dispatch({ type: TracksActionsTypes.GET_ALL_TRACKS, payload: responce.data })
 
@@ -100,8 +100,8 @@ export const search = (query: string) => {
 
         try {
             dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
-            const responce: any  = await axios.get(`${API_URL}track/search/${query}`)
-            dispatch({ type: TracksActionsTypes.SEATCH_TRACK, payload: responce.data})
+            const responce: any = await axios.get(`${API_URL}track/search/${query}`)
+            dispatch({ type: TracksActionsTypes.SEATCH_TRACK, payload: responce.data })
 
         } catch (error) {
 
@@ -177,4 +177,14 @@ export const addCommentToTrack = (description: string, trackID: string) => {
             dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error.data });
         }
     }
+}
+
+export const increaseOffset = (): TracksActions => {
+    return { type: TracksActionsTypes.INCREASE_OFFSET }
+}
+export const decreaseOffset = (): TracksActions => {
+    return { type: TracksActionsTypes.DECREASE_OFFSET }
+}
+export const nullifyOffset = (): TracksActions => {
+    return { type: TracksActionsTypes.NULLIFY_OFFSET }
 }

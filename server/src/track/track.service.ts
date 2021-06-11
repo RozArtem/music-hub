@@ -11,6 +11,7 @@ import { IUser } from 'src/auth/user-interface';
 import { Album } from 'src/album/album.model';
 import { Op } from "sequelize";
 import { AlbumService } from 'src/album/album.service';
+import { ReturnTackDTO } from './dto/return-track.dto';
 
 
 
@@ -44,15 +45,16 @@ export class TrackService {
         return track;
     }
 
-    async getAll(count = 10, offset = 0): Promise<Track[]> {
+    async getAll(count = 10, offset = 0): Promise<ReturnTackDTO> {
         const tracks = await this.trackRepository.findAll({
 
             include: { model: Album },
             offset: (Number(offset)),
             limit: (Number(count))
         });
-
-        return tracks;
+        const countOfAll = await this.trackRepository.count()
+        
+        return {tracks, countOfAll};
     }
     async getAllAdded(count = 10, offset = 0, user: IUser): Promise<Track[]> {
         const tracks = await this.trackRepository.findAll({
@@ -61,6 +63,7 @@ export class TrackService {
             limit: (Number(count))
         });
 
+        
         return tracks;
     }
 

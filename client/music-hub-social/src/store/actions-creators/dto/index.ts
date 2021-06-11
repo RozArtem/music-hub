@@ -24,7 +24,10 @@ export interface IAddComment {
 
 export interface IGetTracks {
 
-    readonly data: ITrack[]
+    readonly data: {
+        readonly tracks: ITrack[];
+        readonly countOfAll: number
+    }
 }
 export interface IGetTrack {
 

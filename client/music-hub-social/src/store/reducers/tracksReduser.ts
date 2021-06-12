@@ -60,7 +60,7 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
         case TracksActionsTypes.GET_ALL_TRACKS: {
 
             return { ...state, 
-                tracks: [...state.tracks, ...action.payload.tracks], 
+                tracks: action.payload.tracks, 
                 isLoading: false,
                 countOfAll: action.payload.countOfAll
             }

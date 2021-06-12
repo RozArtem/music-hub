@@ -251,7 +251,7 @@
   .selected-item___func___delete {
     color: grey;
     position: relative;
-    top: -40px;
+    top: -10px;
   }
   .selected-item___func___delete:hover {
     color: #a7170d;

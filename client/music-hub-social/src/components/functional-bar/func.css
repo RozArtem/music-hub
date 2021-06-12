@@ -117,6 +117,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 5px;
+  margin-top: 10px;
 }
 
 .albums-container::-webkit-scrollbar {
@@ -130,6 +131,13 @@
 .albums-container::-webkit-scrollbar-thumb {
   width: 3px;
   background-color: rgba(20, 17, 17, 0.5);
+}
+
+.titile-albums {
+  margin-top: 50px;
+  text-align: center;
+  color: whitesmoke;
+  border-bottom: 1px solid whitesmoke;
 }
 
 @media (max-width: 900px) {

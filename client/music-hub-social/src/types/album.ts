@@ -26,7 +26,8 @@ export enum AlbumAtionsTypes {
     GET_FAV_ALBUM = 'GET_FAV_ALBUM',
     DELETE_FROM_FAV_ALBUM = 'DELETE_FROM_FAV_ALBUM',
     DELETE_FROM_ALBUM = 'DELETE_FROM_ALBUM',
-    SEATCH_TRACKS_IN_ALBUM = 'SEATCH_TRACKS_IN_ALBUM'
+    SEATCH_TRACKS_IN_ALBUM = 'SEATCH_TRACKS_IN_ALBUM',
+    GET_FAV_ALBUM_NEXT = 'GET_FAV_ALBUM_NEXT',
 }
 
 
@@ -62,6 +63,11 @@ interface getFavAlbum {
 
     type: AlbumAtionsTypes.GET_FAV_ALBUM,
     payload: IAlbum
+}
+interface getFavAlbumTraksNext {
+
+    type: AlbumAtionsTypes.GET_FAV_ALBUM_NEXT,
+    payload: ITrack[]
 }
 
 interface getAlbum {
@@ -111,4 +117,5 @@ export type AlbumsActions =
     getFavAlbum |
     deleteFromFavorite |
     deleteFromAlbum |
-    SearchTrackInAlbum
+    SearchTrackInAlbum |
+    getFavAlbumTraksNext

@@ -47,7 +47,7 @@ export class TrackService {
 
     async getAll(count = 10, offset = 0): Promise<ReturnTackDTO> {
         const tracks = await this.trackRepository.findAll({
-
+            
             include: { model: Album },
             offset: (Number(offset)),
             limit: (Number(count))
@@ -56,11 +56,15 @@ export class TrackService {
         
         return {tracks, countOfAll};
     }
-    async getAllAdded(count = 10, offset = 0, user: IUser): Promise<Track[]> {
+    async getAllAddedToALbum(count = 10, offset = 0, albumID: string): Promise<Track[]> {
         const tracks = await this.trackRepository.findAll({
-            where: { authorID: user.id },
-            offset: (Number(offset)),
-            limit: (Number(count))
+           
+            include: { model: Album ,
+                where: {
+               id: albumID
+           }},
+           offset: (Number(offset)),
+           limit: (Number(count))
         });
 
         

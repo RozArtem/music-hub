@@ -47,12 +47,7 @@ export class TrackController {
         return this.trackService.getAll(count, offset )
     }
     @UseGuards(JwtAuthGuard) 
-    @Get('/my-added')
-    getAllAdded( @Query('count') count: number ,  @Query('offset') offset: number,  @User() user : IUser) {
-
-      
-        return this.trackService.getAllAdded(count, offset, user)
-    }
+ 
     @UseGuards(JwtAuthGuard)
     @Post('/:id/add-comment')
     addComment(@Param('id') id:string, @Body() dto: AddCommentDTO,  @User() user: IUser) {

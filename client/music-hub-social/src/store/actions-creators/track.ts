@@ -93,6 +93,23 @@ export const getAll = (count = 10, offset = 0) => {
         }
     }
 }
+export const getNext = (count = 10, offset = 0) => {
+
+    return async (dispatch: Dispatch<TracksActions>) => {
+
+        try {
+
+            dispatch({ type: TracksActionsTypes.GETING_TRACK_LOAD })
+            const responce: IGetTracks = await axios.get(`${API_URL}track?count=${count}&offset=${offset}`)
+
+            dispatch({ type: TracksActionsTypes.GET_NEXT_TRACKS, payload: responce.data })
+
+        } catch (error) {
+
+            dispatch({ type: TracksActionsTypes.TRACK_ACTION_ERROS, payload: error });
+        }
+    }
+}
 
 export const search = (query: string) => {
 

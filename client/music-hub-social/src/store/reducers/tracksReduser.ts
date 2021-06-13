@@ -65,6 +65,14 @@ export const trackReducer = (state = InitialState, action: TracksActions): ITrac
                 countOfAll: action.payload.countOfAll
             }
         }
+        case TracksActionsTypes.GET_NEXT_TRACKS: {
+
+            return { ...state, 
+                tracks: [...state.tracks, ...action.payload.tracks], 
+                isLoading: false,
+                countOfAll: action.payload.countOfAll
+            }
+        }
         case TracksActionsTypes.GET_COMMENTS: {
 
             return { ...state, coments: action.payload }

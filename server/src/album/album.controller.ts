@@ -28,15 +28,15 @@ export class AlbumController {
     }
     @UseGuards(JwtAuthGuard)
     @Get('/fav')
-    getFav(@User() user: IUser) {
+    getFav(@User() user: IUser,  @Query('count') count: number ,  @Query('offset') offset: number) {
 
-        return this.albumService.getFav(user.id)
+        return this.albumService.getFav(user.id, count, offset)
     }
     @UseGuards(JwtAuthGuard)
     @Get('/:id')
-    getOne(@Param('id') id: string) {
+    getOne(@Param('id') id: string,  @Query('count') count: number ,  @Query('offset') offset: number) {
 
-        return this.albumService.getOne(id)
+        return this.albumService.getOne(id, count, offset)
     }
 
 

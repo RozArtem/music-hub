@@ -2,8 +2,8 @@ import { API_URL } from '../../config';
 import axios from 'axios';
 import { Dispatch } from "redux";
 import { AlbumAtionsTypes, AlbumsActions } from '../../types/album';
-import { IAlbum } from '../../types/entity-interfaces';
-import { IFethcAlbum, IFethcAlbums, IGetTracks } from './dto';
+import { IAlbum, ITrack } from '../../types/entity-interfaces';
+import { IFethcAlbum, IFethcAlbums, IGetTracks, IGetTracksForAlbum } from './dto';
 import { Console } from 'console';
 
 
@@ -32,13 +32,13 @@ export const getAllAlbums = () => {
     }
 }
 
-export const getOneAlbum = (albumID: string) => {
+export const getOneAlbum = (albumID: string, count = 10, offset = 0) => {
 
     return async (dispatch: Dispatch<AlbumsActions>) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce: IFethcAlbum = await axios.get(`${API_URL}albums/${albumID}`,
+            const responce: IFethcAlbum = await axios.get(`${API_URL}albums/${albumID}?count=${count}&offset=${offset}`,
 
                 {
                     headers: {
@@ -68,6 +68,27 @@ export const getFavAlbum = () => {
                     }
                 })
             dispatch({ type: AlbumAtionsTypes.GET_FAV_ALBUM, payload: responce.data })
+
+        } catch (error) {
+
+            dispatch({ type: AlbumAtionsTypes.ERROR_ALBUMS_ACTION, payload: error.data });
+        }
+    }
+}
+export const getFavAlbumTraksNext = (count = 10, offset = 0) => {
+
+    return async (dispatch: Dispatch<AlbumsActions>) => {
+
+        try {
+            dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
+            const responce: IGetTracksForAlbum = await axios.get(`${API_URL}albums/fav?count=${count}&offset=${offset}`,
+
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+            dispatch({ type: AlbumAtionsTypes.GET_FAV_ALBUM_NEXT, payload: responce.data })
 
         } catch (error) {
 

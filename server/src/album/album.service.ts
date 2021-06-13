@@ -20,7 +20,7 @@ export class AlbumService {
 
 
         const albumID = uuidv4()
-        const album = await this.albumRepositiry.create({ ...dto, id: albumID , ownerID: user.id})
+        const album = await this.albumRepositiry.create({ ...dto, id: albumID, ownerID: user.id })
 
         return album
     }
@@ -31,10 +31,10 @@ export class AlbumService {
 
         return favAlbum
     }
-    async delete(id: string, user:IUser ): Promise<string> {
+    async delete(id: string, user: IUser): Promise<string> {
 
 
-        const album = await this.albumRepositiry.findOne({ where: { id , ownerID: user.id} })
+        const album = await this.albumRepositiry.findOne({ where: { id, ownerID: user.id } })
         album.destroy()
 
         return album.id
@@ -42,34 +42,46 @@ export class AlbumService {
 
     async getAldums(userID: string): Promise<Album[]> {
 
-        const aldums = await this.albumRepositiry.findAll({where: {ownerID: userID}, include: {model: Track}});
+        const aldums = await this.albumRepositiry.findAll({ where: { ownerID: userID }, include: { model: Track } });
 
         return aldums
     }
-    async getFav(userID: string): Promise<Album> {
+    async getFav(userID: string, count = 10, offset = 0): Promise<Track[]> {
 
-        const aldum = await this.albumRepositiry.findOne({where: {ownerID: userID, name: 'favoirite'}, include: { model: Track }});
-       
-        return aldum
+        const aldum = await this.albumRepositiry.findOne({
+            where: { ownerID: userID, name: 'favoirite' }
+          
+        });
+        const traks = await this.trackService.getAllAddedToALbum(count, offset, aldum.id)
+
+        return traks
     }
-    async getOne(id: string): Promise<Album> {
+    async getOne(id: string, count = 10, offset = 0): Promise<Album> {
 
-        const aldum = await this.albumRepositiry.findOne({ where: { id }, include: { model: Track } });
+        const aldum = await this.albumRepositiry.findOne({
+            where: { id },
+            include: {
+                model: Track,
+                where: {
+                   
+                }
+            }
+        });
 
         return aldum
     }
 
     async addTrakcToAlbum(dto: AddToAlbumDTO, user: IUser): Promise<any> {
 
-        const album = await this.albumRepositiry.findOne({where: {id: dto.albumID, ownerID: user.id}});;
+        const album = await this.albumRepositiry.findOne({ where: { id: dto.albumID, ownerID: user.id } });;
         const track = await this.trackService.getOne(dto.trackId);
 
-       
+
         if (album && track) {
             await album.$add('traks', track);
 
-            return  { album, track}
-          
+            return { album, track }
+
         }
 
         throw new HttpException('Аудио файл или альбом не найден', HttpStatus.NOT_FOUND);
@@ -79,7 +91,7 @@ export class AlbumService {
 
     async deleteFromFavorite(trackID: string, user: IUser): Promise<string> {
 
-        const album = await this.albumRepositiry.findOne({where: {name: 'favoirite', ownerID: user.id}});
+        const album = await this.albumRepositiry.findOne({ where: { name: 'favoirite', ownerID: user.id } });
         const track = await this.trackService.getOne(trackID);
 
         await album.$remove('traks', track);
@@ -89,22 +101,22 @@ export class AlbumService {
 
     async deleteFromAlbum(albumID: string, trackID: string, user: IUser): Promise<any> {
 
-        const album = await this.albumRepositiry.findOne({where: {id: albumID, ownerID: user.id}});
+        const album = await this.albumRepositiry.findOne({ where: { id: albumID, ownerID: user.id } });
         const track = await this.trackService.getOne(trackID);
 
         await album.$remove('traks', track);
 
-        return {album, track}
+        return { album, track }
 
 
     }
 
     async addTrakcToFav(dto: AddToFavDTO, user: IUser): Promise<Track> {
 
-        const album = await this.albumRepositiry.findOne({where: {name: 'favoirite', ownerID: user.id}});
+        const album = await this.albumRepositiry.findOne({ where: { name: 'favoirite', ownerID: user.id } });
         const track = await this.trackService.getOne(dto.trackId);
-        
-        
+
+
         if (album && track) {
             await album.$add('traks', track);
 
@@ -116,7 +128,7 @@ export class AlbumService {
 
     }
 
-    
+
 
 
 }

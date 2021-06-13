@@ -19,6 +19,7 @@ export enum TracksActionsTypes {
     GET_TRACK = 'GET_TRACK',
     DELETE_TRACK = 'DELETE_TRACK',
     GET_ALL_TRACKS = 'GET_ALL_TRACKS',
+    GET_NEXT_TRACKS = 'GET_NEXT_TRACKS',
     TRACK_ACTION_ERROS = 'TRACK_ERROS',
     GETING_TRACK_LOAD = 'GETING_TRACK_LOAD',
     SEATCH_TRACK = 'SEATCH_TRACK',
@@ -83,6 +84,13 @@ interface getAllTraks {
         countOfAll: number
     }
 }
+interface getNextTraks {
+    type: TracksActionsTypes.GET_NEXT_TRACKS;
+    payload: {
+        tracks: ITrack[],
+        countOfAll: number
+    }
+}
 interface deletTrack {
     type: TracksActionsTypes.DELETE_TRACK;
     payload: string;
@@ -110,4 +118,5 @@ export type TracksActions =
     deletCommentOfTrack |
     increaseOffset |
     decreaseOffset |
-    nullifyOffset
+    nullifyOffset |
+    getNextTraks

@@ -89,6 +89,12 @@ export const albumReduser = (state = initilaState, action: AlbumsActions): IAlbu
 
             return { ...state, Fav: action.payload, isLoading: false }
 
+        case AlbumAtionsTypes.GET_FAV_ALBUM_NEXT:
+
+            return { ...state,
+                 Fav: {...state.Fav, traks: [...state.Fav.traks, ...action.payload]}, 
+                 isLoading: false }
+
 
 
         case AlbumAtionsTypes.GET_ALL_ALBUMS:

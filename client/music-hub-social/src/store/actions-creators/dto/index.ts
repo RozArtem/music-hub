@@ -33,6 +33,10 @@ export interface IGetTrack {
 
     readonly data: ITrack
 }
+export interface IGetTracksForAlbum {
+
+    readonly data: ITrack[]
+}
 
 export interface IFethcUsers {
 

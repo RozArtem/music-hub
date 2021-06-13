@@ -23,6 +23,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
 
     const { getOneTrack,
         addCommentToTrack,
+        getNext,
         getAll,
         getUserProfile,
         increaseOffset,
@@ -59,7 +60,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
         
         if (tracks.length < countOfAll) {
 
-            getAll(10, offset )
+            getNext(10, offset )
            
         } else {
 

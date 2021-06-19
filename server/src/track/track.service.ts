@@ -47,30 +47,55 @@ export class TrackService {
 
     async getAll(count = 10, offset = 0): Promise<ReturnTackDTO> {
         const tracks = await this.trackRepository.findAll({
-            
+
             include: { model: Album },
+            offset: (Number(offset)),
+            limit: (Number(count)),
+            order: [
+                ['name', 'ASC'],
+            ]
+        });
+        const countOfAll = await this.trackRepository.count()
+
+        return { tracks, countOfAll };
+    }
+    async getAllAdded(count = 10, offset = 0, user: IUser): Promise<Track[]> {
+        const tracks = await this.trackRepository.findAll({
+            where: { authorID: user.id },
             offset: (Number(offset)),
             limit: (Number(count))
         });
-        const countOfAll = await this.trackRepository.count()
-        
-        return {tracks, countOfAll};
-    }
-    async getAllAddedToALbum(count = 10, offset = 0, albumID: string): Promise<Track[]> {
-        const tracks = await this.trackRepository.findAll({
-           
-            include: { model: Album ,
-                where: {
-               id: albumID
-           }},
-           offset: (Number(offset)),
-           limit: (Number(count))
-        });
 
+
+        return tracks;
+    }
+    async getAllAddedUser(count = 10, offset = 0, userID: string): Promise<Track[]> {
+        const tracks = await this.trackRepository.findAll({
+            where: { authorID: userID },
+            offset: (Number(offset)),
+            limit: (Number(count))
+        });
         
+
         return tracks;
     }
 
+    async getAllAddedToALbum(count = 10, offset = 0, albumID: string): Promise<Track[]> {
+        const tracks = await this.trackRepository.findAll({
+
+            include: {
+                model: Album,
+                where: {
+                    id: albumID
+                }
+            },
+            offset: (Number(offset)),
+            limit: (Number(count))
+        });
+
+
+        return tracks;
+    }
     async getOne(id: string): Promise<Track> {
 
         const track = await this.trackRepository.findOne({ where: { id }, include: { model: Comment } })
@@ -115,7 +140,7 @@ export class TrackService {
 
     async searchUserOwnTraks(query: string, userID: string): Promise<Track[]> {
 
-       
+
 
         const tracks = await this.trackRepository.findAll(
             {
@@ -133,8 +158,8 @@ export class TrackService {
     }
 
     async searchInAlbum(query: string, albumID: string): Promise<any> {
-        
-        
+
+
 
         const tracks = await this.trackRepository.findAll(
             {
@@ -144,8 +169,8 @@ export class TrackService {
                     {
                         [Op.regexp]: query
                     }
-    
-                }, 
+
+                },
                 include: {
                     model: Album,
                     where: {
@@ -154,7 +179,7 @@ export class TrackService {
                 }
             })
 
-        return {tracks, albumID}
+        return { tracks, albumID }
     }
 
 

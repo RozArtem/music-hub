@@ -11,7 +11,7 @@ export const registration = (name: string, password: string, email: string) => {
     return async (dispatch: Dispatch<UserActions>) => {
         try {
           
-            const responce = await axios.post(`${API_URL}auth/registration`, {
+            const responce = await axios.post(`${API_URL}api/v1/auth/registration`, {
                 name, email, password
             })
             alert(responce.data)
@@ -55,7 +55,7 @@ export const auth = () => {
 
         try {
 
-            const responce: authDTO = await axios.get(`${API_URL}auth/auth`,  
+            const responce: authDTO = await axios.get(`${API_URL}api/v1/auth/auth`,  
             {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}})
             dispatch({ type: UserActionTypes.AUTH_USER, paylod: responce.data.user })
          

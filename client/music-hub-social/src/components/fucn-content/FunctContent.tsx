@@ -13,12 +13,12 @@ const FunctContent = () => {
   const {tracks} = useTypedSelector(state=>state.track)
   const {albums} = useTypedSelector(state=>state.album)
 
-  const {search} = useActions()
+  const {search, getNext} = useActions()
    
     return (
         <div className='fucn-content'>
             <FunctionalBar />
-            <TrackList tracks={tracks} albums={albums} serchFunc={search} />
+            <TrackList tracks={tracks} albums={albums} serchFunc={search} getNextTraks={getNext}/>
         </div>
     )
 }

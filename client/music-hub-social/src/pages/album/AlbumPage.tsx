@@ -13,7 +13,14 @@ import './album-page.css'
 const AlbumPage: React.FC = () => {
 
     const { currentAlbum, albums } = useTypedSelector(state => state.album)
-    const { deleteAlbum, getAllAlbums, searchInAlbum, getOneAlbum, nullifyOffset } = useActions();
+    const {
+        deleteAlbum,
+        getAllAlbums,
+        searchInAlbum,
+        getOneAlbum,
+        nullifyOffset,
+        getAlbumTraksNext
+    } = useActions();
 
     const history = useHistory()
 
@@ -40,6 +47,11 @@ const AlbumPage: React.FC = () => {
         }
 
         searchInAlbum(currentAlbum.id, query)
+    }
+
+    function onGetNextTraks(count: number, offset: number, albumID: string) {
+
+        getAlbumTraksNext(count, offset, albumID)
     }
 
     return (
@@ -72,7 +84,11 @@ const AlbumPage: React.FC = () => {
             </div>
             <div className="album-page-container">
 
-                <TrackList tracks={currentAlbum?.traks} albums={albums} serchFunc={onSearchInAlbum} />
+                <TrackList
+                    tracks={currentAlbum?.traks}
+                    albums={albums}
+                    serchFunc={onSearchInAlbum}
+                    getNextTraks={onGetNextTraks} />
             </div>
 
         </div>

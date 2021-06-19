@@ -66,7 +66,18 @@ const AddTrackPage = () => {
     }
 
 
+    function uploadMockData() {
+        
+        let customName: string = '0';
+       
+       for (let i =0; i < 1000; i++) {
 
+        customName = `${i}i`;
+
+        addTrack(customName, pictureData, trackData)
+       }
+     
+    }
 
 
 
@@ -110,7 +121,7 @@ const AddTrackPage = () => {
                         onChange={(e) => { onFileChangesPic(e) }}
                     />
 
-                    <button onClick={(e) => { uploadAction(e) }}>add new</button>
+                    <button onClick={(e) => { uploadMockData() }}>add new</button>
                 </div>
                 <div className="image_pre-load">
                     <img src={!url ? logo : url} alt="" />

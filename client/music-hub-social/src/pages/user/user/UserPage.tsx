@@ -20,7 +20,12 @@ const UserPage: React.FC = () => {
 
     const { currentProfile } = useTypedSelector(state => state.users)
     const { albums } = useTypedSelector(state => state.album)
-    const { getFavAlbum, getUserProfile, searchUserOwnTraks, nullifyOffset } = useActions()
+    const {
+        getFavAlbum,
+        getUserProfile,
+        searchUserOwnTraks,
+        nullifyOffset,
+        getNextForUser } = useActions()
 
     const history = useHistory()
     const location = history.location.pathname.split('/');
@@ -30,8 +35,12 @@ const UserPage: React.FC = () => {
         nullifyOffset()
         getFavAlbum()
         getUserProfile(location[2])
+     
 
     }, [])
+
+
+
 
     function seachTrack(query: string) {
 
@@ -42,6 +51,7 @@ const UserPage: React.FC = () => {
         searchUserOwnTraks(currentProfile.id, query)
     }
 
+   
     return (
 
         <div className='user-page'>
@@ -68,7 +78,11 @@ const UserPage: React.FC = () => {
             </div>
             <div className="track-list-container">
 
-                <TrackList tracks={currentProfile?.tracks} albums={albums} serchFunc={seachTrack} />
+                <TrackList
+                    tracks={currentProfile?.tracks}
+                    albums={albums}
+                    serchFunc={seachTrack}
+                    getNextTraks={getNextForUser} />
             </div>
 
 

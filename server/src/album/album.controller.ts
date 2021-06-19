@@ -7,7 +7,7 @@ import { AlbumService } from './album.service';
 import { AddToFavDTO } from './dto/add-to_fav.dto';
 import { CreatAlbumDTO } from './dto/creat-album.dto';
 
-@Controller('albums')
+@Controller('api/v1/albums')
 export class AlbumController {
     constructor(
         private albumService: AlbumService
@@ -28,15 +28,21 @@ export class AlbumController {
     }
     @UseGuards(JwtAuthGuard)
     @Get('/fav')
-    getFav(@User() user: IUser,  @Query('count') count: number ,  @Query('offset') offset: number) {
+    getFav(@User() user: IUser) {
 
-        return this.albumService.getFav(user.id, count, offset)
+        return this.albumService.getFav(user.id)
     }
     @UseGuards(JwtAuthGuard)
     @Get('/:id')
-    getOne(@Param('id') id: string,  @Query('count') count: number ,  @Query('offset') offset: number) {
+    getOne(@Param('id') id: string) {
 
-        return this.albumService.getOne(id, count, offset)
+        return this.albumService.getOne(id)
+    }
+    @UseGuards(JwtAuthGuard)
+    @Get('/:id/traks')
+    getTraksFromOne(@Param('id') id: string, @Query('count') count: number ,  @Query('offset') offset: number ) {
+
+        return this.albumService.getTraksFromOne(id, count, offset)
     }
 
 

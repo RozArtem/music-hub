@@ -6,7 +6,7 @@ import { IUser } from './user-interface';
 import { User } from './user.decorator';
 
 
-@Controller('auth')
+@Controller('api/v1/auth')
 export class AuthController {
 
     constructor(

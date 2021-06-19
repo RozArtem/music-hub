@@ -46,29 +46,25 @@ export class AlbumService {
 
         return aldums
     }
-    async getFav(userID: string, count = 10, offset = 0): Promise<Track[]> {
+    async getFav(userID: string): Promise<Album> {
 
-        const aldum = await this.albumRepositiry.findOne({
-            where: { ownerID: userID, name: 'favoirite' }
-          
-        });
-        const traks = await this.trackService.getAllAddedToALbum(count, offset, aldum.id)
-
-        return traks
-    }
-    async getOne(id: string, count = 10, offset = 0): Promise<Album> {
-
-        const aldum = await this.albumRepositiry.findOne({
-            where: { id },
-            include: {
-                model: Track,
-                where: {
-                   
-                }
-            }
-        });
+        const aldum = await this.albumRepositiry.findOne({ where: { ownerID: userID, name: 'favoirite' }, include: { model: Track } });
 
         return aldum
+    }
+    async getOne(id: string): Promise<Album> {
+
+        const aldum = await this.albumRepositiry.findOne({ where: { id }, include: { model: Track } });
+
+        return aldum
+    }
+    async getTraksFromOne(id: string, count = 10, offset = 0): Promise<Track[]> {
+
+        const aldum = await this.albumRepositiry.findOne({ where: { id } });
+        const traks = await this.trackService.getAllAddedToALbum(count, offset, aldum.id)
+
+
+        return traks
     }
 
     async addTrakcToAlbum(dto: AddToAlbumDTO, user: IUser): Promise<any> {

@@ -15,7 +15,7 @@ export const getAllAlbums = () => {
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
 
-            const responce: IFethcAlbums = await axios.get(`${API_URL}albums`,
+            const responce: IFethcAlbums = await axios.get(`${API_URL}api/v1/albums`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -38,7 +38,7 @@ export const getOneAlbum = (albumID: string, count = 10, offset = 0) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce: IFethcAlbum = await axios.get(`${API_URL}albums/${albumID}?count=${count}&offset=${offset}`,
+            const responce: IFethcAlbum = await axios.get(`${API_URL}api/v1/albums/${albumID}?count=${count}&offset=${offset}`,
 
                 {
                     headers: {
@@ -60,7 +60,7 @@ export const getFavAlbum = () => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce: IFethcAlbum = await axios.get(`${API_URL}albums/fav`,
+            const responce: IFethcAlbum = await axios.get(`${API_URL}api/v1/albums/fav`,
 
                 {
                     headers: {
@@ -75,20 +75,20 @@ export const getFavAlbum = () => {
         }
     }
 }
-export const getFavAlbumTraksNext = (count = 10, offset = 0) => {
+export const getAlbumTraksNext = (count = 10, offset = 0, albumID: string) => {
 
     return async (dispatch: Dispatch<AlbumsActions>) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce: IGetTracksForAlbum = await axios.get(`${API_URL}albums/fav?count=${count}&offset=${offset}`,
+            const responce: IGetTracksForAlbum = await axios.get(`${API_URL}api/v1/albums/${albumID}?count=${count}&offset=${offset}`,
 
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
-            dispatch({ type: AlbumAtionsTypes.GET_FAV_ALBUM_NEXT, payload: responce.data })
+            dispatch({ type: AlbumAtionsTypes.GET_ALBUM_NEXT, payload: responce.data })
 
         } catch (error) {
 
@@ -102,7 +102,7 @@ export const deleteAlbum = (albumID: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce = await axios.delete(`${API_URL}albums/${albumID}`,
+            const responce = await axios.delete(`${API_URL}api/v1/albums/${albumID}`,
 
                 {
                     headers: {
@@ -123,7 +123,7 @@ export const addFavorite = (trackId: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce = await axios.post(`${API_URL}albums/add-to-fav`,
+            const responce = await axios.post(`${API_URL}api/v1/albums/add-to-fav`,
 
                 {
                     trackId
@@ -148,7 +148,7 @@ export const deleteFromFavorite = (trackId: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce = await axios.delete(`${API_URL}albums/delete-from-fav?trackID=${trackId}`,
+            const responce = await axios.delete(`${API_URL}api/v1/albums/delete-from-fav?trackID=${trackId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -170,7 +170,7 @@ export const searchInAlbum = (albumID: string, query: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce: any = await axios.get(`${API_URL}track/search/${albumID}/tracks/${query}`,
+            const responce: any = await axios.get(`${API_URL}api/v1/track/search/${albumID}/tracks/${query}`,
 
                 {
                     headers: {
@@ -193,7 +193,7 @@ export const deleteFromAlbum = (albumID: string, trackID: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce = await axios.delete(`${API_URL}albums/delete-from-album?albumID=${albumID}&trackID=${trackID}`,
+            const responce = await axios.delete(`${API_URL}api/v1/albums/delete-from-album?albumID=${albumID}&trackID=${trackID}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -216,7 +216,7 @@ export const addTrakcToAlbum = (trackId: string, albumID: string) => {
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
 
-            const responce = await axios.post(`${API_URL}albums/add-track`,
+            const responce = await axios.post(`${API_URL}api/v1/albums/add-track`,
 
                 {
                     trackId,
@@ -244,7 +244,7 @@ export const creatAlbum = (name: string) => {
 
         try {
             dispatch({ type: AlbumAtionsTypes.ON_ALBUMS_ACTION })
-            const responce = await axios.post(`${API_URL}albums`,
+            const responce = await axios.post(`${API_URL}api/v1/albums`,
 
                 {
                     name

@@ -7,7 +7,7 @@ const InitialState: ITrackState = {
     coments: [],
     isLoading: false,
     error: null,
-    offset: 10,
+    offset: 0,
     countOfAll: 0,
 
 }

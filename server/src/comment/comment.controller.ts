@@ -5,7 +5,7 @@ import { CommentService } from './comment.service';
 
 
 
-@Controller('comment')
+@Controller('api/v1/comment')
 export class CommentController {
     constructor(
         private commentService: CommentService

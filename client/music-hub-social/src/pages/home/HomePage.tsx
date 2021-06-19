@@ -15,7 +15,7 @@ const HomePage = () => {
 
     const { isAuth } = useTypedSelector(state => state.currentUser)
 
-    const { getAllAlbums, getFavAlbum, getAll, auth, nullifyOffset , increaseOffset} = useActions()
+    const { getAllAlbums, getFavAlbum, getAll, auth, nullifyOffset, increaseOffset } = useActions()
 
 
 
@@ -24,18 +24,21 @@ const HomePage = () => {
         nullifyOffset()
         getAllAlbums()
         getFavAlbum()
-        
+
         auth()
 
     }, [isAuth])
 
- useEffect(()=> {  getAll(10, 0)}, [])
+    useEffect(() => {
+        getAll(10, 0)
+        increaseOffset()
+    }, [])
 
     return (
         <div className='home'>
             <Navbar />
             <FunctContent />
-           
+
         </div>
     )
 }

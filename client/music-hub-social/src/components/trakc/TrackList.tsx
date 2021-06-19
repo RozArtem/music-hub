@@ -15,15 +15,15 @@ interface ITrackListProps {
     tracks: ITrack[]
     albums: IAlbum[]
     serchFunc: Function
+    getNextTraks: Function
 }
 
 
 
-const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => {
+const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNextTraks }) => {
 
     const { getOneTrack,
         addCommentToTrack,
-        getNext,
         getAll,
         getUserProfile,
         increaseOffset,
@@ -60,7 +60,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
         
         if (tracks.length < countOfAll) {
 
-            getNext(10, offset )
+            getNextTraks(10, offset )
            
         } else {
 
@@ -104,27 +104,17 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc }) => 
     function ScrollHandler(e: any) {
 
 
-        if( offset > countOfAll) {
-            console.log('wegewgwegew')
-        }
 
-
+     
         if (list.scrollHeight === (list.clientHeight + list.scrollTop) ) {
 
-
+          
 
                increaseOffset()   
 
         }
 
-        if (list.scrollTop === 0 ) {
-
-            
-                decreaseOffset()
-            
-
-
-        }
+  
 
     }
 

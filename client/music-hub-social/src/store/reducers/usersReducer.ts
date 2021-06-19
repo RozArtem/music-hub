@@ -47,6 +47,15 @@ export const usersReducer = (state = initialState, action: UsersActions): IUsers
                     tracks: action.payload
                 }
             }
+        case UsersActionTypes.GET_NEXT_TRACKS_USER:
+
+            return {
+                ...state,
+                currentProfile: {
+                    ...state.currentProfile,
+                    tracks: [ ...state.currentProfile.tracks, ...action.payload.tracks]
+                }
+            }
 
 
         case UsersActionTypes.FETCH_PROFILES_ERROR:

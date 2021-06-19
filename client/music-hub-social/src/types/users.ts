@@ -19,7 +19,8 @@ export enum UsersActionTypes {
     FETCH_PROFILES_SUCCESS = 'FETCH_PROFILES_SUCCESS',
     FETCH_PROFILES_ERROR = 'FETCH_PROFILES_ERROR',
     DELETE_TRACK_OF_CURRENT_USER = 'DELETE_TRACK_OF_CURRENT_USER',
-    SEAR_OWN_TRACKS = 'SEAR_OWN_TRACKS'
+    SEAR_OWN_TRACKS = 'SEAR_OWN_TRACKS',
+    GET_NEXT_TRACKS_USER = 'GET_NEXT_TRACKS_USER'
 
 }
 
@@ -30,6 +31,14 @@ interface SearchOwnTracks {
     type: UsersActionTypes.SEAR_OWN_TRACKS
     payload: ITrack[]
 }
+interface getNextOwnTracks {
+    type: UsersActionTypes.GET_NEXT_TRACKS_USER
+    payload: {
+        tracks: ITrack[],
+        countOfAll: number
+    }
+}
+
 interface FetchProfilesSuccessAction {
     type: UsersActionTypes.FETCH_PROFILES_SUCCESS;
     payload: IUser[]
@@ -61,4 +70,5 @@ export type UsersActions =
     FetchCurrentProfileSuccessAction |
     FetchCurrentProfileErrorAction |
     DeleteTrackFromCurrentProfile |
-    SearchOwnTracks
+    SearchOwnTracks |
+    getNextOwnTracks 

@@ -9,9 +9,6 @@ services:
       - api
       - client
     restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./client/music-hub-social/nginx
     ports:
        - "80:80"  
   api:

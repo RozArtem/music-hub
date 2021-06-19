@@ -3,13 +3,14 @@ import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { AddCommentDTO } from 'src/comment/dto/add-comment.dto';
 import { CreatTackDTO } from './dto/creat-track.dto';
 import { TrackService } from './track.service';
-import { Request } from 'express';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { User } from 'src/auth/user.decorator';
 import { IUser } from 'src/auth/user-interface';
 
 
+
 @Controller('api/v1/track')
+
 export class TrackController {
 
     constructor(

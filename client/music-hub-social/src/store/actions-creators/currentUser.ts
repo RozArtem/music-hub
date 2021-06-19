@@ -33,7 +33,7 @@ export const login = (email: string, password: string) => {
 
            
             dispatch({ type: UserActionTypes.LOGIN_USER })
-            const responce =  await axios.post(`${API_URL}auth/login`, {
+            const responce =  await axios.post(`${API_URL}api/v1/auth/login`, {
                 email,
                 password
             })

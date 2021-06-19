@@ -12,8 +12,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./client/music-hub-social/nginx
-      ports:
-          - "80:80"  
+    ports:
+       - "3050:80"  
   api:
     build:
       dockerfile: Dockerfile
@@ -41,3 +41,6 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+
+
+     

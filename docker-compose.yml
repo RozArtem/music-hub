@@ -8,6 +8,9 @@ services:
     depends_on:
       - api
       - client
+    build:
+        dockerfile: Dockerfile
+        context: "./client/music-hub-social"
     restart: always
     ports:
        - "80:80"  

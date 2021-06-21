@@ -10,16 +10,16 @@ services:
       - client
     build:
         dockerfile: Dockerfile
-        context: "./client/music-hub-social"
+        context: ./nginx
     restart: always
     ports:
        - "80:80"  
   api:
     build:
       dockerfile: Dockerfile
-      context: "./server"
+      context: ./server
     ports:
-        - "7000:7000"
+        - "5000:5000"
     volumes:
       - /app/node_modules
       - ./server:/app
@@ -35,7 +35,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
     build:
       dockerfile: Dockerfile
-      context: ./client/music-hub-social
+      context: ./client
     ports:
         - "3000:3000"
     volumes:

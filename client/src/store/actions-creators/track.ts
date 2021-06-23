@@ -30,7 +30,7 @@ export const addTrack = (name: string, picture: any, audio: any) => {
                 })
            
             dispatch({ type: TracksActionsTypes.ADD_TRACK, payload: responce.data })
-           // alert('New track has been uploaded')
+            alert('New track has been uploaded')
 
         } catch (error) {
 

@@ -22,8 +22,8 @@ import {ServeStaticModule} from "@nestjs/serve-static";
   imports: [
     ServeStaticModule.forRoot({rootPath: path.resolve(__dirname, 'static')}),
     ConfigModule.forRoot({
-      envFilePath: '.env'
-    }),
+      envFilePath: `.${process.env.NODE_ENV}.env`
+   }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
       host: process.env.POSTGRES_HOST,

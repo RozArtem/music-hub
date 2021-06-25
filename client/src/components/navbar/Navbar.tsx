@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
 
                     onClick={()=> {isShowFucnBar? HideFucnBar() : ShowFucnBar()}}
                 >
-                {isShowFucnBar ? 'X': '☰'}
+                {isShowFucnBar && '☰'}
                 </div>
             </div>
         </div>

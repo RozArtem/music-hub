@@ -45,9 +45,13 @@ const MobileFucnBar = () => {
         history.push(`/profile/${currentUser?.id}`)
     }
 
+    function hideMenu(e:any) {
+        e.stopPropagation()
+        HideFucnBar()
+    }
 
     return (
-        <div className="wraper" onClick={() => {HideFucnBar()}}>
+        <div className="wraper" onClick={(e) => {hideMenu(e)}}>
             <div className='mobile-functional-bar'>
 
                 <ul className="mobile-functional-bar-nav-content">

@@ -20,8 +20,9 @@ const MobileFucnBar = () => {
 
 
 
-    function onCreatAlbum() {
+    function onCreatAlbum(e:any) {
 
+        e.stopPropagation()
         if (albumName.trim() === '') {
 
             return alert('Enter the name of your album')
@@ -93,7 +94,7 @@ const MobileFucnBar = () => {
                                             CANCEL
                                         </button>
                                         <button className='mobile-functional-bar___creator-album-box-button-right'
-                                            onClick={() => onCreatAlbum()}
+                                            onClick={(e) => onCreatAlbum(e)}
                                         >
                                             CREAT
                                         </button>

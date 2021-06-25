@@ -2,6 +2,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
+import Loaders from '../../../../components/loaders/Loaders'
 import { API_URL } from '../../../../config'
 import { useActions } from '../../../../hooks/useActions'
 import { IUser } from '../../../../types/entity-interfaces'
@@ -19,8 +20,8 @@ const UserItem: React.FC<IUser> = (user: IUser) => {
 
     const history = useHistory()
 
-    const {getUserProfile} = useActions()
-
+    const {getUserProfile, fetchingUserProfile} = useActions()
+    
     let [count, setCount] = useState<any>([])
 
     useEffect(() => {
@@ -30,11 +31,14 @@ const UserItem: React.FC<IUser> = (user: IUser) => {
                 setCount(count = res.data.tracks);
             })
 
-
+          
     }, [])
-
+  
+    
+  
+   
     function setCurrentProfile() {
-
+        fetchingUserProfile()
         getUserProfile(user.id)
         history.push(`/profile/${user.id}`)
     }
@@ -47,6 +51,7 @@ const UserItem: React.FC<IUser> = (user: IUser) => {
             <div className="user-item___tracks">
                 {count.length}  : songs downloaded
             </div>
+          
         </div>
     )
 }

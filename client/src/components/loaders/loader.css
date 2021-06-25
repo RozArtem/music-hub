@@ -1,0 +1,96 @@
+.loader {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loader-icon {
+  width: 50%;
+  height: 50%;
+  background-color: whitesmoke;
+  border-radius: 13px;
+  padding: 5px;
+}
+
+.loader-block {
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-name: slidein;
+          animation-name: slidein;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  bottom: 25%;
+}
+
+@-webkit-keyframes slidein {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 50%;
+  }
+}
+
+@keyframes slidein {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  .loader-icon {
+    width: 50%;
+    height: 20%;
+    background-color: whitesmoke;
+    border-radius: 13px;
+    padding-top: 10px;
+  }
+  .loader-block {
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+    -webkit-animation-name: slidein;
+            animation-name: slidein;
+    width: 50%;
+    height: 20%;
+    position: absolute;
+    bottom: 40%;
+  }
+  @-webkit-keyframes slidein {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 20%;
+    }
+  }
+  @keyframes slidein {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 20%;
+    }
+  }
+}
+/*# sourceMappingURL=loader.css.map */

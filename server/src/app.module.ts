@@ -18,6 +18,10 @@ import {ServeStaticModule} from "@nestjs/serve-static";
 
 
 
+
+
+
+
 @Module({
   imports: [
     ServeStaticModule.forRoot({rootPath: path.resolve(__dirname, 'static')}),
@@ -26,11 +30,11 @@ import {ServeStaticModule} from "@nestjs/serve-static";
    }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: process.env.POSTGRES_HOST,
-      port: parseInt(process.env.POSTGRES_PORT),
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB,
+      host: process.env.PGHOST,
+      port: parseInt(process.env.PGPORT),
+      username: process.env.PGUSER,
+      password: process.env.PGPASSWORD,
+      database: process.env.PGDATABASE,
       models: [User, Track, Comment, Album, AlbumTrack],
       autoLoadModels: true
     }),

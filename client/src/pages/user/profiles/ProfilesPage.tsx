@@ -1,5 +1,6 @@
 import { cleanup } from '@testing-library/react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import Loaders from '../../../components/loaders/Loaders'
 import Navbar from '../../../components/navbar/Navbar'
 import PlayBar from '../../../components/play-bar/PlayBar'
 import { useActions } from '../../../hooks/useActions'
@@ -12,14 +13,16 @@ import './profiles.css'
 
 const ProfilesPage: React.FC = () => {
 
-    const { getAllUsersProfiles } = useActions();
-    const { users } = useTypedSelector(state => state.users)
+    const { getAllUsersProfiles , fetchingUserProfile} = useActions();
+    const { users} = useTypedSelector(state => state.users)
     const { currentUser } = useTypedSelector(state => state.currentUser)
+
+    
 
     useEffect(() => {
 
         getAllUsersProfiles(10, 0)
-
+        fetchingUserProfile()
     }, [])
 
     
@@ -35,7 +38,7 @@ const ProfilesPage: React.FC = () => {
 
                    return <UserItem key={user.id} {...user} />
                })} 
-              
+           
             </div>
             
         </div>

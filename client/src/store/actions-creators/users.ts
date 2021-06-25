@@ -4,12 +4,20 @@ import { Dispatch } from "redux";
 import { UsersActions, UsersActionTypes } from '../../types/users';
 import { IFethcUser, IFethcUsers, IGetTracks } from './dto';
 
+export const fetchingUserProfile = () => {
+
+    return async (dispatch: Dispatch<UsersActions>) => {
+        dispatch({ type: UsersActionTypes.FETCH_PROFILE })
+    }
+}
+
+
 export const getUserProfile = (userId: string) => {
 
     return async (dispatch: Dispatch<UsersActions>) => {
 
         try {
-            dispatch({ type: UsersActionTypes.FETCH_PROFILE })
+           
             const responce: IFethcUser = await axios.get(`${API_URL}api/v1/users/${userId}`)
             dispatch({ type: UsersActionTypes.FETCH_CURRENT_PROFILE_SUCCESS, payload: responce.data })
 
@@ -57,7 +65,7 @@ export const DeleteTrackFromCurrentProfile = (trackID: string) => {
 }
 
 
-export const getAllUsersProfiles = (count: number, offset: number) => {
+export const getAllUsersProfiles = (count: number = 10, offset: number = 0) => {
 
     return async (dispatch: Dispatch<UsersActions>) => {
 

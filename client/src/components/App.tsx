@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './navbar/Navbar'
 import './app.css'
 import AuthorizationPage from '../pages/auth-page/AuthorizationPage'
@@ -17,14 +17,20 @@ import AlbumPage from '../pages/album/AlbumPage'
 import AddTrackPage from '../pages/add-track/AddTrackPage'
 import PlayBar from './play-bar/PlayBar'
 import MobileFucnBar from './functional-bar/mobile/MobileFucnBar'
+import Loaders from './loaders/Loaders'
 
 const App = () => {
 
 
   const { isShowFucnBar } = useTypedSelector(state => state.player)
+  const { isLoading } = useTypedSelector(state => state.users)
   const { auth } = useActions()
+  
 
-  useEffect(() => { auth()  }, [])
+  const [loading, setLoading] = useState<boolean>(true)
+
+  useEffect(() => { auth() }, [])
+
 
   return (
 
@@ -44,9 +50,9 @@ const App = () => {
         </Switch>
 
 
-        {isShowFucnBar && <MobileFucnBar />}  
+        {isShowFucnBar && <MobileFucnBar />}
       </Router>
-
+      {isLoading && <Loaders />}
       <PlayBar />
     </div>
   )

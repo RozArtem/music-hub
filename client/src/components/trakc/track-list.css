@@ -180,7 +180,6 @@
     border: none;
     background-color: rgba(20, 17, 17, 0.7);
     color: whitesmoke;
-    font-size: 10px;
   }
   .comment-list___coment-area button:hover {
     background-color: rgba(245, 245, 245, 0.7);

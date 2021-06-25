@@ -135,11 +135,8 @@
 }
 
 @media (max-width: 900px) {
-  * {
-    font-size: 12px;
-  }
   .selected-item {
-    height: 10%;
+    height: 12%;
     width: auto;
     border-bottom: 1px solid black;
     background-color: rgba(20, 17, 17, 0.7);
@@ -153,8 +150,8 @@
     margin-top: 1px;
   }
   .selected-item___img {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     background-color: whitesmoke;
     border: 1px solid black;
     margin-left: 5px;
@@ -169,9 +166,10 @@
     background-color: rgba(20, 17, 17, 0.7);
     border: 1px solid black;
     border-radius: 40%;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     text-align: center;
+    font-size: 20px;
     cursor: pointer;
     margin-left: 5px;
   }
@@ -197,7 +195,6 @@
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
-    font-size: 12px;
   }
   .selected-item___author {
     -ms-flex-item-align: center;
@@ -205,7 +202,6 @@
         align-self: center;
     cursor: pointer;
     text-decoration: underline;
-    font-size: 12px;
     margin-left: 5px;
   }
   .selected-item___duration {
@@ -230,6 +226,12 @@
     margin: 5px;
     height: 20px;
   }
+  .selected-item___func___add-to-fav {
+    margin: 5px;
+    height: 30px;
+    font-size: 20px;
+    padding-top: 5px;
+  }
   .selected-item___func___add-to-fav:hover {
     color: black;
     -webkit-transform: scale(1.5);
@@ -242,6 +244,10 @@
   }
   .selected-item___func .item___func___inFav {
     color: chartreuse;
+    margin: 5px;
+    height: 30px;
+    font-size: 20px;
+    padding-top: 5px;
   }
   .selected-item___func .item___func___inFav:hover {
     color: grey;
@@ -252,6 +258,8 @@
     color: grey;
     position: relative;
     top: -10px;
+    height: 15px;
+    font-size: 15px;
   }
   .selected-item___func___delete:hover {
     color: #a7170d;

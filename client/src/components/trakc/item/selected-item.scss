@@ -120,11 +120,9 @@
 
 @media (max-width: 900px) {
 
-    * {
-        font-size: 12px;
-    }
+ 
     .selected-item {
-        height: 10%;
+        height: 12%;
         width: auto;
         border-bottom: 1px solid black;
         background-color: rgba(20, 17, 17, 0.7);
@@ -134,8 +132,8 @@
         margin-top: 1px;
     
         &___img {
-            height: 30px;
-            width: 30px;
+            height: 40px;
+            width: 40px;
             background-color: whitesmoke;
             border: 1px solid black;
             margin-left: 5px;
@@ -152,10 +150,10 @@
             background-color: rgba(20, 17, 17, 0.7);
             border: 1px solid black;
             border-radius: 40%;
-            width: 25px;
-            height: 25px;
+            width: 35px;
+            height: 35px;
             text-align: center;
-            
+            font-size: 20px;
             cursor: pointer;
             margin-left: 5px;
             
@@ -179,14 +177,14 @@
     
         &___name {
             align-self: center;
-            font-size: 12px;
+           
         }
     
         &___author {
             align-self: center;
             cursor: pointer;
             text-decoration: underline;
-            font-size: 12px;
+          
             margin-left: 5px;
         }
     
@@ -209,6 +207,10 @@
             }
     
             &___add-to-fav {
+                margin: 5px;
+                height: 30px;
+                font-size: 20px;
+                padding-top: 5px;
                 &:hover {
                     color: black;
                     transform: scale(1.5);
@@ -216,6 +218,7 @@
             }
     
             &___add-to-album {
+                
                 &:hover {
                     color: black;
                     transform: scale(1.5);
@@ -223,7 +226,10 @@
             }
             .item___func___inFav {
                 color: chartreuse;
-    
+                margin: 5px;
+                height: 30px;
+                font-size: 20px;
+                padding-top: 5px;
                 &:hover {
                     color: grey;
                     transform: scale(1.5);
@@ -234,7 +240,8 @@
                 color: grey;
                 position: relative;
                 top: -10px;
-    
+                height: 15px;
+                font-size: 15px;
                 &:hover {
                     color: rgb(167, 23, 13);
                     transform: scale(1.1);

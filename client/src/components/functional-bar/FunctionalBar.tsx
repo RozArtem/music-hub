@@ -14,7 +14,7 @@ const FunctionalBar: React.FC = () => {
     const { albums, Fav } = useTypedSelector(state => state.album)
     const history = useHistory()
 
-    const { creatAlbum, getOneAlbum } = useActions();
+    const { creatAlbum, getOneAlbum, HideFucnBar} = useActions();
 
     const [toggler, setToggler] = useState<boolean>(false)
     const [delteToggler, setDeleteToggler] = useState<boolean>(false)

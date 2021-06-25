@@ -44,121 +44,124 @@ const MobileFucnBar = () => {
         history.push(`/profile/${currentUser?.id}`)
     }
 
-   
+
     return (
-        <div className='mobile-functional-bar'>
+        <div className="wraper" onClick={() => {HideFucnBar()}}>
+            <div className='mobile-functional-bar'>
 
-            <ul className="mobile-functional-bar-nav-content">
-                {isAuth && <li onClick={() => moveToMyProfile()}><a >My profile</a></li>}
-                <li> <NavLink to='/profiles' ><a >Profiles</a></NavLink></li>
-            </ul>
+                <ul className="mobile-functional-bar-nav-content">
+                    {isAuth && <li onClick={() => moveToMyProfile()}><a >My profile</a></li>}
+                    <li> <NavLink to='/profiles' ><a >Profiles</a></NavLink></li>
+                </ul>
 
-            {!isAuth ?
-                <div className='mobile-functional-bar___info-block'>
-                    <p>Do you want to download any song? Or add any for your favorites ...</p>
-                    <NavLink
-                        className='mobile-functional-bar___info-block___link'
-                        to='/authorization-page'
-                        onClick={() => { HideFucnBar() }}
-                    >
-                        sign in for features or create an account
-                    </NavLink>
-                </div>
-                :
-                <div className="mobile-functional-bar___container">
+                {!isAuth ?
+                    <div className='mobile-functional-bar___info-block'>
+                        <p>Do you want to download any song? Or add any for your favorites ...</p>
+                        <NavLink
+                            className='mobile-functional-bar___info-block___link'
+                            to='/authorization-page'
+                            onClick={() => { HideFucnBar() }}
+                        >
+                            sign in for features or create an account
+                        </NavLink>
+                    </div>
+                    :
+                    <div className="mobile-functional-bar___container">
 
-                    <div className="mobile-functional-bar___container-func">
+                        <div className="mobile-functional-bar___container-func">
 
-                        <button className='mobile-functional-bar___button'
-                            onClick={() => history.push('/add-track')}
+                            <button className='mobile-functional-bar___button'
+                                onClick={() => history.push('/add-track')}
 
-                        >ADD NEW</button>
+                            >ADD NEW</button>
 
-                        <button className='mobile-functional-bar___button'
-                            onClick={() => setToggler(true)}> CREAT ALBUM
-                        </button>
-                        {toggler &&
+                            <button className='mobile-functional-bar___button'
+                                onClick={() => setToggler(true)}> CREAT ALBUM
+                            </button>
+                            {toggler &&
 
-                            <div className="mobile-functional-bar___creator-album-box">
+                                <div className="mobile-functional-bar___creator-album-box">
 
-                                <input type="text" autoFocus minLength={3} maxLength={12} placeholder="Enter album's name"
-                                    onChange={(event) => setAlbumName(event.target.value)} />
+                                    <input type="text" autoFocus minLength={3} maxLength={12} placeholder="Enter album's name"
+                                        onChange={(event) => setAlbumName(event.target.value)} />
 
-                                <div className='btn-box'>
+                                    <div className='btn-box'>
 
-                                    <button className='mobile-functional-bar___creator-album-box-button-left'
-                                        onClick={() => setToggler(false)}
-                                    >
-                                        CANCEL
-                                    </button>
-                                    <button className='mobile-functional-bar___creator-album-box-button-right'
-                                        onClick={() => onCreatAlbum()}
-                                    >
-                                        CREAT
-                                    </button>
+                                        <button className='mobile-functional-bar___creator-album-box-button-left'
+                                            onClick={() => setToggler(false)}
+                                        >
+                                            CANCEL
+                                        </button>
+                                        <button className='mobile-functional-bar___creator-album-box-button-right'
+                                            onClick={() => onCreatAlbum()}
+                                        >
+                                            CREAT
+                                        </button>
+                                    </div>
+
                                 </div>
 
+                            }
+
+                            <button className='mobile-functional-bar___button'
+                                onClick={() => selectAlbum(Fav.id)}
+                            > {Fav?.name}
+                            </button>
+                        </div>
+
+                        {albums.length > 1 &&
+
+                            <div className="albums"
+
+                                onClick={() => { showAlbum ? setShowAlbum(false) : setShowAlbum(true) }}
+
+                            >{showAlbum ?
+
+                                <div className='hide-albums'>
+                                    <div> ◠</div>
+                                    <div> hide albums</div>
+                                </div>
+
+
+                                :
+
+                                <div className='show-albums'>
+                                    <div> show albums</div>
+                                    <div> ◡</div>
+                                </div>
+
+
+                                } </div>
+                        }
+
+
+                        {showAlbum &&
+
+                            <div className="albums-container">
+                                {albums.map(album => {
+
+                                    if (album.name === 'favoirite') { return null }
+                                    return <button className='mobile-functional-bar___button'
+                                        key={album.id}
+                                        onClick={() => selectAlbum(album.id)}
+                                    >{album?.name}</button>
+
+                                })}
+
                             </div>
+
+
 
                         }
 
-                        <button className='mobile-functional-bar___button'
-                            onClick={() => selectAlbum(Fav.id)}
-                        > {Fav?.name}
-                        </button>
+
                     </div>
 
-                    {albums.length > 1 &&
+                }
 
-                        <div className="albums"
+            </div >
+        </div>
 
-                            onClick={() => { showAlbum ? setShowAlbum(false) : setShowAlbum(true) }}
-
-                        >{showAlbum ?
-
-                            <div className='hide-albums'>
-                                <div> ◠</div>
-                                <div> hide albums</div>
-                            </div>
-
-
-                            :
-
-                            <div className='show-albums'>
-                                <div> show albums</div>
-                                <div> ◡</div>
-                            </div>
-
-
-                            } </div>
-                    }
-
-
-                    {showAlbum &&
-
-                        <div className="albums-container">
-                            {albums.map(album => {
-
-                                if (album.name === 'favoirite') { return null }
-                                return <button className='mobile-functional-bar___button'
-                                    key={album.id}
-                                    onClick={() => selectAlbum(album.id)}
-                                >{album?.name}</button>
-
-                            })}
-
-                        </div>
-
-
-
-                    }
-
-
-                </div>
-
-            }
-
-        </div >
     )
 }
 

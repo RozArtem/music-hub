@@ -20,9 +20,9 @@ const MobileFucnBar = () => {
 
 
 
-    function onCreatAlbum(e:any) {
-
+    function onCreatAlbum(e: any) {
         e.stopPropagation()
+
         if (albumName.trim() === '') {
 
             return alert('Enter the name of your album')
@@ -45,13 +45,18 @@ const MobileFucnBar = () => {
         history.push(`/profile/${currentUser?.id}`)
     }
 
-    function hideMenu(e:any) {
+    function onCreatAlbumShow(e: any) {
         e.stopPropagation()
-        HideFucnBar()
+        setToggler(true)
+    }
+
+    function togllerAlbumsShow(e: any) {
+        e.stopPropagation()
+        showAlbum ? setShowAlbum(false) : setShowAlbum(true)
     }
 
     return (
-        <div className="wraper" onClick={(e) => {hideMenu(e)}}>
+        <div className="wraper" onClick={() => HideFucnBar()}>
             <div className='mobile-functional-bar'>
 
                 <ul className="mobile-functional-bar-nav-content">
@@ -81,7 +86,7 @@ const MobileFucnBar = () => {
                             >ADD NEW</button>
 
                             <button className='mobile-functional-bar___button'
-                                onClick={() => setToggler(true)}> CREAT ALBUM
+                                onClick={(e) => onCreatAlbumShow(e)}> CREAT ALBUM
                             </button>
                             {toggler &&
 
@@ -118,7 +123,7 @@ const MobileFucnBar = () => {
 
                             <div className="albums"
 
-                                onClick={() => { showAlbum ? setShowAlbum(false) : setShowAlbum(true) }}
+                                onClick={(e) => { togllerAlbumsShow(e) }}
 
                             >{showAlbum ?
 
@@ -165,7 +170,7 @@ const MobileFucnBar = () => {
                 }
 
             </div >
-        </div>
+        </div >
 
     )
 }

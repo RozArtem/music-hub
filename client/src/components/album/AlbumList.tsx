@@ -17,35 +17,36 @@ interface IAlbumListProps {
 const AlbumList: React.FC<IAlbumListProps> = ({ setShowAlbumsBlock, track, albums }) => {
 
 
-   const {getAllAlbums} = useActions()
 
-   
+
 
     return (
 
+        <div className="album-block-wraper">
+            <div className="albums-block"
+                onMouseEnter={() => { setShowAlbumsBlock(true) }}
+                onMouseOver={() => { setShowAlbumsBlock(true) }}
+                onMouseLeave={() => { setShowAlbumsBlock(false) }}
+            >
+
+                {
+                    albums.map(album => {
 
 
-        <div className="albums-block"
-            onMouseEnter={() => { setShowAlbumsBlock(true) }}
-            onMouseOver={() => { setShowAlbumsBlock(true) }}
-            onMouseLeave={() => { setShowAlbumsBlock(false) }}
-        >
+                        if (album.name === 'favoirite') { return null }
 
-            {
-                albums.map(album => {
+                        return <InAlbum album={album} track={track} key={album.id} />
 
-                  
-                    if (album.name === 'favoirite') { return null }
-
-                    return <InAlbum album={album} track={track}  key={album.id}/>
-                    
-                })
-            }
+                    })
+                }
 
 
 
 
-        </div >
+            </div >
+        </div>
+
+
     )
 }
 

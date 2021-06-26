@@ -31,4 +31,20 @@
   background-color: black;
   width: 3px;
 }
+
+@media only screen and (max-width: 900px) {
+  .albums-block {
+    display: absolute;
+    top: 50%;
+    width: 50%;
+    height: 50%;
+  }
+  .album-block-wraper {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+  }
+}
 /*# sourceMappingURL=album-list.css.map */

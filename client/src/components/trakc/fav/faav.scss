@@ -51,3 +51,33 @@
     }
 }
 
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+
+    
+    .fav___inFav {
+   
+        height: 30px;
+        color: chartreuse;
+        margin: 5px;
+        font-size: 20px;
+        padding-top: 5px;
+        &:hover {
+            transform: scale(1.5);
+        }
+    }
+    
+    .fav___add-to-fav {
+        color: rgba(245, 245, 245, 0.3);
+        cursor: pointer;
+        margin: 5px;
+        height: 30px;
+        font-size: 20px;
+        padding-top: 5px;
+    
+        &:hover {
+            color: black;
+            transform: scale(1.5);
+        }
+    }
+}}

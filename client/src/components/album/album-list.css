@@ -34,10 +34,11 @@
 
 @media only screen and (max-width: 900px) {
   .albums-block {
-    display: absolute;
-    top: 50%;
-    width: 50%;
-    height: 50%;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 70%;
+    height: 100%;
   }
   .album-block-wraper {
     background-color: rgba(0, 0, 0, 0.3);
@@ -45,6 +46,7 @@
     width: 100vw;
     position: fixed;
     top: 0;
+    right: 0;
   }
 }
 /*# sourceMappingURL=album-list.css.map */

@@ -29,7 +29,10 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+      - ./letsencrypt:/etc/letsencrypt
     ports:
-        - '80:80'
-
+        - "80:80"
+        - "443:443"
+         
+     
       

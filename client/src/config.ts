@@ -1,4 +1,4 @@
-export const API_URL = 'https://www.musichubsocial.ml/'
+export const API_URL = 'http://www.musichubsocial.ml/'
 
 //'http://18.119.99.223:5000/'
 

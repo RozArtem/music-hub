@@ -1,6 +1,6 @@
 import { cleanup } from '@testing-library/react'
 import React, { useEffect, useState } from 'react'
-import { API_URL } from '../../../config'
+import { STATIC_URL} from '../../../config'
 import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypeSelector'
 import { IAlbum, ITrack } from '../../../types/entity-interfaces'
@@ -114,7 +114,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
 
         <div className='item' onClick={() => onChoiseTrack(track, onInFav)}>
             <div className="item___img">
-                <img src={API_URL + track.picture} alt="trakc img" />
+                <img src={STATIC_URL + track.picture} alt="trakc img" />
 
             </div>
 

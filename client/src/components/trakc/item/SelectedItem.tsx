@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
-import { API_URL } from '../../../config'
+import { STATIC_URL } from '../../../config'
 import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypeSelector'
 import { IAlbum, IComment, ITrack } from '../../../types/entity-interfaces'
@@ -106,7 +106,7 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
         <div className='selected-item'>
             <div className="selected-item___img">
-                <img src={API_URL + track?.picture} alt="trakc img" />
+                <img src={STATIC_URL + track?.picture} alt="trakc img" />
 
             </div>
             <div className="selected-item___play-bar"

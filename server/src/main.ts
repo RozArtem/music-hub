@@ -6,8 +6,8 @@ import * as fs from 'fs'
 
 
 const httpsOptions = {
-  key: fs.readFileSync('./etc/letsencrypt/live/musichubsocial.ml/fullchain.pem'),
-  cert: fs.readFileSync('./etc/letsencrypt/live/musichubsocial.ml/privkey.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/fullchain.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/privkey.pem'),
 };
 
 async function 

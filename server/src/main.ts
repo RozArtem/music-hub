@@ -5,19 +5,20 @@ import * as fs from 'fs'
 
 
 
-const httpsOptions = {
-  key: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/fullchain.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/privkey.pem'),
-};
+
+
 
 async function 
 start() {
 
-
+  const httpsOptions = {
+    key: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/fullchain.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/privkey.pem'),
+  };
 
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule, {
-    httpsOptions
+  //  httpsOptions
   });
 
   app.enableCors();

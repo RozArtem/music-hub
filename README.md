@@ -5,9 +5,11 @@
 
   Music Hub Social - full-stack
 
-client технологи - TypeScript, React, React-Router, Redux, Redux-thunk, axios , препроцессор SASS
-server технологи - TypeScript, NestJs, bcryptjs, class-validator ,sequelize , sequelize-typescript , uuid, cross-env, eslint
-database - PostgresQL
+client технологи - TypeScript, React, React-Router, Redux, Redux-thunk, axios , препроцессор SASS;
+
+server технологи - TypeScript, NestJs, bcryptjs, class-validator ,sequelize , sequelize-typescript , uuid, cross-env, eslint;
+
+database - PostgresQL;
 
  Из основных возможностей:
   

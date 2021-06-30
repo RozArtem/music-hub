@@ -11,8 +11,6 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
-    ports:
-        - '443:8080'
     environment:
       - PGUSER=postgres
       - PGHOST=postgres

@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect } from 'react'
-import { API_URL } from '../../config';
+import { STATIC_URL} from '../../config';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypeSelector';
 import { setAudio } from '../../store/actions-creators/player';
@@ -63,7 +63,7 @@ const PlayBar = React.memo(() => {
 
 
             <audio controls
-                src={API_URL + active?.audio}
+                src={STATIC_URL + active?.audio}
                 onPlay={(e) => onPlayTrack(e)}
                 onPause={(e) => onPauseTrack(e)}
                 autoPlay={true}

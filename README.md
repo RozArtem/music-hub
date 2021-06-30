@@ -7,7 +7,7 @@
 
 client технологи - TypeScript, React, React-Router, Redux, Redux-thunk, axios , препроцессор SASS;
 
-server технологи - TypeScript, NestJs, bcryptjs, class-validator ,sequelize , sequelize-typescript , uuid, cross-env, eslint;
+server технологи - TypeScript, NestJs, nestjs/jwt, bcryptjs, class-validator ,sequelize , sequelize-typescript , uuid, cross-env, eslint;
 
 database - PostgresQL;
 

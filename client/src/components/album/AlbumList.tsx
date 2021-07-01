@@ -7,7 +7,7 @@ import InAlbum from './in-album/InAlbum'
 interface IAlbumListProps {
 
     setShowAlbumsBlock: Function
-    track: ITrack
+    track: ITrack | null
     albums: IAlbum[]
 
 

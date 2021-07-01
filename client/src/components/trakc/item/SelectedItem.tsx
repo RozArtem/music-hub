@@ -5,6 +5,7 @@ import { STATIC_URL } from '../../../config'
 import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypeSelector'
 import { IAlbum, IComment, ITrack } from '../../../types/entity-interfaces'
+import AlbumList from '../../album/AlbumList'
 
 
 import './selected-item.css'
@@ -15,19 +16,23 @@ interface ITrackProps {
     track: ITrack | null
     fav: boolean
     onSetToggler2: Function
+    albums: IAlbum[]
 
 }
 
 
 
-const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
+const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2, albums }) => {
 
 
     const history = useHistory()
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
     const { currentProfile } = useTypedSelector(state => state.users)
-    const { active , pause} = useTypedSelector(state => state.player)
+    const { active, pause } = useTypedSelector(state => state.player)
     let [owner, setOwner] = useState<boolean>(false)
+    const [showAlbumsBlock, setShowAlbumsBlock] = useState<boolean>(false)
+
+
     const {
         addFavorite,
         deleteFromFavorite,
@@ -123,12 +128,12 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
 
 
             >
-         
-                {active?.id === track?.id && !pause ? 
-                <div className="play-sml">||</div> 
-                 : 
-                 <div className="play-sml">{'>'}</div>}
-               </div>
+
+                {active?.id === track?.id && !pause ?
+                    <div className="play-sml">||</div>
+                    :
+                    <div className="play-sml">{'>'}</div>}
+            </div>
             <div className="selected-item___info">
 
                 <div className="selected-item___name">
@@ -144,8 +149,8 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
                 </div>
 
                 <div className="selected-item___duration">
-                  
-               </div>
+
+                </div>
             </div>
             {
                 isAuth &&
@@ -153,12 +158,25 @@ const SelectedItem: React.FC<ITrackProps> = ({ track, fav, onSetToggler2 }) => {
                     <div className={fav ? 'item___func___inFav' : 'item___func___add-to-fav'}
                         onClick={(e) => fav ? deleteToFavSong(e) : addToFavSong(e)}
                     >❤</div>
-                    <div className='item___func___add-to-album'>+</div>
+                    {albums.length > 1 &&
+
+                        <div className='selected-item__func___add-to-album'
+
+                            onMouseEnter={() => { setShowAlbumsBlock(true) }}
+                            onMouseOver={() => { setShowAlbumsBlock(true) }}
+                            onMouseLeave={() => { setShowAlbumsBlock(false) }}
+                        >{!showAlbumsBlock && '+'}</div>
+                    }
                     {owner && <div className='selected-item___func___delete'
                         onClick={(e) => { deleteTrack(e) }}
                     >х</div>}
 
                 </div>
+            }
+
+            {isAuth && showAlbumsBlock &&
+
+                <AlbumList setShowAlbumsBlock={setShowAlbumsBlock} track={track} albums={albums} />
             }
         </div>
     )

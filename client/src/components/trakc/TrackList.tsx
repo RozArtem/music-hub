@@ -177,6 +177,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNe
                         track={currentTrack}
                         fav={checkInFavForSelected}
                         onSetToggler2={setCheckInFavForSelected}
+                        albums={albums} 
                     />
 
 

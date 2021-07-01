@@ -32,8 +32,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
 
 
     const {
-        addFavorite,
-        deleteFromFavorite,
+       
         DeleteTrackFromCurrentProfile,
         setActiveTrack,
         pauseTrack,
@@ -56,23 +55,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
 
     }, [])
 
-    function addToFavSong(e: any) {
-
-        e.stopPropagation()
-        addFavorite(track.id)
-
-
-
-
-    }
-
-    function deleteToFavSong(e: any) {
-
-        e.stopPropagation()
-        deleteFromFavorite(track.id)
-
-
-    }
+   
 
     function deleteTrack(e: any) {
 

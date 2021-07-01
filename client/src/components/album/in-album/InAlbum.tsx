@@ -9,7 +9,7 @@ import './inalbum.css'
 interface IInAlbum {
 
     album: IAlbum
-    track: ITrack
+    track: ITrack | null
 }
 
 
@@ -21,7 +21,7 @@ const InAlbum: React.FC<IInAlbum> = ({ album,
 
 
 
-    const itemInAlbum = album.traks?.find(item => item.id === track.id)
+    const itemInAlbum = album.traks?.find(item => item.id === track?.id)
 
 
 
@@ -30,11 +30,11 @@ const InAlbum: React.FC<IInAlbum> = ({ album,
 
     function deleteTrack(e: any) {
         e.stopPropagation()
-        deleteFromAlbum(album.id, track.id)
+        track && deleteFromAlbum(album.id, track.id)
     }
     function addTrack(e: any) {
         e.stopPropagation()
-        addTrakcToAlbum(track.id, album.id)
+      track &&  addTrakcToAlbum(track.id, album.id)
 
     }
 

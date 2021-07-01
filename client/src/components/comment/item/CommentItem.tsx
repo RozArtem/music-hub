@@ -33,7 +33,7 @@ const CommentItem: React.FC<ICommentProp> = ({ commentItem }) => {
 
         if (currentUser?.id === commentItem.ownerID) {setOwner(true)}
 
-            axios.get(`${API_URL}users/${commentItem.ownerID}`)
+            axios.get(`${API_URL}api/v1/users/${commentItem.ownerID}`)
                 .then(res => {
                     setAuthor(author = res.data.name);
                 })

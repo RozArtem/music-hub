@@ -26,7 +26,7 @@ const UserItem: React.FC<IUser> = (user: IUser) => {
 
     useEffect(() => {
 
-        axios.get(`${API_URL}users/${user.id}`)
+        axios.get(`${API_URL}api/v1/users/${user.id}`)
             .then(res => {
                 setCount(count = res.data.tracks);
             })

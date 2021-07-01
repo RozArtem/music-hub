@@ -8,7 +8,7 @@ import './faav.css'
 
 interface IFaav {
 
-    track: ITrack
+    track: ITrack | null
 
 }
 
@@ -23,15 +23,15 @@ const Faav: React.FC<IFaav> = ({ track }) => {
 
 
 
-    const itemInFav = Fav.traks.find(item => item.id === track.id)
+    const itemInFav = Fav.traks.find(item => item.id === track?.id)
 
     function deleteTrack(e: any) {
         e.stopPropagation()
-        deleteFromFavorite(track.id)
+        track &&  deleteFromFavorite(track.id)
     }
     function addTrack(e: any) {
         e.stopPropagation()
-        addFavorite(track.id)
+        track && addFavorite(track.id)
     }
 
     return (

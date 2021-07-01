@@ -18,6 +18,7 @@ import AddTrackPage from '../pages/add-track/AddTrackPage'
 import PlayBar from './play-bar/PlayBar'
 import MobileFucnBar from './functional-bar/mobile/MobileFucnBar'
 import Loaders from './loaders/Loaders'
+import TrackPage from '../pages/track/TrackPage'
 
 const App = () => {
 
@@ -44,6 +45,7 @@ const App = () => {
           <Route path='/profile' component={UserPage} />
           <Route path='/albums' component={AlbumPage} />
           <Route path='/add-track' component={AddTrackPage} />
+          <Route path='/tracks' component={TrackPage} />
 
           <Redirect to="/home" />
 

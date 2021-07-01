@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypeSelector'
 import { IAlbum, ITrack } from '../../types/entity-interfaces'
-import CommentList from '../comment/CommentList'
-import SelectedItem from './item/SelectedItem'
 import TrackItem from './item/TrackItem'
+import { useHistory } from 'react-router'
 
 
 
@@ -44,6 +43,8 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNe
     const [description, setDescription] = useState<string>('')
     const [serchValue, setSerchValue] = useState<string>('')
 
+    const history = useHistory()
+
     let list: Element
 
     useEffect(() => {
@@ -74,20 +75,10 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNe
     function ChoiseTrack(track: ITrack, onInFav: boolean) {
 
         getOneTrack(track.id)
-        setToggler(false)
         getUserProfile(track?.authorID || '')
         setCheckInFavForSelected(onInFav)
+        history.push(`/tracks/${track.id}`)
     }
-
-    function addComment(trackID: any) {
-
-        if (description.trim() === '') { alert("Comment cannot be empty, please leave a text") }
-
-        addCommentToTrack(description, trackID)
-
-        setDescription('')
-    }
-
 
 
     function onSearch() {
@@ -122,9 +113,6 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNe
     return (
 
         <div className='track-list'>
-            {toggler ?
-
-                <>
                     {serching || tracks && tracks?.length >= 10 ? <div className="track-list___searc-bar">
                         <input className='track-list___searc-bar___search' type='text'
                             value={serchValue}
@@ -165,43 +153,7 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNe
                         }
 
                     </div>
-                </>
-                :
-                <>
-                    <div className="track-list___searc-bar">
-                        <button className='track-list___searc-bar___btn' onClick={() => setToggler(true)}>BACK</button>
-                    </div>
-
-
-                    <SelectedItem
-                        track={currentTrack}
-                        fav={checkInFavForSelected}
-                        onSetToggler2={setCheckInFavForSelected}
-                        albums={albums} 
-                    />
-
-
-
-                    {isAuth ?
-                        <div className="comment-list___coment-area">
-                            <textarea name="comment" maxLength={255} minLength={3}
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                            ></textarea>
-                            <button
-
-                                onClick={() => addComment(currentTrack?.id)}
-                            >Leave comment</button>
-                        </div>
-                        :
-                        <div className="comment-list___coment-area">
-                            Comments can be posted only by authorized users
-                        </div>
-                    }
-
-                    <CommentList />
-                </>
-            }
+             
 
 
 

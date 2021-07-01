@@ -1,5 +1,5 @@
-export const API_URL = 'http://www.musichubsocial.ml/'
-export const STATIC_URL = 'http://www.musichubsocial.ml:8080/'
+export const API_URL = 'https://www.musichubsocial.ml/endpoinds/'
+export const STATIC_URL = 'https://www.musichubsocial.ml/endpoinds/'
 
 //'http://18.119.99.223:5000/'
 

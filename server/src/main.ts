@@ -11,10 +11,10 @@ import * as fs from 'fs'
 async function 
 start() {
 
-  const httpsOptions = {
-    key: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/fullchain.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/privkey.pem'),
-  };
+  //const httpsOptions = {
+   // key: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/fullchain.pem'),
+   // cert: fs.readFileSync('/etc/letsencrypt/live/musichubsocial.ml/privkey.pem'),
+ // };
 
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule, {

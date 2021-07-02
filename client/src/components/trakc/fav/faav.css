@@ -1,7 +1,10 @@
 .fav___inFav {
+  background-image: url("./../../../inHeart.svg");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  cursor: pointer;
   height: 20px;
-  color: chartreuse;
-  margin: 5px;
+  width: 20px;
 }
 
 .fav___inFav:hover {
@@ -10,14 +13,15 @@
 }
 
 .fav___add-to-fav {
-  color: rgba(245, 245, 245, 0.3);
+  background-image: url("./../../../heart.svg");
+  background-repeat: no-repeat;
+  background-size: 20px;
   cursor: pointer;
-  margin: 5px;
   height: 20px;
+  width: 20px;
 }
 
 .fav___add-to-fav:hover {
-  color: black;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }

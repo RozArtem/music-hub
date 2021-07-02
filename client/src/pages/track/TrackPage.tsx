@@ -167,10 +167,19 @@ const TrackPage: React.FC = () => {
 
             </div>
             <div className="comment-list-container">
+
                 <div className="comment-list-container___coment-area">
+                    {isAuth ?  
+                    <>
                     <textarea maxLength={255} value={description}
                         onChange={(e) => { setDescription(e.target.value) }}></textarea>
                     <button onClick={() => { onAddCommentToTrack() }}>leave comment</button>
+                    </>
+                    :
+                    <>
+                    Leave comment can only authorized user, please sign in or sign up... 
+                    </>
+                    }
                 </div>
                 <div className="comment-list-container___list-area">
                     <CommentList />

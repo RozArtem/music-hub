@@ -21,12 +21,12 @@ interface ITrackListProps {
 
 const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNextTraks }) => {
 
-    const { getOneTrack,
-        addCommentToTrack,
+    const { 
+        getOneTrack,
         getAll,
         getUserProfile,
-        increaseOffset,
-        decreaseOffset } = useActions()
+        increaseOffset
+    } = useActions()
 
     const { currentTrack, offset, countOfAll } = useTypedSelector(state => state.track)
     const { Fav } = useTypedSelector(state => state.album)
@@ -76,7 +76,6 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNe
 
         getOneTrack(track.id)
         getUserProfile(track?.authorID || '')
-        setCheckInFavForSelected(onInFav)
         history.push(`/tracks/${track.id}`)
     }
 
@@ -132,19 +131,10 @@ const TrackList: React.FC<ITrackListProps> = ({ tracks, albums, serchFunc, getNe
 
                             tracks?.map(track => {
 
-                                let inFav = false;
-
-                                Fav?.traks.map(item => {
-                                    if (item.id === track.id) {
-
-                                        inFav = true
-
-                                    }
-
-                                })
+                                
 
                                 return <TrackItem
-                                    onInFav={inFav}
+                                  
                                     key={track.id}
                                     track={track}
                                     onChoiseTrack={ChoiseTrack}

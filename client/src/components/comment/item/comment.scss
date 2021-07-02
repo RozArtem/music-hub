@@ -1,109 +1,85 @@
 .comment {
-
     width: 95%;
-   
+
     height: max-content;
-    
+
     &___author {
         margin-top: 10px;
-        
-        height: 30%;
+
+        height: 30px;
         background-color: rgba(146, 146, 135, 0.7);
         padding: 5px;
-        border-radius: 0 100%  0 0;
+        border-radius: 0 100% 0 0;
         width: 30%;
-    
-        
-
-   
     }
 
     &___text {
+        height: 60%;
 
-        height: 70%;
-        min-height: 70%;
         background-color: whitesmoke;
         height: fit-content;
         padding: 10px;
-        border-radius: 0 15px 15px 15px ;
+        border-radius: 0 15px 15px 15px;
         display: flex;
         justify-content: space-between;
         font-size: 18px;
         text-overflow: ellipsis;
         overflow: hidden;
-        word-wrap:break-word;
+        word-wrap: break-word;
         margin-bottom: 15px;
 
-
         &___delete {
-
             color: red;
             cursor: pointer;
             align-self: flex-end;
             margin-bottom: -3px;
             margin-left: 3px;
-            
+
             &:hover {
                 color: black;
             }
         }
     }
-
-
 }
 
-
-
 @media (max-width: 900px) {
-
     .comment {
-
         width: 95%;
-        min-height: 100px;
+
         margin-top: 20px;
-        font-size: 12px;
-        
+        margin-bottom: 20px;
+        font-size: 18px;
+
         &___author {
-    
-            
-            height: 30%;
+           
+            height: 30px;
             background-color: rgba(146, 146, 135, 0.7);
             padding: 5px;
-            border-radius: 0 100%  0 0;
-            width: 30%;
-        
-            
-    
-       
+            border-radius: 0 10px 0 0;
+            width: 100%;
         }
-    
+
         &___text {
-    
             height: 70%;
             min-height: 70%;
             background-color: whitesmoke;
             height: fit-content;
             padding: 10px;
-            border-radius: 0 15px 15px 15px ;
+            border-radius: 0 0 15px 15px;
             display: flex;
             justify-content: space-between;
-    
-    
+
             &___delete {
-    
                 color: red;
                 cursor: pointer;
                 align-self: flex-end;
                 margin-bottom: -3px;
                 margin-left: 3px;
-                
+
                 &:hover {
                     color: black;
                 }
             }
         }
-    
-    
     }
-    
- }
+}

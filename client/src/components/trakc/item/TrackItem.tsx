@@ -14,13 +14,13 @@ interface ITrackProps {
 
     track: ITrack;
     onChoiseTrack: Function;
-    onInFav: boolean;
+   
     albums: IAlbum[]
 }
 
 
 
-const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, albums }) => {
+const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, albums }) => {
 
     const { isAuth, currentUser } = useTypedSelector(state => state.currentUser)
     const { pause, active, currentTime, duration, audio } = useTypedSelector(state => state.player)
@@ -95,7 +95,7 @@ const TrackItem: React.FC<ITrackProps> = ({ track, onChoiseTrack, onInFav, album
     return (
 
 
-        <div className='item' onClick={() => onChoiseTrack(track, onInFav)}>
+        <div className='item' onClick={() => onChoiseTrack(track)}>
             <div className="item___img">
                 <img src={STATIC_URL + track.picture} alt="trakc img" />
 

@@ -7,16 +7,15 @@
 
 .comment___author {
   margin-top: 10px;
-  height: 30%;
+  height: 30px;
   background-color: rgba(146, 146, 135, 0.7);
   padding: 5px;
-  border-radius: 0 100%  0 0;
+  border-radius: 0 100% 0 0;
   width: 30%;
 }
 
 .comment___text {
-  height: 70%;
-  min-height: 70%;
+  height: 60%;
   background-color: whitesmoke;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -52,16 +51,16 @@
 @media (max-width: 900px) {
   .comment {
     width: 95%;
-    min-height: 100px;
     margin-top: 20px;
-    font-size: 12px;
+    margin-bottom: 20px;
+    font-size: 18px;
   }
   .comment___author {
-    height: 30%;
+    height: 30px;
     background-color: rgba(146, 146, 135, 0.7);
     padding: 5px;
-    border-radius: 0 100%  0 0;
-    width: 30%;
+    border-radius: 0 10px 0 0;
+    width: 100%;
   }
   .comment___text {
     height: 70%;
@@ -71,7 +70,7 @@
     height: -moz-fit-content;
     height: fit-content;
     padding: 10px;
-    border-radius: 0 15px 15px 15px;
+    border-radius: 0 0 15px 15px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

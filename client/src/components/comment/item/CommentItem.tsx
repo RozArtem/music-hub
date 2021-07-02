@@ -45,7 +45,8 @@ const CommentItem: React.FC<ICommentProp> = ({ commentItem }) => {
     return (
         <div className='comment'>
             <div className="comment___author">{author}</div>
-            <div className="comment___text">{commentItem.description}
+            <div className="comment___text">
+                {commentItem.description}
                 {owner && isAuth  ? <div onClick={() => deleteComment(commentItem.id)}
                  className="comment___text___delete">X</div> : null}
             </div>

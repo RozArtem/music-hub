@@ -1,5 +1,5 @@
-export const API_URL = 'https://www.musichubsocial.ml/'
-export const STATIC_URL = 'https://www.musichubsocial.ml/'
+export const API_URL = 'http://localhost:5000/'
+export const STATIC_URL = 'http://localhost:5000/'
 
 //'http://18.119.99.223:5000/'
 

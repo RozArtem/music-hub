@@ -6,7 +6,7 @@ import { IUsersState, UsersActions, UsersActionTypes } from "../../types/users"
 
 const initialState: IUsersState = {
     users: [],
-    currentProfile: {
+    currentProfile: null || {
         id: '',
         name: '',
         email: '',

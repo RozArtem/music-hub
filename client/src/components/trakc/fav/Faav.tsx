@@ -38,7 +38,7 @@ const Faav: React.FC<IFaav> = ({ track }) => {
        
             <div className={itemInFav ? 'fav___inFav' : 'fav___add-to-fav'}
                 onClick={(e) => itemInFav ? deleteTrack(e) : addTrack(e)}
-            >&#x2764;</div>
+            ></div>
 
 
       

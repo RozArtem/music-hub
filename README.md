@@ -42,7 +42,7 @@ database - PostgresQL;
 
 Допольнительные возможности платформы доступны только авторизованым пользователям, тестовый пользователь для проверки
 
-login : testuser@gmail.com
+login :testuser@gmail.com
 password: password01
 
 

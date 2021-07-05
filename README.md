@@ -5,7 +5,7 @@
 
   Music Hub Social - full-stack
 
-client технологи - TypeScript, React, React-Router, Redux, Redux-thunk, axios , препроцессор SASS;
+client технологи - TypeScript, React, React-Router, Redux, Redux-thunk, axios , html , препроцессор SASS;
 
 server технологи - TypeScript, NestJs, nestjs/jwt, bcryptjs, class-validator ,sequelize , sequelize-typescript , uuid, cross-env, eslint;
 

@@ -51,7 +51,12 @@ const UserPage: React.FC = () => {
         searchUserOwnTraks(currentProfile.id, query)
     }
 
+    function onGetNextForUser(count:number, offset:number) {
+
+       console.log(count, offset)
+    }
    
+    
     return (
 
         <div className='user-page'>
@@ -82,7 +87,7 @@ const UserPage: React.FC = () => {
                     tracks={currentProfile?.tracks}
                     albums={albums}
                     serchFunc={seachTrack}
-                    getNextTraks={getNextForUser} />
+                    getNextTraks={onGetNextForUser} />
             </div>
 
 
